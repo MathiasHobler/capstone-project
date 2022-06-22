@@ -3,17 +3,18 @@ import styled from 'styled-components';
 const EventCardContainer = styled.section`
 	width: min(100% - 2rem);
 	margin: auto;
-	background: lightcoral;
 	padding: 1em;
+	background: lightcoral;
 
 	article {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
-		gap: 0px 0px;
 		grid-template-areas:
 			'title date'
 			'desc desc';
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 0 0;
+
 		h2 {
 			grid-area: title;
 		}
@@ -23,9 +24,8 @@ const EventCardContainer = styled.section`
 		}
 		.description {
 			grid-area: desc;
-			text-overflow: ellipsis;
 			overflow: hidden;
-
+			text-overflow: ellipsis;
 			white-space: nowrap;
 		}
 	}
