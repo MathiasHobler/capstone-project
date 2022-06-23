@@ -4,14 +4,12 @@ import styled from 'styled-components';
 
 function NavBar() {
 	return (
-		<NavContainer>
+		<NavContainer data-testid="navbar">
 			<NavLink to="/">
 				<Home />
-				Home
 			</NavLink>
 			<NavLink to="/about">
 				<Add />
-				Create
 			</NavLink>
 		</NavContainer>
 	);
