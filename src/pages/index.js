@@ -1,6 +1,6 @@
 import {Helmet} from 'react-helmet';
-import Form from '../components/Form/Form';
 
+import Form from '../components/Form/Form';
 import Layout from '../components/Layout';
 
 export default function HomePage() {
