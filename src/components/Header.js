@@ -5,7 +5,7 @@ export default function Header() {
 }
 
 const Heading = styled.header`
-	height: 5em;
 	width: 100%;
+	height: 5em;
 	background-color: yellowgreen;
 `;

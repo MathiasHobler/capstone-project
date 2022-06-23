@@ -1,7 +1,6 @@
 import {Helmet} from 'react-helmet';
 
 import Layout from '../components/Layout';
-import NavBar from '../components/NavBar/NavBar';
 
 export default function HomePage() {
 	return (
