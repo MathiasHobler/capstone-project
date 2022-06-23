@@ -18,7 +18,6 @@ const Form = () => {
 				onSubmit={e => {
 					e.preventDefault();
 					setTestInputs({...event});
-					console.log(testInputs);
 				}}
 			>
 				<label htmlFor="eventTitle" aria-label="Enter your title">
