@@ -14,19 +14,19 @@
     "prepare": "npx husky install",
     "stylelint": "npx stylelint src/{**/*,*}.{css,js,jsx}",
     "storybook": "start-storybook -p 6006 -s public",
-    "storybook:build":"build-storybook -s public",
+    "storybook:build": "build-storybook -s public",
     "test:unit": "npm run jest",
     "test": "npm run test:unit",
     "toc": "npx markdown-toc@1 README.md -i"
   },
   "dependencies": {
     "axios": "0.27.2",
+    "nanoid": "3.3.4",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-helmet": "6.1.0",
     "react-router-dom": "6.3.0",
     "styled-components": "5.3.5",
-    "nanoid": "3.3.4",
     "zustand": "4.0.0-rc.1"
   },
   "devDependencies": {
