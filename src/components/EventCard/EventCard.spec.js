@@ -7,21 +7,24 @@ import EventCard from './EventCard';
 
 describe('Event Card Component', () => {
 	it('should render correctly props', () => {
-		render(<EventCard event={dummyEvent} />);
-		expect(screen.getByText(dummyEvent.eventName)).toBeInTheDocument();
-		expect(screen.getByText(dummyEvent.desc)).toBeInTheDocument();
-		expect(screen.getByText(dummyEvent.date)).toBeInTheDocument();
+		const singleEvent = dummyEvent[0];
+		render(<EventCard event={singleEvent} />);
+		expect(screen.getByText(singleEvent.eventName)).toBeInTheDocument();
+		expect(screen.getByText(singleEvent.desc)).toBeInTheDocument();
+		expect(screen.getByText(singleEvent.date)).toBeInTheDocument();
 	});
 
 	it('ImageTag must have src = https://www.meetandeat-berlin.de/img/logo.svg and alt = "EventPicture"', () => {
-		render(<EventCard event={dummyEvent} />);
+		const singleEvent = dummyEvent[0];
+		render(<EventCard event={singleEvent} />);
 		const img = screen.getByRole('img');
-		expect(img).toHaveAttribute('src', dummyEvent.pictures.eventPicture);
+		expect(img).toHaveAttribute('src', singleEvent.pictures.eventPicture);
 		expect(img).toHaveAttribute('alt', 'EventPicture');
 	});
 
 	it('Heading in Event Card should be level 2', () => {
-		const {getByRole} = render(<EventCard event={dummyEvent} />);
+		const singleEvent = dummyEvent[0];
+		const {getByRole} = render(<EventCard event={singleEvent} />);
 		expect(getByRole('heading', {level: 2})).toBeInTheDocument();
 	});
 });

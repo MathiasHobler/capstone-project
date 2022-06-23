@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-const EventCardContainer = styled.section`
+const EventCardContainer = styled.li`
 	width: min(100% - 2rem);
 	margin: auto;
 	padding: 1em;
 	background: lightcoral;
+	list-style: none;
 
 	article {
 		display: grid;
