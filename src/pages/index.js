@@ -1,6 +1,6 @@
 import {Helmet} from 'react-helmet';
 
-import EventCard from '../components/EventCard/EventCard';
+import EventCardList from '../components/EventCardList/EventCardList';
 import Layout from '../components/Layout';
 import dummyEvent from '../utils/data';
 
@@ -11,7 +11,7 @@ export default function HomePage() {
 				<title key="title">My Project</title>
 				<meta key="description" name="description" content="This is my project" />
 			</Helmet>
-			<EventCard event={dummyEvent} />
+			<EventCardList eventList={dummyEvent} />
 		</Layout>
 	);
 }
