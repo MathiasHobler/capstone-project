@@ -1,10 +1,7 @@
 import {Helmet} from 'react-helmet';
 
-
 import Form from '../components/Form/Form';
-
 import EventCard from '../components/EventCard/EventCard';
-
 import Layout from '../components/Layout';
 import dummyEvent from '../utils/data';
 
