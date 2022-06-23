@@ -2,9 +2,8 @@ import {Helmet} from 'react-helmet';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
-import NavBar from '../components/NavBar/NavBar';
 
-export default function AboutPage() {
+export default function Create() {
 	return (
 		<Layout>
 			<Helmet>
@@ -12,10 +11,6 @@ export default function AboutPage() {
 				<meta key="description" name="description" content="About" />
 			</Helmet>
 			<h1>Create</h1>
-			<Dummy>
-				<h3>Create Dummy</h3>
-			</Dummy>
-			<NavBar />
 		</Layout>
 	);
 }

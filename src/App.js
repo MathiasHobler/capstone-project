@@ -1,7 +1,8 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
+import NavBar from './components/NavBar/NavBar';
 import Home from './pages';
-import About from './pages/about';
+import Create from './pages/create';
 import {GlobalStyle} from './styles';
 
 export default function App() {
@@ -12,9 +13,10 @@ export default function App() {
 				<Routes>
 					<Route path="/">
 						<Route index element={<Home />} />
-						<Route path="about/" element={<About />} />
+						<Route path="/create" element={<Create />} />
 					</Route>
 				</Routes>
+				<NavBar />
 			</BrowserRouter>
 		</>
 	);
