@@ -46,9 +46,10 @@ const Form = () => {
 					e.preventDefault();
 					createEvent(event);
 					setEvent({
-						name: '',
-						email: '',
-						age: '',
+						title: '',
+						date: '',
+						time: '',
+						desc: '',
 					});
 				}}
 			>

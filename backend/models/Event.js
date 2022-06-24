@@ -7,7 +7,7 @@ const EventSchema = new mongoose.Schema(
 			require: true,
 			min: 3,
 			max: 20,
-			unique: true,
+			unique: false,
 		},
 		pictures: {
 			eventPicture: {
@@ -21,7 +21,8 @@ const EventSchema = new mongoose.Schema(
 		},
 		author: {
 			type: String,
-			require: true,
+			require: false,
+			default: '',
 		},
 		private: {
 			type: Boolean,
@@ -39,7 +40,6 @@ const EventSchema = new mongoose.Schema(
 			type: String,
 			default: '',
 			max: 50,
-			required: true,
 		},
 		adress: {
 			street: {
