@@ -9,7 +9,7 @@ function NavBar() {
 			<NavLink to="/" data-testid="navHome">
 				<Home />
 			</NavLink>
-			<NavLink to="/create" data-testid="navHome">
+			<NavLink to="/create" data-testid="navCreate">
 				<Add />
 			</NavLink>
 		</NavContainer>
