@@ -12,7 +12,7 @@ const EventSchema = new mongoose.Schema(
 		pictures: {
 			eventPicture: {
 				type: String,
-				default: '',
+				default: 'https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg',
 			},
 			coverPicture: {
 				type: String,
@@ -54,8 +54,8 @@ const EventSchema = new mongoose.Schema(
 			},
 		},
 		date: {
-			type: Date,
-			default: Date.now(),
+			type: String,
+			default: '',
 		},
 		location: {
 			type: Array,

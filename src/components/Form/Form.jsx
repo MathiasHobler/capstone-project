@@ -3,21 +3,53 @@ import {useState} from 'react';
 import FormContainer from './Form.styled';
 
 const Form = () => {
+	const [{data}, setData] = useState({data: [], error: null});
 	const [event, setEvent] = useState({
 		title: '',
 		date: '',
 		time: '',
-		description: '',
+		desc: '',
 	});
-
-	const [testInputs, setTestInputs] = useState({title: '', date: '', time: '', description: ''});
+	function createEvent(data) {
+		fetch('/api/events', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				setData({
+					data: data.data,
+					error: null,
+				});
+			})
+			.catch(error => {
+				setData({
+					data: '',
+					error: error.message,
+				});
+			});
+	}
 
 	return (
 		<>
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
-					setTestInputs({...event});
+					createEvent(event);
+					setEvent({
+						name: '',
+						email: '',
+						age: '',
+					});
 				}}
 			>
 				<label htmlFor="eventTitle" aria-label="Enter your title">
@@ -67,26 +99,16 @@ const Form = () => {
 					<input
 						type="text"
 						id="eventDescription"
-						value={event.description}
+						value={event.desc}
 						required
 						onChange={e => {
-							setEvent({...event, description: e.target.value});
+							setEvent({...event, desc: e.target.value});
 						}}
 					/>
 				</label>
 
 				<input type="submit" value="submit" disabled={event.title === ''} />
 			</FormContainer>
-
-			<div>
-				<h3>Show Test Inputs</h3>
-				<article>
-					<h2 aria-level="2">{testInputs.title}</h2>
-					<p className="description">{testInputs.description}</p>
-					<p className="date">{testInputs.date}</p>
-					<p className="time">{testInputs.time}</p>
-				</article>
-			</div>
 		</>
 	);
 };
