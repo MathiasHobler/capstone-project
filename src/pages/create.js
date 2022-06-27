@@ -1,5 +1,6 @@
 import {Helmet} from 'react-helmet';
 
+import Form from '../components/Form/Form';
 import Layout from '../components/Layout';
 
 export default function Create() {
@@ -9,7 +10,7 @@ export default function Create() {
 				<title key="title">Create</title>
 				<meta key="description" name="description" content="About" />
 			</Helmet>
-			<h1>Create</h1>
+			<Form />
 		</Layout>
 	);
 }
