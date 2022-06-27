@@ -4,9 +4,8 @@ const EventCardContainer = styled.li`
 	width: min(100% - 2rem);
 	margin: auto;
 	padding: 1em;
-	background: ${props => (props.details ? 'aqua' : 'lightcoral')};
+	background: lightcoral;
 	list-style: none;
-	z-index: ${props => (props.details ? '500' : 'auto')};
 
 	article {
 		display: grid;
@@ -29,14 +28,10 @@ const EventCardContainer = styled.li`
 		.description {
 			margin-top: 1em;
 			grid-area: desc;
-			overflow: ${props => (props.details ? 'auto' : 'hidden')};
-			text-overflow: ${props => (props.details ? 'visible overflow' : 'ellipsis')};
-			white-space: ${props => (props.details ? 'wrap' : 'nowrap')};
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
-	}
-
-	iframe {
-		margin-left: 50%;
 	}
 
 	img {
