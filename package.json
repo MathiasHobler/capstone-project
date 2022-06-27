@@ -20,6 +20,7 @@
     "toc": "npx markdown-toc@1 README.md -i"
   },
   "dependencies": {
+    "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",

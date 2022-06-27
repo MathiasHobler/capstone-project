@@ -1,5 +1,3 @@
-import React from 'react';
-
 import DetailPOP from './Detail.styled';
 
 const Detail = ({event, back}) => {
