@@ -8,9 +8,11 @@ function NavBar() {
 		<NavContainer>
 			<NavLink to="/" data-testid="navHome">
 				<Home />
+				<div></div>
 			</NavLink>
 			<NavLink to="/create" data-testid="navCreate">
 				<Add />
+				<div></div>
 			</NavLink>
 		</NavContainer>
 	);

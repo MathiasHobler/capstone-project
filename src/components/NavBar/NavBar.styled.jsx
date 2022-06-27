@@ -6,9 +6,9 @@ const NavContainer = styled.section`
 	bottom: 0;
 	align-items: center;
 	justify-content: space-evenly;
-	width: 70%;
+	width: 100%;
 	height: 5%;
-	margin-left: 15%;
+
 	background-color: yellowgreen;
 
 	a {
@@ -16,7 +16,7 @@ const NavContainer = styled.section`
 		text-decoration: none;
 
 		&:hover {
-			transform: scale(1.5);
+			transform: scale(1.1);
 			transition: 400ms;
 			color: hotpink;
 		}
@@ -24,7 +24,7 @@ const NavContainer = styled.section`
 			width: 5px;
 			height: 5px;
 			margin: auto;
-			margin-top: 5px;
+			margin-top: 1px;
 			border-radius: 50%;
 			background-color: black;
 		}
