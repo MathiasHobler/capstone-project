@@ -7,6 +7,10 @@ import EventCardContainer from './EventCard.styled';
 const EventCard = ({event}) => {
 	const [details, setDetails] = useState(false);
 	console.log(details);
+	const switcher = () => {
+		setDetails(!details);
+	};
+
 	return (
 		<>
 			<EventCardContainer
@@ -27,16 +31,7 @@ const EventCard = ({event}) => {
 				</article>
 			</EventCardContainer>
 
-			{details && (
-				<Detail />
-				// <div>
-				// 	<iframe
-				// 		src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
-				// 		width="100%"
-				// 		height="200"
-				// 	/>
-				// </div>
-			)}
+			{details && <Detail event={event} back={() => switcher()} />}
 		</>
 	);
 };
