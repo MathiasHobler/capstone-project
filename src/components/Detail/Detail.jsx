@@ -5,7 +5,7 @@ const Detail = ({event, back}) => {
 		<DetailPOP className="background">
 			<article>
 				<button onClick={back}>X</button>
-				<h2>{event.eventName}</h2>
+				<h2>{event.title}</h2>
 				<p>{event.date}</p>
 				<p>{event.description}</p>
 				<iframe
