@@ -7,7 +7,7 @@ const Detail = ({event, back}) => {
 				<button onClick={back}>X</button>
 				<h2>{event.eventName}</h2>
 				<p>{event.date}</p>
-				<p>{event.desc}</p>
+				<p>{event.description}</p>
 				<iframe
 					title="event.id"
 					src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"

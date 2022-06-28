@@ -6,7 +6,7 @@ import EventCardContainer from './EventCard.styled';
 
 const EventCard = ({event}) => {
 	const [details, setDetails] = useState(false);
-	console.log(details);
+
 	const switcher = () => {
 		setDetails(!details);
 	};
@@ -16,7 +16,7 @@ const EventCard = ({event}) => {
 			<EventCardContainer
 				details={details}
 				onClick={() => {
-					setDetails(!details);
+					switcher();
 				}}
 			>
 				<img
