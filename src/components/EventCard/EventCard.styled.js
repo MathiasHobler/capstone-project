@@ -17,17 +17,15 @@ const EventCardContainer = styled.li`
 		gap: 0 0;
 
 		h2 {
-			max-height: 2em;
 			grid-area: title;
 		}
 		.date {
-			max-height: 2em;
 			grid-area: date;
 			text-align: end;
 		}
 		.description {
-			margin-top: 1em;
 			grid-area: desc;
+			margin-top: 1em;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
