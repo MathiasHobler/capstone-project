@@ -13,7 +13,7 @@ const EventCardContainer = styled.li`
 			'title date'
 			'desc desc';
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
+		grid-template-rows: 0.2fr 1fr;
 		gap: 0 0;
 
 		h2 {
@@ -25,6 +25,7 @@ const EventCardContainer = styled.li`
 		}
 		.description {
 			grid-area: desc;
+			margin-top: 1em;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;

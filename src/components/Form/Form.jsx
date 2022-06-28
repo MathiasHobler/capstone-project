@@ -3,7 +3,7 @@ import {useState} from 'react';
 import FormContainer from './Form.styled';
 
 const Form = () => {
-	const [{data}, setData] = useState({data: [], error: null});
+	const [, setData] = useState({data: [], error: null});
 	const [event, setEvent] = useState({
 		title: '',
 		date: '',
