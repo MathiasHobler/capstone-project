@@ -37,7 +37,7 @@ const schema = new Schema(
 			type: Array,
 			default: [],
 		},
-		desc: {
+		description: {
 			type: String,
 			default: '',
 			max: 50,

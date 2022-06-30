@@ -4,7 +4,7 @@ import Detail from '../Detail/Detail';
 
 import EventCardContainer from './EventCard.styled';
 
-const EventCard = ({event}) => {
+const EventCard = ({event, deleteEvent}) => {
 	const [details, setDetails] = useState(false);
 
 	const switcher = () => {
@@ -31,7 +31,7 @@ const EventCard = ({event}) => {
 				</article>
 			</EventCardContainer>
 
-			{details && <Detail event={event} back={() => switcher()} />}
+			{details && <Detail event={event} deleteEvent={deleteEvent} back={() => switcher()} />}
 		</>
 	);
 };
