@@ -53,6 +53,10 @@ const schema = new Schema(
 				default: '',
 				max: 50,
 			},
+			zip: {
+				type: Number,
+				default: 0,
+			},
 		},
 		date: {
 			type: String,

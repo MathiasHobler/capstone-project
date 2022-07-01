@@ -1,17 +1,48 @@
 import styled from 'styled-components';
 
-const FormContainer = styled.form`
+export const FormContainer = styled.form`
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	gap: 2em;
-	width: 70%;
+	width: 80%;
+	height: 32em;
 	margin: auto;
-	padding: 2em;
-	border: 2px solid black;
-	border-radius: 2em;
-	background-color: lightcoral;
-`;
+	margin-top: 1em;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	border-radius: 1.5em;
+	background: rgba(255, 255, 255, 0.06);
+	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+	backdrop-filter: blur(10px);
 
-export default FormContainer;
+	* {
+		border: none;
+		outline: none;
+		color: white;
+		font-family: 'Poppins', sans-serif;
+		letter-spacing: 0.5px;
+	}
+
+	h3 {
+		position: absolute;
+		top: 5px;
+		font-size: 32px;
+		font-weight: 500;
+		line-height: 42px;
+		text-align: center;
+	}
+
+	article {
+		display: flex;
+		position: relative;
+		bottom: -13em;
+		flex-direction: row;
+		justify-content: space-around;
+
+		button {
+			margin: 0 3em;
+		}
+	}
+`;

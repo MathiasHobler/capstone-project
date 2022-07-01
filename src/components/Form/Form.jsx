@@ -1,15 +1,22 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import styled from 'styled-components';
 
-import FormContainer from './Form.styled';
+import {useStep, useCreate} from '../../hooks/useForm';
 
-const Form = () => {
+import {FormContainer} from './Form.styled';
+import FormAddressEvent from './FormAddressEvent';
+import FormDescriptionEvent from './FormDescriptionEvent';
+import FormDetailsEvent from './FormDetailsEvent';
+import Success from './Success';
+
+const Form = ({title}) => {
 	const [, setData] = useState({data: [], error: null});
-	const [event, setEvent] = useState({
-		title: '',
-		date: '',
-		time: '',
-		desc: '',
-	});
+	const step = useStep(state => state.step);
+	const nextStep = useStep(state => state.nextStep);
+	const prevStep = useStep(state => state.prevStep);
+	const newEvent = useCreate(state => state.event);
+	const setNewEvent = useCreate(state => state.setNewEvent);
+
 	function createEvent(data) {
 		fetch('/api/events', {
 			method: 'POST',
@@ -39,29 +46,80 @@ const Form = () => {
 			});
 	}
 
+	useEffect(() => {
+		console.log(newEvent);
+	}, [newEvent]);
+
+	function render() {
+		switch (step) {
+			case 1:
+				return <FormDetailsEvent />;
+			case 2:
+				return <FormAddressEvent />;
+			case 3:
+				return <FormDescriptionEvent />;
+			default:
+				return <Success />;
+		}
+	}
+
 	return (
 		<>
+			<Bubble>
+				<div></div>
+				<div></div>
+			</Bubble>
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
-					createEvent(event);
-					setEvent({
+					createEvent(newEvent);
+					setNewEvent({
+						pictures: {
+							eventPicture: '',
+						},
 						title: '',
+						private: false,
+						street: '',
+						city: '',
+						zip: 0,
 						date: '',
 						time: '',
 						desc: '',
 					});
 				}}
 			>
-				<label htmlFor="eventTitle" aria-label="Enter your title">
+				<h3>{title}</h3>
+				{render()}
+				<article>
+					<button
+						onClick={() => {
+							if (step > 1) {
+								prevStep();
+							}
+						}}
+					>
+						Step backward
+					</button>
+					<button
+						onClick={() => {
+							if (step < 4) {
+								nextStep();
+							}
+						}}
+					>
+						Step forward
+					</button>
+				</article>
+				{/* <label htmlFor="eventTitle" aria-label="Enter your title">
 					Title:
 					<input
 						type="text"
 						id="eventTitle"
-						value={event.title}
+						value={newEvent.title}
 						data-testid="testInput"
 						onChange={e => {
-							setEvent({...event, title: e.target.value});
+							// setEvent({...event, title: e.target.value});
+							setNewEvent({...newEvent, title: e.target.value});
 						}}
 					/>
 				</label>
@@ -71,10 +129,11 @@ const Form = () => {
 					<input
 						type="date"
 						id="setDate"
-						value={event.date}
+						value={newEvent.date}
 						required
 						onChange={e => {
-							setEvent({...event, date: e.target.value});
+							// setEvent({...event, date: e.target.value});
+							setNewEvent({...newEvent, date: e.target.value});
 						}}
 					/>
 				</label>
@@ -88,9 +147,10 @@ const Form = () => {
 						min="00:00"
 						max="23:59"
 						required
-						value={event.time}
+						value={newEvent.time}
 						onChange={e => {
-							setEvent({...event, time: e.target.value});
+							// setEvent({...event, time: e.target.value});
+							setNewEvent({...newEvent, time: e.target.value});
 						}}
 					></input>
 				</label>
@@ -100,18 +160,43 @@ const Form = () => {
 					<input
 						type="text"
 						id="eventDescription"
-						value={event.desc}
+						value={newEvent.desc}
 						required
 						onChange={e => {
-							setEvent({...event, desc: e.target.value});
+							// setEvent({...event, desc: e.target.value});
+							setNewEvent({...newEvent, desc: e.target.value});
 						}}
 					/>
 				</label>
 
-				<input type="submit" value="submit" disabled={event.title === ''} />
+				<input type="submit" value="submit" disabled={newEvent.title === ''} /> */}
 			</FormContainer>
 		</>
 	);
 };
 
 export default Form;
+
+const Bubble = styled.div`
+	position: absolute;
+	z-index: -10;
+	width: 430px;
+	height: 520px;
+
+	div {
+		position: absolute;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		&:first-child {
+			top: -80px;
+			left: -80px;
+			background: linear-gradient(#1845ad, #23a2f6);
+		}
+		&:last-child {
+			right: -30px;
+			bottom: -80px;
+			background: linear-gradient(to right, #ff512f, #f09819);
+		}
+	}
+`;

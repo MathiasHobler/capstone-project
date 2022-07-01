@@ -10,7 +10,7 @@ export default function Create() {
 				<title key="title">Create</title>
 				<meta key="description" name="description" content="About" />
 			</Helmet>
-			<Form />
+			<Form title={'Create Event'} />
 		</Layout>
 	);
 }
