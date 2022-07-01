@@ -6,13 +6,13 @@ import dummyEvent from '../../utils/data';
 import EventCard from './EventCard';
 
 describe('Event Card Component', () => {
-	// it('should render correctly props', () => {
-	// 	const singleEvent = dummyEvent[0];
-	// 	render(<EventCard event={singleEvent} />);
-	// 	expect(screen.getByText(singleEvent.eventName)).toBeInTheDocument();
-	// 	expect(screen.getByText(singleEvent.desc)).toBeInTheDocument();
-	// 	expect(screen.getByText(singleEvent.date)).toBeInTheDocument();
-	// });
+	it('should render correctly props', () => {
+		const singleEvent = dummyEvent[0];
+		render(<EventCard event={singleEvent} />);
+		expect(screen.getByText(singleEvent.eventName)).toBeInTheDocument();
+		expect(screen.getByText(singleEvent.desc)).toBeInTheDocument();
+		expect(screen.getByText(singleEvent.date)).toBeInTheDocument();
+	});
 
 	it('ImageTag must have src = https://www.meetandeat-berlin.de/img/logo.svg and alt = "EventPicture"', () => {
 		const singleEvent = dummyEvent[0];

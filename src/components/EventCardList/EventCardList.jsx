@@ -5,7 +5,7 @@ import EventCard from '../EventCard/EventCard';
 import EventListContainer from './EventCardList.styled';
 
 const EventCardList = ({eventList}) => {
-	const [{data}, setData] = useState({data: [], error: null});
+	const [{data, error}, setData] = useState({data: [], error: null});
 
 	const [render, newRender] = useState('');
 
@@ -57,6 +57,7 @@ const EventCardList = ({eventList}) => {
 
 	return (
 		<EventListContainer data-testid="list">
+			{error && <div>An error occured: {error}</div>}
 			{data.map(singleEvent => {
 				return (
 					<EventCard

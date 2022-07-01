@@ -7,7 +7,7 @@ import EventCardContainer from './EventCard.styled';
 const EventCard = ({event, deleteEvent}) => {
 	const [details, setDetails] = useState(false);
 
-	const switcher = () => {
+	const toggleDetail = () => {
 		setDetails(!details);
 	};
 
@@ -16,7 +16,7 @@ const EventCard = ({event, deleteEvent}) => {
 			<EventCardContainer
 				details={details}
 				onClick={() => {
-					switcher();
+					toggleDetail();
 				}}
 			>
 				<img
@@ -31,7 +31,9 @@ const EventCard = ({event, deleteEvent}) => {
 				</article>
 			</EventCardContainer>
 
-			{details && <Detail event={event} deleteEvent={deleteEvent} back={() => switcher()} />}
+			{details && (
+				<Detail event={event} deleteEvent={deleteEvent} back={() => toggleDetail()} />
+			)}
 		</>
 	);
 };
