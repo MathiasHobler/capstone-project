@@ -12,17 +12,20 @@ const FormAddressEvent = () => {
 			<Inputfield
 				label={'Street'}
 				type={'text'}
-				value={input => setNewEvent({...newEvent, street: input})}
+				value={newEvent.street}
+				setValue={input => setNewEvent({...newEvent, street: input})}
 			/>
 			<Inputfield
 				label={'City'}
 				type={'text'}
-				value={input => setNewEvent({...newEvent, city: input})}
+				value={newEvent.city}
+				setValue={input => setNewEvent({...newEvent, city: input})}
 			/>
 			<Inputfield
 				label={'Zip'}
 				type={'text'}
-				value={input => setNewEvent({...newEvent, zip: input})}
+				value={newEvent.zip}
+				setValue={input => setNewEvent({...newEvent, zip: input})}
 			/>
 		</Container>
 	);

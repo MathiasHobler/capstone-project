@@ -15,6 +15,9 @@ export const FormContainer = styled.form`
 	border-radius: 1.5em;
 	background: rgba(255, 255, 255, 0.06);
 	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+	backdrop-filter: -webkit-blur(10px);
+	backdrop-filter: -moz-blur(10px);
+	backdrop-filter: -ms-blur(10px);
 	backdrop-filter: blur(10px);
 
 	* {

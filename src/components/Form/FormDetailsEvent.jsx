@@ -13,16 +13,15 @@ const FormDetailsEvent = () => {
 			<Inputfield
 				label={'title'}
 				type={'text'}
-				value={input => setNewEvent({...newEvent, title: input})}
+				value={newEvent.title}
+				setValue={input => setNewEvent({...newEvent, title: input})}
 			/>
 			<ImageUpload />
 			<Inputfield
 				label={'Private'}
 				type={'checkbox'}
-				value={input => {
-					console.log(input);
-					setNewEvent({...newEvent, private: input});
-				}}
+				value={newEvent.private}
+				setValue={input => setNewEvent({...newEvent, private: input})}
 			/>
 		</Container>
 	);

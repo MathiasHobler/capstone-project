@@ -91,24 +91,30 @@ const Form = ({title}) => {
 				<h3>{title}</h3>
 				{render()}
 				<article>
-					<button
-						onClick={() => {
-							if (step > 1) {
-								prevStep();
-							}
-						}}
-					>
-						Step backward
-					</button>
-					<button
-						onClick={() => {
-							if (step < 4) {
-								nextStep();
-							}
-						}}
-					>
-						Step forward
-					</button>
+					{step > 1 && (
+						<button
+							onClick={() => {
+								if (step > 1) {
+									prevStep();
+								}
+							}}
+						>
+							Step backward
+						</button>
+					)}
+
+					{step < 4 && (
+						<button
+							onClick={() => {
+								if (step < 4) {
+									nextStep();
+								}
+							}}
+						>
+							Step forward
+						</button>
+					)}
+					{step === 4 && <button type="submit">submit</button>}
 				</article>
 				{/* <label htmlFor="eventTitle" aria-label="Enter your title">
 					Title:

@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import {useCreate} from '../../hooks/useForm';
 
-const Inputfield = ({label, type, value}) => {
-	const [input, setInput] = useState();
+const Inputfield = ({label, type, value, setValue}) => {
 	const newEvent = useCreate();
 	const setNewEvent = useCreate(state => state.setNewEvent);
 
@@ -15,12 +14,11 @@ const Inputfield = ({label, type, value}) => {
 				type={type}
 				name={label}
 				d
-				value={input}
+				value={value}
 				onChange={e => {
 					type === 'checkbox'
 						? setNewEvent({...newEvent, private: e.target.checked})
-						: value(e.target.value);
-					setInput(e.target.value);
+						: setValue(e.target.value);
 				}}
 				required="required"
 			></input>

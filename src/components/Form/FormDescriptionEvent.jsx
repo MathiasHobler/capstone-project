@@ -13,17 +13,20 @@ const FormDescriptionEvent = () => {
 			<Inputfield
 				label={'Datum'}
 				type={'date'}
-				value={input => setNewEvent({...newEvent, date: input})}
+				value={newEvent.date}
+				setValue={input => setNewEvent({...newEvent, date: input})}
 			/>
 			<Inputfield
 				label={'Start Zeit'}
 				type={'time'}
-				value={input => setNewEvent({...newEvent, time: input})}
+				value={newEvent.time}
+				setValue={input => setNewEvent({...newEvent, time: input})}
 			/>
 			<TextArea
 				label={'Description'}
 				type={'text'}
-				value={input => setNewEvent({...newEvent, description: input})}
+				value={newEvent.description}
+				setValue={input => setNewEvent({...newEvent, description: input})}
 			/>
 		</Container>
 	);
