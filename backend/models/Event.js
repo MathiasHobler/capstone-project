@@ -5,9 +5,9 @@ const schema = new Schema(
 	{
 		title: {
 			type: String,
-			require: true,
 			min: 3,
 			max: 20,
+			default: '',
 			unique: false,
 		},
 		pictures: {

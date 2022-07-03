@@ -65,7 +65,7 @@ const InputContainer = styled.div`
 		border: 1px solid rgba(255, 255, 255, 0.25);
 		border-radius: 5px;
 		outline: none;
-		background-color: rgba(255, 255, 255, 0.07);
+		background-color: transparent;
 		color: rgb(255, 255, 255);
 		font-size: 1em;
 		scrollbar-color: #00dfc4 #1d2b3a;
@@ -86,9 +86,22 @@ const InputContainer = styled.div`
 		&:focus {
 			border: 1px solid #00dfc4;
 		}
-		&:invalid,
-		&:focus {
-			border: 1px solid red;
+	}
+
+	input[type='date'] {
+		color: transparent;
+
+		&:focus,
+		&:valid {
+			color: white;
+		}
+	}
+	input[type='time'] {
+		color: transparent;
+
+		&:focus,
+		&:valid {
+			color: white;
 		}
 	}
 `;
