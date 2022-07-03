@@ -1,3 +1,4 @@
+import {SettingsEthernetSharp} from '@mui/icons-material';
 import {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
@@ -15,6 +16,7 @@ const Form = ({title}) => {
 	const nextStep = useStep(state => state.nextStep);
 	const prevStep = useStep(state => state.prevStep);
 	const newEvent = useCreate(state => state.event);
+	const resetStep = useStep(state => state.resetStep);
 	const setNewEvent = useCreate(state => state.setNewEvent);
 
 	function createEvent(data) {
@@ -82,6 +84,7 @@ const Form = ({title}) => {
 						street: '',
 						city: '',
 						zip: 0,
+
 						date: '',
 						time: '',
 						desc: '',
@@ -114,7 +117,11 @@ const Form = ({title}) => {
 							Step forward
 						</button>
 					)}
-					{step === 4 && <button type="submit">submit</button>}
+					{step === 4 && (
+						<button onClick={() => resetStep()} type="submit">
+							submit
+						</button>
+					)}
 				</article>
 				{/* <label htmlFor="eventTitle" aria-label="Enter your title">
 					Title:

@@ -37,26 +37,24 @@ const schema = new Schema(
 			type: Array,
 			default: [],
 		},
-		desc: {
+		description: {
 			type: String,
 			default: '',
 			max: 50,
 		},
-		adress: {
-			street: {
-				type: String,
-				default: '',
-				max: 50,
-			},
-			city: {
-				type: String,
-				default: '',
-				max: 50,
-			},
-			zip: {
-				type: Number,
-				default: 0,
-			},
+		street: {
+			type: String,
+			default: '',
+			max: 50,
+		},
+		city: {
+			type: String,
+			default: '',
+			max: 50,
+		},
+		zip: {
+			type: Number,
+			default: 0,
 		},
 		date: {
 			type: String,

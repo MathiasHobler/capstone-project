@@ -1,12 +1,6 @@
-import {useState} from 'react';
 import styled from 'styled-components';
 
-import {useCreate} from '../../hooks/useForm';
-
 const Inputfield = ({label, type, value, setValue}) => {
-	const newEvent = useCreate();
-	const setNewEvent = useCreate(state => state.setNewEvent);
-
 	return (
 		<InputContainer>
 			<label htmlFor={label}></label>
@@ -16,9 +10,7 @@ const Inputfield = ({label, type, value, setValue}) => {
 				d
 				value={value}
 				onChange={e => {
-					type === 'checkbox'
-						? setNewEvent({...newEvent, private: e.target.checked})
-						: setValue(e.target.value);
+					type === 'checkbox' ? setValue(e.target.checked) : setValue(e.target.value);
 				}}
 				required="required"
 			></input>
@@ -28,18 +20,16 @@ const Inputfield = ({label, type, value, setValue}) => {
 };
 export default Inputfield;
 
-export const TextArea = ({label, type, value}) => {
-	const [input, setInput] = useState('');
+export const TextArea = ({label, type, value, setValue}) => {
 	return (
 		<InputContainer>
 			<label htmlFor={label}></label>
 			<textarea
 				type={type}
 				name={label}
-				value={input}
+				value={value}
 				onChange={e => {
-					setInput(e.target.value);
-					value(e.target.value);
+					setValue(e.target.value);
 				}}
 				autoFocus={false}
 				required="required"
@@ -78,7 +68,7 @@ const InputContainer = styled.div`
 		background-color: rgba(255, 255, 255, 0.07);
 		color: rgb(255, 255, 255);
 		font-size: 1em;
-		scrollbar-color: #00dfc4 #6b0b0b;
+		scrollbar-color: #00dfc4 #1d2b3a;
 
 		&:valid ~ span,
 		&:focus ~ span {
@@ -95,6 +85,10 @@ const InputContainer = styled.div`
 		&:valid,
 		&:focus {
 			border: 1px solid #00dfc4;
+		}
+		&:invalid,
+		&:focus {
+			border: 1px solid red;
 		}
 	}
 `;

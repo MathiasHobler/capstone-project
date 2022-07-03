@@ -7,6 +7,7 @@ import Inputfield from './Inputfield';
 const FormAddressEvent = () => {
 	const newEvent = useCreate(state => state.event);
 	const setNewEvent = useCreate(state => state.setNewEvent);
+	console.log(newEvent);
 	return (
 		<Container>
 			<Inputfield
