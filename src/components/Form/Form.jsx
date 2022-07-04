@@ -49,6 +49,7 @@ const Form = ({title}) => {
 
 	useEffect(() => {
 		requiredData();
+		console.log(newEvent);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [newEvent]);
 
@@ -95,6 +96,7 @@ const Form = ({title}) => {
 				onSubmit={e => {
 					e.preventDefault();
 					createEvent(newEvent);
+					nextStep();
 				}}
 			>
 				<h3>{title}</h3>
@@ -103,6 +105,7 @@ const Form = ({title}) => {
 				<article>
 					{step > 1 && (
 						<button
+							type="button"
 							onClick={() => {
 								if (step > 1) {
 									prevStep();
@@ -115,6 +118,7 @@ const Form = ({title}) => {
 
 					{step < 3 && (
 						<button
+							type="button"
 							onClick={() => {
 								if (step < 3) {
 									nextStep();
@@ -124,13 +128,9 @@ const Form = ({title}) => {
 							Step forward
 						</button>
 					)}
-					{step === 3 && state.valid && (
-						<button onClick={() => nextStep()} type="submit">
-							submit
-						</button>
-					)}
+					{step === 3 && state.valid && <button type="submit">submit</button>}
 					{step === 4 && (
-						<button onClick={() => resetStep()} type="submit">
+						<button onClick={() => resetStep()} type="button">
 							Back
 						</button>
 					)}

@@ -7,7 +7,8 @@ const Success = ({error}) => {
 
 	useEffect(() => {
 		setNewEvent({
-			eventPicture: '',
+			eventPicture:
+				'https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg',
 			title: '',
 			private: false,
 			street: '',
