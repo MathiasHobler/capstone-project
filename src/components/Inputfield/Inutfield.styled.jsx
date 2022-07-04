@@ -1,47 +1,6 @@
 import styled from 'styled-components';
 
-const Inputfield = ({label, type, value, setValue}) => {
-	return (
-		<InputContainer>
-			<label htmlFor={label}></label>
-			<input
-				type={type}
-				name={label}
-				d
-				value={value}
-				onChange={e => {
-					type === 'checkbox' ? setValue(e.target.checked) : setValue(e.target.value);
-				}}
-				required="required"
-			></input>
-			<span htmlFor={label}>{label}</span>
-		</InputContainer>
-	);
-};
-export default Inputfield;
-
-export const TextArea = ({label, type, value, setValue}) => {
-	return (
-		<InputContainer>
-			<label htmlFor={label}></label>
-			<textarea
-				type={type}
-				name={label}
-				value={value}
-				onChange={e => {
-					setValue(e.target.value);
-				}}
-				autoFocus={false}
-				required="required"
-				rows="12"
-				cols="50"
-			></textarea>
-			<span htmlFor={label}>{label}</span>
-		</InputContainer>
-	);
-};
-
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
 	position: relative;
 	width: 16em;
 

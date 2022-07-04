@@ -1,31 +1,32 @@
 import styled from 'styled-components';
 
 import {useCreate} from '../../hooks/useForm';
+import Inputfield from '../Inputfield/Inputfield';
 
-import Inputfield from './Inputfield';
+import {Container} from './Form.styled';
 
 const FormAddressEvent = () => {
 	const newEvent = useCreate(state => state.event);
 	const setNewEvent = useCreate(state => state.setNewEvent);
-	console.log(newEvent);
 	return (
 		<Container>
 			<Inputfield
-				label={'Street'}
+				label={'street'}
 				type={'text'}
 				value={newEvent.street}
 				setValue={input => setNewEvent({...newEvent, street: input})}
 			/>
 			<Inputfield
-				label={'City'}
+				label={'city'}
 				type={'text'}
 				value={newEvent.city}
 				setValue={input => setNewEvent({...newEvent, city: input})}
 			/>
 			<Inputfield
-				label={'Zip'}
+				label={'zip'}
 				type={'text'}
 				value={newEvent.zip}
+				max={99999}
 				setValue={input => setNewEvent({...newEvent, zip: input})}
 			/>
 		</Container>
@@ -33,20 +34,3 @@ const FormAddressEvent = () => {
 };
 
 export default FormAddressEvent;
-
-const Container = styled.section`
-	display: flex;
-	position: absolute;
-	top: 4em;
-	flex-direction: column;
-	gap: 1em;
-	margin-top: 1em;
-
-	article {
-		display: flex;
-		position: relative;
-		bottom: -12em;
-		flex-direction: row;
-		justify-content: space-around;
-	}
-`;

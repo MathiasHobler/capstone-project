@@ -43,9 +43,20 @@ export const FormContainer = styled.form`
 		bottom: -13em;
 		flex-direction: row;
 		justify-content: space-around;
+		background: transparent;
 
 		button {
 			margin: 0 3em;
 		}
 	}
+`;
+
+export const Container = styled.section`
+	display: flex;
+	position: absolute;
+	top: 4em;
+	flex-direction: column;
+	align-content: flex-end;
+	gap: 1em;
+	margin-top: 1em;
 `;

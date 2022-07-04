@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-
 import {useCreate} from '../../hooks/useForm';
+import ImageUpload from '../Inputfield/ImageInput';
+import Inputfield from '../Inputfield/Inputfield';
 
-import ImageUpload from './ImageInput';
-import Inputfield from './Inputfield';
+import {Container} from './Form.styled';
 
 const FormDetailsEvent = () => {
 	const newEvent = useCreate(state => state.event);
@@ -18,7 +17,7 @@ const FormDetailsEvent = () => {
 			/>
 			<ImageUpload />
 			<Inputfield
-				label={'Private'}
+				label={'private'}
 				type={'checkbox'}
 				value={newEvent.private}
 				setValue={input => setNewEvent({...newEvent, private: input})}
@@ -28,19 +27,3 @@ const FormDetailsEvent = () => {
 };
 
 export default FormDetailsEvent;
-
-const Container = styled.section`
-	display: flex;
-	position: absolute;
-	top: 4em;
-	flex-direction: column;
-	align-content: flex-end;
-	gap: 1em;
-	margin-top: 1em;
-
-	article {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-	}
-`;

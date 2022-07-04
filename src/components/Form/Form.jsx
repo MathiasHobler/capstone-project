@@ -1,4 +1,3 @@
-import {SettingsEthernetSharp} from '@mui/icons-material';
 import {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
@@ -11,13 +10,12 @@ import FormDetailsEvent from './FormDetailsEvent';
 import Success from './Success';
 
 const Form = ({title}) => {
-	const [, setData] = useState({data: [], error: null});
+	const [{data, error, success}, setData] = useState({data: [], error: null, success: null});
 	const step = useStep(state => state.step);
 	const nextStep = useStep(state => state.nextStep);
 	const prevStep = useStep(state => state.prevStep);
 	const newEvent = useCreate(state => state.event);
 	const resetStep = useStep(state => state.resetStep);
-	const setNewEvent = useCreate(state => state.setNewEvent);
 
 	function createEvent(data) {
 		fetch('/api/events', {
@@ -48,10 +46,6 @@ const Form = ({title}) => {
 			});
 	}
 
-	useEffect(() => {
-		console.log(newEvent);
-	}, [newEvent]);
-
 	function render() {
 		switch (step) {
 			case 1:
@@ -61,7 +55,7 @@ const Form = ({title}) => {
 			case 3:
 				return <FormDescriptionEvent />;
 			default:
-				return <Success />;
+				return <Success error={error} />;
 		}
 	}
 
@@ -75,20 +69,6 @@ const Form = ({title}) => {
 				onSubmit={e => {
 					e.preventDefault();
 					createEvent(newEvent);
-					setNewEvent({
-						pictures: {
-							eventPicture: '',
-						},
-						title: '',
-						private: false,
-						street: '',
-						city: '',
-						zip: 0,
-
-						date: '',
-						time: '',
-						desc: '',
-					});
 				}}
 			>
 				<h3>{title}</h3>
@@ -106,10 +86,10 @@ const Form = ({title}) => {
 						</button>
 					)}
 
-					{step < 4 && (
+					{step < 3 && (
 						<button
 							onClick={() => {
-								if (step < 4) {
+								if (step < 3) {
 									nextStep();
 								}
 							}}
@@ -117,9 +97,14 @@ const Form = ({title}) => {
 							Step forward
 						</button>
 					)}
+					{step === 3 && !!newEvent.title && (
+						<button onClick={() => nextStep()} type="submit">
+							submit
+						</button>
+					)}
 					{step === 4 && (
 						<button onClick={() => resetStep()} type="submit">
-							submit
+							Back
 						</button>
 					)}
 				</article>

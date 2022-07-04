@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 
 import {useCreate} from '../../hooks/useForm';
+import {TextArea} from '../Inputfield/Inputfield';
+import Inputfield from '../Inputfield/Inputfield';
 
-import {TextArea} from './Inputfield';
-import Inputfield from './Inputfield';
+import {Container} from './Form.styled';
 
 const FormDescriptionEvent = () => {
 	const newEvent = useCreate(state => state.event);
 	const setNewEvent = useCreate(state => state.setNewEvent);
+	console.log(Date.now().toString());
 	return (
 		<Container>
 			<Inputfield
 				label={'Datum'}
 				type={'date'}
 				value={newEvent.date}
+				min={Date.now()}
 				setValue={input => setNewEvent({...newEvent, date: input})}
 			/>
 			<Inputfield
@@ -33,19 +36,3 @@ const FormDescriptionEvent = () => {
 };
 
 export default FormDescriptionEvent;
-const Container = styled.section`
-	display: flex;
-	position: absolute;
-	top: 4em;
-	flex-direction: column;
-	gap: 1em;
-	margin-top: 1em;
-
-	article {
-		display: flex;
-		position: relative;
-		bottom: 0;
-		flex-direction: row;
-		justify-content: space-around;
-	}
-`;

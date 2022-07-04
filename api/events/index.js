@@ -12,6 +12,6 @@ export default async function handler(request, response) {
 	if (request.method === 'POST') {
 		const newEvent = await new Event(request.body);
 		await newEvent.save();
-		return response.status(201).json({data: newEvent});
+		return response.status(201).json({data: newEvent, success: true});
 	}
 }
