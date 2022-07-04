@@ -55,36 +55,36 @@ const NavContainer = styled.section`
 	}
 
 	li:nth-child(1) {
-		top: ${props => (props.active === 1 ? '-22px' : '0')};
+		top: ${props => (props.active === 'home' ? '-22px' : '0')};
 		transition: 1s;
-		box-shadow: ${props => (props.active === 1 ? '0 0 30px #00dfc4' : '')};
+		box-shadow: ${props => (props.active === 'home' ? '0 0 30px #00dfc4' : '')};
 
 		a:nth-child(1) {
-			top: ${props => (props.active === 1 ? '-22px' : '0')};
+			top: ${props => (props.active === 'home' ? '-22px' : '0')};
 			transition: 1s;
-			background: ${props => (props.active === 1 ? '#00dfc4 ' : '')};
+			background: ${props => (props.active === 'home' ? '#00dfc4 ' : '')};
 			box-shadow: ${props =>
-				props.active === 1
+				props.active === 'home'
 					? 'inset 0px 0px 21px 23px #333333'
 					: 'inset 0px 0px 21px 23px #333333'};
-			color: ${props => (props.active === 1 ? '#00dfc4' : '#fff')};
+			color: ${props => (props.active === 'home' ? '#00dfc4' : '#fff')};
 		}
 	}
 
 	li:nth-child(2) {
-		top: ${props => (props.active === 2 ? '-22px' : '0')};
+		top: ${props => (props.active === 'create' ? '-22px' : '0')};
 		transition: 1s;
-		box-shadow: ${props => (props.active === 2 ? '0 0 30px #00dfc4' : '')};
+		box-shadow: ${props => (props.active === 'create' ? '0 0 30px #00dfc4' : '')};
 
 		a:nth-child(1) {
 			top: ${props => (props.active === 2 ? '-22px' : '0')};
 			transition: 1s;
-			background: ${props => (props.active === 2 ? '#00dfc4 ' : '')};
+			background: ${props => (props.active === 'create' ? '#00dfc4 ' : '')};
 			box-shadow: ${props =>
-				props.active === 2
+				props.active === 'create'
 					? 'inset 0px 0px 21px 23px #333333'
 					: 'inset 0px 0px 21px 23px #333333'};
-			color: ${props => (props.active === 2 ? '#00dfc4' : '#fff')};
+			color: ${props => (props.active === 'create' ? '#00dfc4' : '#fff')};
 		}
 	}
 `;
