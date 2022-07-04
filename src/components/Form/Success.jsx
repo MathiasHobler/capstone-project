@@ -7,14 +7,12 @@ const Success = ({error}) => {
 
 	useEffect(() => {
 		setNewEvent({
-			pictures: {
-				eventPicture: '',
-			},
+			eventPicture: '',
 			title: '',
 			private: false,
 			street: '',
 			city: '',
-			zip: Number,
+			zip: '',
 			date: '',
 			time: '',
 			description: '',
@@ -23,8 +21,8 @@ const Success = ({error}) => {
 
 	return (
 		<>
-			{!error && <div div>Successfully created Event</div>}
-			{error && <div>An error occured: Please try again later {error}</div>}
+			{!error && <div>Successfully created Event</div>}
+			{error && <div>An error occured: Please try again later</div>}
 		</>
 	);
 };

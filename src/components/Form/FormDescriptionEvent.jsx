@@ -1,12 +1,10 @@
-import styled from 'styled-components';
-
 import {useCreate} from '../../hooks/useForm';
 import {TextArea} from '../Inputfield/Inputfield';
 import Inputfield from '../Inputfield/Inputfield';
 
 import {Container} from './Form.styled';
 
-const FormDescriptionEvent = () => {
+const FormDescriptionEvent = ({valid}) => {
 	const newEvent = useCreate(state => state.event);
 	const setNewEvent = useCreate(state => state.setNewEvent);
 

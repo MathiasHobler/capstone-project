@@ -10,8 +10,8 @@ import FormDetailsEvent from './FormDetailsEvent';
 import Success from './Success';
 
 const Form = ({title}) => {
-	const [{data, error, success}, setData] = useState({data: [], error: null, success: null});
-	const [valid, setValid] = useState(false);
+	const [{error}, setData] = useState({data: [], error: null, success: null});
+	const [state, setValid] = useState({valid: false, message: ''});
 	const step = useStep(state => state.step);
 	const nextStep = useStep(state => state.nextStep);
 	const prevStep = useStep(state => state.prevStep);
@@ -49,27 +49,25 @@ const Form = ({title}) => {
 
 	useEffect(() => {
 		requiredData();
-		console.log(valid);
-		console.log(newEvent.title);
 	}, [newEvent]);
 
 	function requiredData() {
 		if (newEvent.title === '') {
-			setValid(false);
+			setValid({message: 'Title should have at least 3 Characters', valid: false});
 		} else if (newEvent.description === '') {
-			setValid(false);
+			setValid({...state, valid: false});
 		} else if (newEvent.date === '') {
-			setValid(false);
+			setValid({message: 'Please fill a date in the future', valid: false});
 		} else if (newEvent.time === '') {
-			setValid(false);
+			setValid({message: 'Please fill when your Event start ', valid: false});
 		} else if (newEvent.zip === '') {
-			setValid(false);
+			setValid({message: 'Please fill in a zip between 01000 and 99999', valid: false});
 		} else if (newEvent.street === '') {
-			setValid(false);
+			setValid({message: 'Please fill in a Street', valid: false});
 		} else if (newEvent.city === '') {
-			setValid(false);
+			setValid({message: 'Please fill in a City', valid: false});
 		} else {
-			setValid(true);
+			setValid({message: '', valid: true});
 		}
 	}
 
@@ -99,7 +97,7 @@ const Form = ({title}) => {
 				}}
 			>
 				<h3>{title}</h3>
-				{step === 3 && !valid && <p>Please Fill out all required * fields</p>}
+				{step === 3 && !state.valid && <p>Please Fill out all required * fields</p>}
 				{render()}
 				<article>
 					{step > 1 && (
@@ -125,7 +123,7 @@ const Form = ({title}) => {
 							Step forward
 						</button>
 					)}
-					{step === 3 && valid && (
+					{step === 3 && state.valid && (
 						<button onClick={() => nextStep()} type="submit">
 							submit
 						</button>
@@ -136,66 +134,6 @@ const Form = ({title}) => {
 						</button>
 					)}
 				</article>
-				{/* <label htmlFor="eventTitle" aria-label="Enter your title">
-					Title:
-					<input
-						type="text"
-						id="eventTitle"
-						value={newEvent.title}
-						data-testid="testInput"
-						onChange={e => {
-							// setEvent({...event, title: e.target.value});
-							setNewEvent({...newEvent, title: e.target.value});
-						}}
-					/>
-				</label>
-
-				<label htmlFor="setDate" aria-label="Choose your date">
-					Date:
-					<input
-						type="date"
-						id="setDate"
-						value={newEvent.date}
-						required
-						onChange={e => {
-							// setEvent({...event, date: e.target.value});
-							setNewEvent({...newEvent, date: e.target.value});
-						}}
-					/>
-				</label>
-
-				<label htmlFor="starttime" aria-label="Choose the time, you want to start">
-					Choose a time for start:
-					<input
-						type="time"
-						id="starttime"
-						name="starttime"
-						min="00:00"
-						max="23:59"
-						required
-						value={newEvent.time}
-						onChange={e => {
-							// setEvent({...event, time: e.target.value});
-							setNewEvent({...newEvent, time: e.target.value});
-						}}
-					></input>
-				</label>
-
-				<label htmlFor="eventDescription" aria-label="Describe your event">
-					Description:
-					<input
-						type="text"
-						id="eventDescription"
-						value={newEvent.desc}
-						required
-						onChange={e => {
-							// setEvent({...event, desc: e.target.value});
-							setNewEvent({...newEvent, desc: e.target.value});
-						}}
-					/>
-				</label>
-
-				<input type="submit" value="submit" disabled={newEvent.title === ''} /> */}
 			</FormContainer>
 		</>
 	);
@@ -206,8 +144,8 @@ export default Form;
 const Bubble = styled.div`
 	position: absolute;
 	z-index: -10;
-	width: 430px;
-	height: 520px;
+	width: 100%;
+	height: 300px;
 
 	div {
 		position: absolute;
@@ -221,7 +159,7 @@ const Bubble = styled.div`
 		}
 		&:last-child {
 			right: -30px;
-			bottom: -80px;
+			bottom: -260px;
 			background: linear-gradient(to right, #ff512f, #f09819);
 		}
 	}

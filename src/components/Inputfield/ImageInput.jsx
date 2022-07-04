@@ -1,16 +1,11 @@
-import {useState} from 'react';
 import styled from 'styled-components';
 
-import {useCreate} from '../../hooks/useForm';
-
-const ImageUpload = () => {
-	const newEvent = useCreate(state => state.event);
-	const setNewEvent = useCreate(state => state.setNewEvent);
+const ImageUpload = ({setValue}) => {
 	return (
 		<InputContainer>
 			<div>
 				<label htmlFor="image">Choose File</label>
-				<input type="file" id="image" onClick={e => console.log(e.target.files)} hidden />
+				<input type="file" id="image" hidden />
 				<span>Upload Eventpicture</span>
 			</div>
 		</InputContainer>

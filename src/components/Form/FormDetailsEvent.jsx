@@ -1,5 +1,4 @@
 import {useCreate} from '../../hooks/useForm';
-import ImageUpload from '../Inputfield/ImageInput';
 import Inputfield from '../Inputfield/Inputfield';
 
 import {Container} from './Form.styled';
@@ -15,7 +14,6 @@ const FormDetailsEvent = () => {
 				value={newEvent.title}
 				setValue={input => setNewEvent({...newEvent, title: input})}
 			/>
-			<ImageUpload />
 			<Inputfield
 				label={'private'}
 				type={'checkbox'}

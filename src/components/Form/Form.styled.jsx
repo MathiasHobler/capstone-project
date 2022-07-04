@@ -53,6 +53,7 @@ export const FormContainer = styled.form`
 
 		button {
 			margin: 0 3em;
+			background: #00dfc4;
 		}
 	}
 `;

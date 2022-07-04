@@ -19,11 +19,7 @@ const EventCard = ({event}) => {
 					switcher();
 				}}
 			>
-				<img
-					src={event.pictures.eventPicture}
-					alt="EventPicture"
-					aria-label="EventPicture"
-				></img>
+				<img src={event.eventPicture} alt="EventPicture" aria-label="EventPicture"></img>
 				<article>
 					<h2 aria-level="2">{event.title}</h2>
 					<p className="description">{event.description}</p>

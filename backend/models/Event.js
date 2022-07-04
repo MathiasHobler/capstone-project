@@ -8,28 +8,23 @@ const schema = new Schema(
 			min: 3,
 			max: 20,
 			default: '',
-			unique: false,
 		},
-		pictures: {
-			eventPicture: {
-				type: String,
-				default: 'https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg',
-			},
-			coverPicture: {
-				type: String,
-				default: '',
-			},
+		eventPicture: {
+			type: String,
+			default: 'https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg',
+		},
+		coverPicture: {
+			type: String,
 		},
 		author: {
 			type: String,
 			require: false,
-			default: '',
 		},
 		private: {
 			type: Boolean,
 			default: false,
 		},
-		participates: {
+		participants: {
 			type: Array,
 			default: [],
 		},
@@ -39,26 +34,22 @@ const schema = new Schema(
 		},
 		description: {
 			type: String,
-			default: '',
-			max: 50,
+			max: 500,
+			required: true,
 		},
-		street: {
+		address: {
 			type: String,
-			default: '',
 			max: 50,
 		},
 		city: {
 			type: String,
-			default: '',
 			max: 50,
 		},
 		zip: {
-			type: Number,
-			default: 0,
+			type: String,
 		},
 		date: {
 			type: String,
-			default: '',
 		},
 		location: {
 			type: Array,

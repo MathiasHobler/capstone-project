@@ -20,15 +20,13 @@ export const useCreate = create(
 	persist(
 		set => ({
 			event: {
-				pictures: {
-					eventPicture:
-						'https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg',
-				},
+				eventPicture:
+					'https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg',
 				title: '',
 				private: false,
 				street: '',
 				city: '',
-				zip: Number,
+				zip: '',
 				date: '',
 				time: '',
 				description: '',
