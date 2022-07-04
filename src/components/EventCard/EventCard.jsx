@@ -4,10 +4,10 @@ import Detail from '../Detail/Detail';
 
 import EventCardContainer from './EventCard.styled';
 
-const EventCard = ({event}) => {
+const EventCard = ({event, deleteEvent}) => {
 	const [details, setDetails] = useState(false);
 
-	const switcher = () => {
+	const toggleDetail = () => {
 		setDetails(!details);
 	};
 
@@ -16,7 +16,7 @@ const EventCard = ({event}) => {
 			<EventCardContainer
 				details={details}
 				onClick={() => {
-					switcher();
+					toggleDetail();
 				}}
 			>
 				<img src={event.eventPicture} alt="EventPicture" aria-label="EventPicture"></img>
@@ -27,7 +27,9 @@ const EventCard = ({event}) => {
 				</article>
 			</EventCardContainer>
 
-			{details && <Detail event={event} back={() => switcher()} />}
+			{details && (
+				<Detail event={event} deleteEvent={deleteEvent} back={() => toggleDetail()} />
+			)}
 		</>
 	);
 };
