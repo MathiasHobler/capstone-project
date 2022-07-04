@@ -1,20 +1,18 @@
 import {Add, Home} from '@mui/icons-material';
 import {useState} from 'react';
 import {NavLink} from 'react-router-dom';
-import styled from 'styled-components';
 
 import NavContainer from './NavBar.styled';
 
 function NavBar() {
-	const [active, setActive] = useState(0);
+	const [active, setActive] = useState('');
 	return (
 		<>
-			{/* <ContainerDiv /> */}
 			<NavContainer active={active}>
 				<ul>
 					<li
 						onClick={() => {
-							setActive(1);
+							setActive('home');
 						}}
 					>
 						<NavLink to="/" data-testid="navHome">
@@ -24,7 +22,7 @@ function NavBar() {
 					</li>
 					<li
 						onClick={() => {
-							setActive(2);
+							setActive('create');
 						}}
 					>
 						<NavLink to="/create" data-testid="navCreate">
