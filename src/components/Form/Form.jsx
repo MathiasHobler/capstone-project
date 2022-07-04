@@ -49,6 +49,7 @@ const Form = ({title}) => {
 
 	useEffect(() => {
 		requiredData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [newEvent]);
 
 	function requiredData() {
