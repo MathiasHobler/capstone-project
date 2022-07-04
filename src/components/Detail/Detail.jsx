@@ -1,10 +1,13 @@
 import DetailPOP from './Detail.styled';
 
-const Detail = ({event, back}) => {
+const Detail = ({event, back, deleteEvent}) => {
 	return (
 		<DetailPOP className="background">
 			<article>
 				<button onClick={back}>X</button>
+				<button className="deleteBTN" onClick={() => deleteEvent(event._id)}>
+					Delete
+				</button>
 				<h2>{event.title}</h2>
 				<p>{event.date}</p>
 				<p>{event.description}</p>
