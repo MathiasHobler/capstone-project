@@ -10,7 +10,7 @@ const FormDetailsEvent = () => {
 	return (
 		<Container>
 			<Inputfield
-				label={'title'}
+				label={'title *'}
 				type={'text'}
 				value={newEvent.title}
 				setValue={input => setNewEvent({...newEvent, title: input})}

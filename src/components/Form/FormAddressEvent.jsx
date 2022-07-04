@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import {useCreate} from '../../hooks/useForm';
 import Inputfield from '../Inputfield/Inputfield';
 
@@ -11,22 +9,21 @@ const FormAddressEvent = () => {
 	return (
 		<Container>
 			<Inputfield
-				label={'street'}
+				label={'street *'}
 				type={'text'}
 				value={newEvent.street}
 				setValue={input => setNewEvent({...newEvent, street: input})}
 			/>
 			<Inputfield
-				label={'city'}
+				label={'city *'}
 				type={'text'}
 				value={newEvent.city}
 				setValue={input => setNewEvent({...newEvent, city: input})}
 			/>
 			<Inputfield
-				label={'zip'}
-				type={'text'}
+				label={'zip *'}
+				type={'number'}
 				value={newEvent.zip}
-				max={99999}
 				setValue={input => setNewEvent({...newEvent, zip: input})}
 			/>
 		</Container>

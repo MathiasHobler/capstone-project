@@ -14,7 +14,7 @@ const Success = ({error}) => {
 			private: false,
 			street: '',
 			city: '',
-			zip: '',
+			zip: Number,
 			date: '',
 			time: '',
 			description: '',
@@ -24,7 +24,6 @@ const Success = ({error}) => {
 	return (
 		<>
 			{!error && <div div>Successfully created Event</div>}
-
 			{error && <div>An error occured: Please try again later {error}</div>}
 		</>
 	);

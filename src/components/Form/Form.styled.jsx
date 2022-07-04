@@ -28,6 +28,12 @@ export const FormContainer = styled.form`
 		letter-spacing: 0.5px;
 	}
 
+	p {
+		position: absolute;
+		top: 50px;
+		color: red;
+	}
+
 	h3 {
 		position: absolute;
 		top: 5px;

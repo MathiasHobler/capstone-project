@@ -9,24 +9,36 @@ import {Container} from './Form.styled';
 const FormDescriptionEvent = () => {
 	const newEvent = useCreate(state => state.event);
 	const setNewEvent = useCreate(state => state.setNewEvent);
-	console.log(Date.now().toString());
+
+	let today = setDate();
+
+	function setDate() {
+		let month = new Date().getMonth() + 1;
+		let day = new Date().getDate();
+		let year = new Date().getFullYear();
+
+		if (month < 10) month = `0${month}`;
+		if (day < 10) day = `0${day}`;
+		return `${year}-${month}-${day}`;
+	}
+
 	return (
 		<Container>
 			<Inputfield
-				label={'Datum'}
+				label={'Datum *'}
 				type={'date'}
 				value={newEvent.date}
-				min={Date.now()}
+				min={today}
 				setValue={input => setNewEvent({...newEvent, date: input})}
 			/>
 			<Inputfield
-				label={'Start Zeit'}
+				label={'Start Zeit *'}
 				type={'time'}
 				value={newEvent.time}
 				setValue={input => setNewEvent({...newEvent, time: input})}
 			/>
 			<TextArea
-				label={'Description'}
+				label={'Description *'}
 				type={'text'}
 				value={newEvent.description}
 				setValue={input => setNewEvent({...newEvent, description: input})}

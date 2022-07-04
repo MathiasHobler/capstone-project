@@ -11,6 +11,7 @@ import Success from './Success';
 
 const Form = ({title}) => {
 	const [{data, error, success}, setData] = useState({data: [], error: null, success: null});
+	const [valid, setValid] = useState(false);
 	const step = useStep(state => state.step);
 	const nextStep = useStep(state => state.nextStep);
 	const prevStep = useStep(state => state.prevStep);
@@ -46,6 +47,32 @@ const Form = ({title}) => {
 			});
 	}
 
+	useEffect(() => {
+		requiredData();
+		console.log(valid);
+		console.log(newEvent.title);
+	}, [newEvent]);
+
+	function requiredData() {
+		if (newEvent.title === '') {
+			setValid(false);
+		} else if (newEvent.description === '') {
+			setValid(false);
+		} else if (newEvent.date === '') {
+			setValid(false);
+		} else if (newEvent.time === '') {
+			setValid(false);
+		} else if (newEvent.zip === '') {
+			setValid(false);
+		} else if (newEvent.street === '') {
+			setValid(false);
+		} else if (newEvent.city === '') {
+			setValid(false);
+		} else {
+			setValid(true);
+		}
+	}
+
 	function render() {
 		switch (step) {
 			case 1:
@@ -72,6 +99,7 @@ const Form = ({title}) => {
 				}}
 			>
 				<h3>{title}</h3>
+				{step === 3 && !valid && <p>Please Fill out all required * fields</p>}
 				{render()}
 				<article>
 					{step > 1 && (
@@ -97,7 +125,7 @@ const Form = ({title}) => {
 							Step forward
 						</button>
 					)}
-					{step === 3 && !!newEvent.title && (
+					{step === 3 && valid && (
 						<button onClick={() => nextStep()} type="submit">
 							submit
 						</button>
