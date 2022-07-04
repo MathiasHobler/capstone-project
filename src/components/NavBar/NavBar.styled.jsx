@@ -77,7 +77,7 @@ const NavContainer = styled.section`
 		box-shadow: ${props => (props.active === 'create' ? '0 0 30px #00dfc4' : '')};
 
 		a:nth-child(1) {
-			top: ${props => (props.active === 2 ? '-22px' : '0')};
+			top: ${props => (props.active === 'create' ? '-22px' : '0')};
 			transition: 1s;
 			background: ${props => (props.active === 'create' ? '#00dfc4 ' : '')};
 			box-shadow: ${props =>
@@ -85,6 +85,23 @@ const NavContainer = styled.section`
 					? 'inset 0px 0px 21px 23px #333333'
 					: 'inset 0px 0px 21px 23px #333333'};
 			color: ${props => (props.active === 'create' ? '#00dfc4' : '#fff')};
+		}
+	}
+
+	li:nth-child(3) {
+		top: ${props => (props.active === 'bookmark' ? '-22px' : '0')};
+		transition: 1s;
+		box-shadow: ${props => (props.active === 'bookmark' ? '0 0 30px #00dfc4' : '')};
+
+		a:nth-child(1) {
+			top: ${props => (props.active === 'bookmark' ? '-22px' : '0')};
+			transition: 1s;
+			background: ${props => (props.active === 'bookmark' ? '#00dfc4 ' : '')};
+			box-shadow: ${props =>
+				props.active === 'bookmark'
+					? 'inset 0px 0px 21px 23px #333333'
+					: 'inset 0px 0px 21px 23px #333333'};
+			color: ${props => (props.active === 'bookmark' ? '#00dfc4' : '#fff')};
 		}
 	}
 `;

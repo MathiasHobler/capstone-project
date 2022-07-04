@@ -1,4 +1,4 @@
-import {Add, Home} from '@mui/icons-material';
+import {Add, BookmarkAdded, Home} from '@mui/icons-material';
 import {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 
@@ -29,6 +29,16 @@ function NavBar() {
 							<Add />
 						</NavLink>
 						<p>Create</p>
+					</li>
+					<li
+						onClick={() => {
+							setActive('bookmark');
+						}}
+					>
+						<NavLink to="/bookmark" data-testid="navBookmark">
+							<BookmarkAdded />
+						</NavLink>
+						<p>Bookmarked</p>
 					</li>
 				</ul>
 			</NavContainer>
