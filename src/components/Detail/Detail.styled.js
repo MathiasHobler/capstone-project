@@ -29,11 +29,14 @@ const DetailPOP = styled.div`
 		box-shadow: 1em 1em 1em black;
 
 		button {
+			display: flex;
 			position: absolute;
 			top: -0.8em;
 			right: 2em;
-			width: 2em;
-			height: 2em;
+			align-items: center;
+			justify-content: center;
+			width: 3em;
+			height: 3em;
 			padding: 0.5em;
 			border-radius: 60%;
 			background-color: hotpink;
@@ -42,11 +45,30 @@ const DetailPOP = styled.div`
 			font-size: 1em;
 		}
 		.deleteBTN {
+			display: flex;
+			position: absolute;
+			top: -0.8em;
+			right: 6em;
+			align-items: center;
+			justify-content: center;
+			width: 3em;
+			height: 3em;
+			padding: 0.5em;
+			border-radius: 60%;
+			background-color: hotpink;
+			box-shadow: 0 0 2em hotpink;
+			color: aqua;
+			font-size: 1em;
+		}
+		.bookmarkBTN {
+			display: flex;
 			position: absolute;
 			top: -0.8em;
 			right: 10em;
-			width: 2em;
-			height: 2em;
+			align-items: center;
+			justify-content: center;
+			width: 3em;
+			height: 3em;
 			padding: 0.5em;
 			border-radius: 60%;
 			background-color: hotpink;

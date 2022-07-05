@@ -27,7 +27,11 @@ export default async function handler(request, response) {
 			break;
 		case 'PUT':
 			try {
-				response.status(200).json({success: true});
+				console.log(request.body);
+				console.log(eventId);
+				const editEvent = new Event(request.body);
+				await Event.findByIdAndUpdate(eventId, editEvent);
+				response.status(200).json({data: editEvent, success: true});
 			} catch (error) {
 				response.status(400).json({success: false});
 			}

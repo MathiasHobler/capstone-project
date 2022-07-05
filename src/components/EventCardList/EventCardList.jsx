@@ -44,7 +44,32 @@ const EventCardList = ({eventList}) => {
 				}
 			})
 			.then(data => {
-				console.log(data);
+				newRender(data);
+			})
+			.catch(error => {
+				setData({
+					data: '',
+					error: error.message,
+				});
+			});
+	}
+
+	function bookmarkEvent(data, id) {
+		fetch(`/api/events/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
 				newRender(data);
 			})
 			.catch(error => {
@@ -65,6 +90,7 @@ const EventCardList = ({eventList}) => {
 						key={singleEvent._id}
 						event={singleEvent}
 						deleteEvent={deleteEvent}
+						bookmark={bookmarkEvent}
 					></EventCard>
 				);
 			})}
