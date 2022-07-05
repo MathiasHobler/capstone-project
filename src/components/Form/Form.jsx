@@ -145,7 +145,8 @@ const Bubble = styled.div`
 	position: absolute;
 	z-index: -10;
 	width: 100%;
-	height: 300px;
+	height: 80%;
+	overflow: hidden;
 
 	div {
 		position: absolute;
@@ -159,7 +160,7 @@ const Bubble = styled.div`
 		}
 		&:last-child {
 			right: -30px;
-			bottom: -260px;
+			bottom: -50px;
 			background: linear-gradient(to right, #ff512f, #f09819);
 		}
 	}

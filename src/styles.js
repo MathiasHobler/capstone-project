@@ -19,7 +19,5 @@ export const GlobalStyle = createGlobalStyle`
 		font-family: 'Poppins', sans-serif;
 		font-size: 1rem;
 		letter-spacing: 0.5px;
-
-		
 	}
 `;

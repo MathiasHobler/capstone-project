@@ -21,7 +21,6 @@ const FormDetailsEvent = () => {
 				value={newEvent.private}
 				setValue={input => setNewEvent({...newEvent, private: input})}
 			/>
-			<ImageUpload />
 		</Container>
 	);
 };

@@ -22,7 +22,7 @@ const FormAddressEvent = () => {
 			/>
 			<Inputfield
 				label={'zip *'}
-				type={'number'}
+				type={'text'}
 				value={newEvent.zip}
 				setValue={input => setNewEvent({...newEvent, zip: input})}
 			/>
