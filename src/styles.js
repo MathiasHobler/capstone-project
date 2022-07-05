@@ -16,7 +16,10 @@ export const GlobalStyle = createGlobalStyle`
 	body {
 		margin: 0;
 		background-color: #080710;
+		font-family: 'Poppins', sans-serif;
 		font-size: 1rem;
+		letter-spacing: 0.5px;
+
 		
 	}
 `;

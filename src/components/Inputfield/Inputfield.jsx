@@ -1,6 +1,6 @@
 import {InputContainer} from './Inutfield.styled';
 
-const Inputfield = ({label, type, value, setValue, min, max}) => {
+export const Inputfield = ({label, type, value, setValue, min, max}) => {
 	return (
 		<InputContainer valid>
 			<label htmlFor={label}></label>
@@ -19,7 +19,6 @@ const Inputfield = ({label, type, value, setValue, min, max}) => {
 		</InputContainer>
 	);
 };
-export default Inputfield;
 
 export const TextArea = ({label, type, value, setValue}) => {
 	return (

@@ -1,5 +1,6 @@
 import {useCreate} from '../../hooks/useForm';
-import Inputfield from '../Inputfield/Inputfield';
+import ImageUpload from '../Inputfield/ImageInput';
+import {Inputfield} from '../Inputfield/Inputfield';
 
 import {Container} from './Form.styled';
 
@@ -20,6 +21,7 @@ const FormDetailsEvent = () => {
 				value={newEvent.private}
 				setValue={input => setNewEvent({...newEvent, private: input})}
 			/>
+			<ImageUpload />
 		</Container>
 	);
 };

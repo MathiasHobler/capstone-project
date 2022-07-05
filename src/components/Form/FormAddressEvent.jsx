@@ -1,5 +1,5 @@
 import {useCreate} from '../../hooks/useForm';
-import Inputfield from '../Inputfield/Inputfield';
+import {Inputfield} from '../Inputfield/Inputfield';
 
 import {Container} from './Form.styled';
 

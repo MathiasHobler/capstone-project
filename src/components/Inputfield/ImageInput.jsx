@@ -3,11 +3,11 @@ import styled from 'styled-components';
 const ImageUpload = ({setValue}) => {
 	return (
 		<InputContainer>
-			<div>
+			<section>
 				<label htmlFor="image">Choose File</label>
 				<input type="file" id="image" hidden />
 				<span>Upload Eventpicture</span>
-			</div>
+			</section>
 		</InputContainer>
 	);
 };
@@ -34,8 +34,7 @@ const InputContainer = styled.div`
 		}
 	}
 
-	div {
-		width: 100%;
+	section {
 		padding: 0.625em;
 		transition: 0.5s;
 		border: 1px solid rgba(255, 255, 255, 0.25);

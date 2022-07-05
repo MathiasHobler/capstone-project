@@ -49,25 +49,24 @@ const Form = ({title}) => {
 
 	useEffect(() => {
 		requiredData();
-		console.log(newEvent);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [newEvent]);
 
 	function requiredData() {
 		if (newEvent.title === '') {
-			setValid({message: 'Title should have at least 3 Characters', valid: false});
+			setValid({message: 'Title should be filled', valid: false});
 		} else if (newEvent.description === '') {
-			setValid({...state, valid: false});
+			setValid({message: 'Description should be filled', valid: false});
 		} else if (newEvent.date === '') {
-			setValid({message: 'Please fill a date in the future', valid: false});
+			setValid({message: 'Date should be filled', valid: false});
 		} else if (newEvent.time === '') {
-			setValid({message: 'Please fill when your Event start ', valid: false});
+			setValid({message: 'Time should be filled', valid: false});
 		} else if (newEvent.zip === '') {
-			setValid({message: 'Please fill in a zip between 01000 and 99999', valid: false});
+			setValid({message: 'Zip should be filled', valid: false});
 		} else if (newEvent.street === '') {
-			setValid({message: 'Please fill in a Street', valid: false});
+			setValid({message: 'Street should be filled', valid: false});
 		} else if (newEvent.city === '') {
-			setValid({message: 'Please fill in a City', valid: false});
+			setValid({message: 'City should be filled', valid: false});
 		} else {
 			setValid({message: '', valid: true});
 		}

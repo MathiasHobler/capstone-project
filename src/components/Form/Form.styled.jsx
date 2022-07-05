@@ -20,14 +20,6 @@ export const FormContainer = styled.form`
 	backdrop-filter: -ms-blur(10px);
 	backdrop-filter: blur(10px);
 
-	* {
-		border: none;
-		outline: none;
-		color: white;
-		font-family: 'Poppins', sans-serif;
-		letter-spacing: 0.5px;
-	}
-
 	p {
 		position: absolute;
 		top: 50px;
@@ -37,6 +29,7 @@ export const FormContainer = styled.form`
 	h3 {
 		position: absolute;
 		top: 5px;
+		color: white;
 		font-size: 32px;
 		font-weight: 500;
 		line-height: 42px;
@@ -47,12 +40,13 @@ export const FormContainer = styled.form`
 		display: flex;
 		position: relative;
 		bottom: -13em;
-		flex-direction: row;
 		justify-content: space-around;
 		background: transparent;
 
 		button {
 			margin: 0 3em;
+			border: none;
+			outline: none;
 			background: #00dfc4;
 		}
 	}

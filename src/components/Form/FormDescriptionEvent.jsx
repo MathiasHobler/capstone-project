@@ -1,6 +1,5 @@
 import {useCreate} from '../../hooks/useForm';
-import {TextArea} from '../Inputfield/Inputfield';
-import Inputfield from '../Inputfield/Inputfield';
+import {TextArea, Inputfield} from '../Inputfield/Inputfield';
 
 import {Container} from './Form.styled';
 
