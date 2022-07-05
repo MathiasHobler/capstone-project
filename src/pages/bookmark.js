@@ -1,10 +1,9 @@
 import {useState, useEffect} from 'react';
 
-import EventCard from '../EventCard/EventCard';
+import EventCard from '../components/EventCard/EventCard';
+import EventListContainer from '../components/EventCardList/EventCardList.styled';
 
-import EventListContainer from './EventCardList.styled';
-
-const EventCardList = ({eventList}) => {
+export default function Bookmark({bookmark}) {
 	const [{data, error}, setData] = useState({data: [], error: null});
 
 	const [render, newRender] = useState('');
@@ -32,9 +31,9 @@ const EventCardList = ({eventList}) => {
 			});
 	}, [render]);
 
-	function deleteEvent(id) {
+	function updateEvent(id) {
 		fetch(`/api/events/${id}`, {
-			method: 'DELETE',
+			method: 'PUT',
 		})
 			.then(response => {
 				if (!response.ok) {
@@ -83,19 +82,20 @@ const EventCardList = ({eventList}) => {
 	return (
 		<EventListContainer data-testid="list">
 			{error && <div>An error occured: {error}</div>}
-			{data.map(singleEvent => {
-				return (
-					<EventCard
-						data-testid="listItem"
-						key={singleEvent._id}
-						event={singleEvent}
-						deleteEvent={deleteEvent}
-						bookmark={bookmarkEvent}
-					></EventCard>
-				);
-			})}
+			{data
+				.filter(event => {
+					return event.bookmark === true;
+				})
+				.map(singleEvent => {
+					return (
+						<EventCard
+							key={singleEvent._id}
+							bookmark={bookmarkEvent}
+							data-testid="listItem"
+							event={singleEvent}
+						></EventCard>
+					);
+				})}
 		</EventListContainer>
 	);
-};
-
-export default EventCardList;
+}

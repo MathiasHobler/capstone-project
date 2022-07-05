@@ -62,6 +62,10 @@ const schema = new Schema(
 			type: Array,
 			default: [],
 		},
+		bookmark: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	{
 		versionKey: false,

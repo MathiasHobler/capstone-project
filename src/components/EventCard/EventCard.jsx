@@ -4,7 +4,7 @@ import Detail from '../Detail/Detail';
 
 import EventCardContainer from './EventCard.styled';
 
-const EventCard = ({event, deleteEvent}) => {
+const EventCard = ({event, deleteEvent, bookmark}) => {
 	const [details, setDetails] = useState(false);
 
 	const toggleDetail = () => {
@@ -32,7 +32,12 @@ const EventCard = ({event, deleteEvent}) => {
 			</EventCardContainer>
 
 			{details && (
-				<Detail event={event} deleteEvent={deleteEvent} back={() => toggleDetail()} />
+				<Detail
+					event={event}
+					deleteEvent={deleteEvent}
+					bookmark={bookmark}
+					back={() => toggleDetail()}
+				/>
 			)}
 		</>
 	);

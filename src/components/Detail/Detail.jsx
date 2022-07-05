@@ -1,12 +1,24 @@
+import {Bookmark, Close, Delete} from '@mui/icons-material';
+
 import DetailPOP from './Detail.styled';
 
-const Detail = ({event, back, deleteEvent}) => {
+const Detail = ({event, back, deleteEvent, bookmark}) => {
 	return (
 		<DetailPOP className="background">
 			<article>
-				<button onClick={back}>X</button>
+				<button onClick={back}>
+					<Close />
+				</button>
 				<button className="deleteBTN" onClick={() => deleteEvent(event._id)}>
-					Delete
+					<Delete />
+				</button>
+				<button
+					className="bookmarkBTN"
+					onClick={() => {
+						bookmark({...event, bookmark: !event.bookmark}, event._id);
+					}}
+				>
+					<Bookmark />
 				</button>
 				<h2>{event.title}</h2>
 				<p>{event.date}</p>
