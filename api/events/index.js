@@ -3,7 +3,7 @@ import Event from '../../backend/models/Event';
 
 export default async function handler(request, response) {
 	await connectToMongodb();
-
+  
 	switch (request.method) {
 		case 'GET':
 			try {

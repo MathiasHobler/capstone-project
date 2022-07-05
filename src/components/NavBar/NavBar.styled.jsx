@@ -49,7 +49,7 @@ const NavContainer = styled.section`
 		}
 		p {
 			position: absolute;
-			top: 33px;
+			top: 55px;
 			color: #00dfc4;
 		}
 	}

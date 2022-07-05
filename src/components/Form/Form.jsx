@@ -1,15 +1,23 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import styled from 'styled-components';
 
-import FormContainer from './Form.styled';
+import {useStep, useCreate} from '../../hooks/useForm';
 
-const Form = () => {
-	const [, setData] = useState({data: [], error: null});
-	const [event, setEvent] = useState({
-		title: '',
-		date: '',
-		time: '',
-		desc: '',
-	});
+import {FormContainer} from './Form.styled';
+import FormAddressEvent from './FormAddressEvent';
+import FormDescriptionEvent from './FormDescriptionEvent';
+import FormDetailsEvent from './FormDetailsEvent';
+import Success from './Success';
+
+const Form = ({title}) => {
+	const [{error}, setData] = useState({data: [], error: null, success: null});
+	const [state, setValid] = useState({valid: false, message: ''});
+	const step = useStep(state => state.step);
+	const nextStep = useStep(state => state.nextStep);
+	const prevStep = useStep(state => state.prevStep);
+	const newEvent = useCreate(state => state.event);
+	const resetStep = useStep(state => state.resetStep);
+
 	function createEvent(data) {
 		fetch('/api/events', {
 			method: 'POST',
@@ -39,79 +47,121 @@ const Form = () => {
 			});
 	}
 
+	useEffect(() => {
+		requiredData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [newEvent]);
+
+	function requiredData() {
+		if (newEvent.title === '') {
+			setValid({message: 'Title should be filled', valid: false});
+		} else if (newEvent.description === '') {
+			setValid({message: 'Description should be filled', valid: false});
+		} else if (newEvent.date === '') {
+			setValid({message: 'Date should be filled', valid: false});
+		} else if (newEvent.time === '') {
+			setValid({message: 'Time should be filled', valid: false});
+		} else if (newEvent.zip === '') {
+			setValid({message: 'Zip should be filled', valid: false});
+		} else if (newEvent.street === '') {
+			setValid({message: 'Street should be filled', valid: false});
+		} else if (newEvent.city === '') {
+			setValid({message: 'City should be filled', valid: false});
+		} else {
+			setValid({message: '', valid: true});
+		}
+	}
+
+	function render() {
+		switch (step) {
+			case 1:
+				return <FormDetailsEvent />;
+			case 2:
+				return <FormAddressEvent />;
+			case 3:
+				return <FormDescriptionEvent />;
+			default:
+				return <Success error={error} />;
+		}
+	}
+
 	return (
 		<>
+			<Bubble>
+				<div></div>
+				<div></div>
+			</Bubble>
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
-					createEvent(event);
-					setEvent({
-						title: '',
-						date: '',
-						time: '',
-						desc: '',
-					});
+					createEvent(newEvent);
+					nextStep();
 				}}
 			>
-				<label htmlFor="eventTitle" aria-label="Enter your title">
-					Title:
-					<input
-						type="text"
-						id="eventTitle"
-						value={event.title}
-						data-testid="testInput"
-						onChange={e => {
-							setEvent({...event, title: e.target.value});
-						}}
-					/>
-				</label>
+				<h3>{title}</h3>
+				{step === 3 && !state.valid && <p>Please Fill out all required * fields</p>}
+				{render()}
+				<article>
+					{step > 1 && (
+						<button
+							type="button"
+							onClick={() => {
+								if (step > 1) {
+									prevStep();
+								}
+							}}
+						>
+							Step backward
+						</button>
+					)}
 
-				<label htmlFor="setDate" aria-label="Choose your date">
-					Date:
-					<input
-						type="date"
-						id="setDate"
-						value={event.date}
-						required
-						onChange={e => {
-							setEvent({...event, date: e.target.value});
-						}}
-					/>
-				</label>
-
-				<label htmlFor="starttime" aria-label="Choose the time, you want to start">
-					Choose a time for start:
-					<input
-						type="time"
-						id="starttime"
-						name="starttime"
-						min="00:00"
-						max="23:59"
-						required
-						value={event.time}
-						onChange={e => {
-							setEvent({...event, time: e.target.value});
-						}}
-					></input>
-				</label>
-
-				<label htmlFor="eventDescription" aria-label="Describe your event">
-					Description:
-					<input
-						type="text"
-						id="eventDescription"
-						value={event.desc}
-						required
-						onChange={e => {
-							setEvent({...event, desc: e.target.value});
-						}}
-					/>
-				</label>
-
-				<input type="submit" value="submit" disabled={event.title === ''} />
+					{step < 3 && (
+						<button
+							type="button"
+							onClick={() => {
+								if (step < 3) {
+									nextStep();
+								}
+							}}
+						>
+							Step forward
+						</button>
+					)}
+					{step === 3 && state.valid && <button type="submit">submit</button>}
+					{step === 4 && (
+						<button onClick={() => resetStep()} type="button">
+							Back
+						</button>
+					)}
+				</article>
 			</FormContainer>
 		</>
 	);
 };
 
 export default Form;
+
+const Bubble = styled.div`
+	position: absolute;
+	z-index: -10;
+	width: 100%;
+	height: 80%;
+	overflow: hidden;
+
+	div {
+		position: absolute;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		&:first-child {
+			top: -80px;
+			left: -80px;
+			background: linear-gradient(#1845ad, #23a2f6);
+		}
+		&:last-child {
+			right: -30px;
+			bottom: -50px;
+			background: linear-gradient(to right, #ff512f, #f09819);
+		}
+	}
+`;
