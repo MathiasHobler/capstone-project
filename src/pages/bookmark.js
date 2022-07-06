@@ -31,28 +31,6 @@ export default function Bookmark({bookmark}) {
 			});
 	}, [render]);
 
-	function updateEvent(id) {
-		fetch(`/api/events/${id}`, {
-			method: 'PUT',
-		})
-			.then(response => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				} else {
-					return response.json();
-				}
-			})
-			.then(data => {
-				newRender(data);
-			})
-			.catch(error => {
-				setData({
-					data: '',
-					error: error.message,
-				});
-			});
-	}
-
 	function bookmarkEvent(data, id) {
 		fetch(`/api/events/${id}`, {
 			method: 'PUT',

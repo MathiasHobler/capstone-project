@@ -1,8 +1,17 @@
 import {Bookmark, Close, Delete} from '@mui/icons-material';
+import {NavLink} from 'react-router-dom';
+
+import {useStep, useCreate} from '../../hooks/useForm';
 
 import DetailPOP from './Detail.styled';
 
 const Detail = ({event, back, deleteEvent, bookmark}) => {
+	const setNewEvent = useCreate(state => state.setNewEvent);
+	const setAction = useStep(state => state.setAction);
+	const setTitle = useStep(state => state.setTitle);
+	setAction('update');
+	setTitle('Update Event');
+	setNewEvent(event);
 	return (
 		<DetailPOP className="background">
 			<article>
@@ -20,15 +29,22 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 				>
 					<Bookmark />
 				</button>
-				<h2>{event.title}</h2>
-				<p>{event.date}</p>
-				<p>{event.description}</p>
-				<iframe
-					title="event.id"
-					src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
-					width="100%"
-					height="200"
-				/>
+
+				<NavLink to="/create" className="bookmarkEdit">
+					Edit Event
+				</NavLink>
+
+				<section>
+					<h2>{event.title}</h2>
+					<p>{event.date}</p>
+					<p>{event.description}</p>
+					<iframe
+						title="event.id"
+						src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
+						width="100%"
+						height="200"
+					/>
+				</section>
 			</article>
 		</DetailPOP>
 	);
