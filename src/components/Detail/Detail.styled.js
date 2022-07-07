@@ -76,6 +76,23 @@ const DetailPOP = styled.div`
 			color: aqua;
 			font-size: 1em;
 		}
+
+		.bookmarkEdit {
+			display: flex;
+			position: absolute;
+			top: -0.8em;
+			right: 14em;
+			align-items: center;
+			justify-content: center;
+			width: 3em;
+			height: 3em;
+			padding: 0.5em;
+			border-radius: 60%;
+			background-color: hotpink;
+			box-shadow: 0 0 2em hotpink;
+			color: aqua;
+			font-size: 1em;
+		}
 	}
 `;
 

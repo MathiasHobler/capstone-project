@@ -55,6 +55,9 @@ const schema = new Schema(
 			type: Array,
 			default: [],
 		},
+		time: {
+			type: String,
+		},
 		bookmark: {
 			type: Boolean,
 			default: false,

@@ -15,6 +15,10 @@ const EventCardContainer = styled.li`
 	backdrop-filter: -ms-blur(10px);
 	backdrop-filter: blur(10px);
 
+	a {
+		color: white;
+		text-decoration: none;
+	}
 	article {
 		display: grid;
 		grid-template-areas:

@@ -1,5 +1,4 @@
 import {useCreate} from '../../hooks/useForm';
-import ImageUpload from '../Inputfield/ImageInput';
 import {Inputfield} from '../Inputfield/Inputfield';
 
 import {Container} from './Form.styled';
