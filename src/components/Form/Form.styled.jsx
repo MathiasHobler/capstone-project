@@ -43,12 +43,12 @@ export const FormContainer = styled.form`
 		justify-content: space-around;
 		background: transparent;
 
-		button {
+		/* button {
 			margin: 0 3em;
 			border: none;
 			outline: none;
 			background: #00dfc4;
-		}
+		} */
 	}
 `;
 
