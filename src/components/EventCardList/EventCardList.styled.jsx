@@ -5,7 +5,7 @@ const EventListContainer = styled.ul`
 	flex-direction: column;
 	width: min(100% - 2rem);
 	row-gap: 1.5em;
-	margin: 0 auto;
+	margin: 2em auto 2.5em auto;
 	padding: 0;
 `;
 
