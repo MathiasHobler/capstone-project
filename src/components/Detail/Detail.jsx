@@ -1,4 +1,5 @@
 import {Bookmark, Close, Delete} from '@mui/icons-material';
+import {useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 
 import {useStep, useCreate} from '../../hooks/useForm';
@@ -11,7 +12,11 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setTitle = useStep(state => state.setTitle);
 	setAction('update');
 	setTitle('Update Event');
-	setNewEvent(event);
+
+	useEffect(() => {
+		setNewEvent(event);
+	}, []);
+
 	return (
 		<DetailPOP className="background">
 			<article>
