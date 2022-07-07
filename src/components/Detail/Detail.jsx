@@ -31,7 +31,8 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 						bookmark({...event, bookmark: !event.bookmark}, event._id);
 					}}
 				>
-					<BookmarkAdd />
+					{!event.bookmark && <BookmarkAdd />}
+					{event.bookmark && <BookmarkRemove />}
 				</button>
 				<button onClick={() => deleteEvent(event._id)}>
 					<Delete />
