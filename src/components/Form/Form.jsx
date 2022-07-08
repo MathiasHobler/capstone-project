@@ -10,7 +10,7 @@ import FormDescriptionEvent from './FormDescriptionEvent';
 import FormDetailsEvent from './FormDetailsEvent';
 import Success from './Success';
 
-const Form = ({title}) => {
+const Form = () => {
 	const [{error}, setData] = useState({data: [], error: null, success: null});
 	const [state, setValid] = useState({valid: false, message: ''});
 	const step = useStep(state => state.step);
@@ -18,6 +18,8 @@ const Form = ({title}) => {
 	const prevStep = useStep(state => state.prevStep);
 	const newEvent = useCreate(state => state.event);
 	const resetStep = useStep(state => state.resetStep);
+	const action = useStep(state => state.action);
+	const title = useStep(state => state.title);
 
 	function createEvent(data) {
 		fetch('/api/events', {
@@ -48,6 +50,29 @@ const Form = ({title}) => {
 			});
 	}
 
+	function updateEvent(data, id) {
+		fetch(`/api/events/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.catch(error => {
+				setData({
+					data: '',
+					error: error.message,
+				});
+			});
+	}
+
 	useEffect(() => {
 		requiredData();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,7 +89,7 @@ const Form = ({title}) => {
 			setValid({message: 'Time should be filled', valid: false});
 		} else if (newEvent.zip === '') {
 			setValid({message: 'Zip should be filled', valid: false});
-		} else if (newEvent.street === '') {
+		} else if (newEvent.address === '') {
 			setValid({message: 'Street should be filled', valid: false});
 		} else if (newEvent.city === '') {
 			setValid({message: 'City should be filled', valid: false});
@@ -97,7 +122,11 @@ const Form = ({title}) => {
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
-					createEvent(newEvent);
+					if (action === 'create') {
+						createEvent(newEvent);
+					} else if (action === 'update') {
+						updateEvent(newEvent, newEvent._id);
+					}
 					nextStep();
 				}}
 			>

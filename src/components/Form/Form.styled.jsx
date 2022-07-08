@@ -62,12 +62,12 @@ export const Container = styled.section`
 	margin-top: 1em;
 
 	section {
+		display: flex;
 		position: relative;
 		top: -12em;
-		display: flex;
-		justify-content: center;
 		flex-direction: row;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1.5em;
 		article {
 			display: flex;

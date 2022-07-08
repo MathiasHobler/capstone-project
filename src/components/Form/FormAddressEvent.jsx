@@ -11,8 +11,8 @@ const FormAddressEvent = () => {
 			<Inputfield
 				label={'street *'}
 				type={'text'}
-				value={newEvent.street}
-				setValue={input => setNewEvent({...newEvent, street: input})}
+				value={newEvent.address}
+				setValue={input => setNewEvent({...newEvent, address: input})}
 			/>
 			<Inputfield
 				label={'city *'}

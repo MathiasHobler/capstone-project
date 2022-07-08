@@ -2,10 +2,16 @@ import {Add, BookmarkAdded, Home} from '@mui/icons-material';
 import {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 
+import {useStep} from '../../hooks/useForm';
+
 import NavContainer from './NavBar.styled';
 
 function NavBar() {
 	const [active, setActive] = useState('');
+	const setAction = useStep(state => state.setAction);
+	const setTitle = useStep(state => state.setTitle);
+	setAction('create');
+	setTitle('Create Event');
 	return (
 		<>
 			<NavContainer active={active}>

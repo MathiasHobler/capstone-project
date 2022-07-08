@@ -7,8 +7,8 @@ import {
 	Restaurant,
 	SportsScore,
 	FamilyRestroom,
-	Woman,
-	Man,
+	Campaign,
+	MusicNote,
 } from '@mui/icons-material';
 import {useState} from 'react';
 
@@ -96,22 +96,22 @@ function Reel() {
 					<p>Family</p>
 				</article>
 				<article>
-					<Woman
+					<Campaign
 						fontSize={'large'}
 						onClick={() => {
 							setActive('woman');
 						}}
 					/>
-					<p>Woman</p>
+					<p>Protest</p>
 				</article>
 				<article>
-					<Man
+					<MusicNote
 						fontSize={'large'}
 						onClick={() => {
 							setActive('man');
 						}}
 					/>
-					<p>Man</p>
+					<p>Concert</p>
 				</article>
 			</ReelBody>
 		</>
