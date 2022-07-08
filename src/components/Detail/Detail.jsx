@@ -10,11 +10,11 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
-	setAction('update');
-	setTitle('Update Event');
 
 	useEffect(() => {
 		setNewEvent(event);
+		setAction('update');
+		setTitle('Update Event');
 	}, []);
 
 	return (

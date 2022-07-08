@@ -46,6 +46,16 @@ function NavBar() {
 						</NavLink>
 						<p>Bookmarked</p>
 					</li>
+					<li
+						onClick={() => {
+							setActive('bookmark');
+						}}
+					>
+						<NavLink to="/test" data-testid="navBookmark">
+							<BookmarkAdded />
+						</NavLink>
+						<p>test</p>
+					</li>
 				</ul>
 			</NavContainer>
 		</>

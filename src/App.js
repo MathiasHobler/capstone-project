@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './pages';
 import Bookmark from './pages/bookmark';
 import Create from './pages/create';
+import Test from './pages/test';
 import {GlobalStyle} from './styles';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
 						<Route index element={<Home />} />
 						<Route path="/create" element={<Create />} />
 						<Route path="/bookmark" element={<Bookmark />} />
+						<Route path="/test" element={<Test />} />
 					</Route>
 				</Routes>
 				<NavBar />
