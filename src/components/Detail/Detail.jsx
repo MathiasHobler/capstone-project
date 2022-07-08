@@ -51,8 +51,7 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 					<p>{event.description}</p>
 					<h3>Location</h3>
 					<p>{event.address}</p>
-					<p>{event.zip}</p>
-					<p>{event.city}</p>
+					<p>{`${event.zip} ${event.city}`}</p>
 					<iframe
 						title="event.id"
 						src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
