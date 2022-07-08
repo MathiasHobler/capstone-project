@@ -30,6 +30,7 @@ export const useCreate = create(
 				date: '',
 				time: '',
 				description: '',
+				categories: ['all'],
 			},
 			setNewEvent: input => set(() => ({event: input})),
 		}),

@@ -47,20 +47,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-// const ContainerDiv = styled.div`
-// 	position: fixed;
-// 	bottom: 30px;
-// 	left: 50px;
-// 	width: 70px;
-// 	height: 70px;
-// 	border: 2px solid rgba(255, 255, 255, 0.1);
-// 	border-radius: 50%;
-// 	background: rgba(255, 255, 255, 0.06);
-// 	//box-shadow: 0 0 40px rgba(8, 7, 16, 0.06);
-// 	backdrop-filter: -webkit-blur(10px);
-// 	backdrop-filter: -moz-blur(10px);
-// 	backdrop-filter: -ms-blur(10px);
-// 	backdrop-filter: blur(10px);
-// 	z-index: 3;
-// `;

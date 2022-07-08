@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {useStep, useCreate} from '../../hooks/useForm';
 
 import {FormContainer} from './Form.styled';
+import FormAddCategorie from './FormAddCategorie';
 import FormAddressEvent from './FormAddressEvent';
 import FormDescriptionEvent from './FormDescriptionEvent';
 import FormDetailsEvent from './FormDetailsEvent';
@@ -79,6 +80,8 @@ const Form = ({title}) => {
 			case 2:
 				return <FormAddressEvent />;
 			case 3:
+				return <FormAddCategorie />;
+			case 4:
 				return <FormDescriptionEvent />;
 			default:
 				return <Success error={error} />;
@@ -115,11 +118,11 @@ const Form = ({title}) => {
 						</button>
 					)}
 
-					{step < 3 && (
+					{step < 4 && (
 						<button
 							type="button"
 							onClick={() => {
-								if (step < 3) {
+								if (step < 4) {
 									nextStep();
 								}
 							}}
@@ -127,8 +130,8 @@ const Form = ({title}) => {
 							Step forward
 						</button>
 					)}
-					{step === 3 && state.valid && <button type="submit">submit</button>}
-					{step === 4 && (
+					{step === 4 && state.valid && <button type="submit">submit</button>}
+					{step === 5 && (
 						<button onClick={() => resetStep()} type="button">
 							Back
 						</button>

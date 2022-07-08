@@ -1,5 +1,4 @@
 import {
-	AllInclusive,
 	Nightlife,
 	Pets,
 	LightMode,
@@ -10,33 +9,33 @@ import {
 	Woman,
 	Man,
 } from '@mui/icons-material';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
-import useStore from '../../hooks/useStore';
+import {useCreate} from '../../hooks/useForm';
 
-import ReelBody from './Reel.styled';
+import {Container} from './Form.styled';
 
-function Reel() {
-	const active = useStore(state => state.active);
-	const setActive = useStore(state => state.setActive);
+const FormAddCategorie = () => {
+	const [active, setActive] = useState('');
+	const newEvent = useCreate(state => state.event);
+	const setNewEvent = useCreate(state => state.setNewEvent);
+
+	useEffect(() => {
+		console.log(newEvent);
+	}, [newEvent]);
 
 	return (
-		<>
-			<ReelBody active={active}>
-				<article>
-					<AllInclusive
-						fontSize={'large'}
-						onClick={() => {
-							setActive('all');
-						}}
-					/>
-					<p>All</p>
-				</article>
+		<Container active={active}>
+			<section>
 				<article>
 					<LightMode
 						fontSize={'large'}
 						onClick={() => {
 							setActive('day');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'day'],
+							});
 						}}
 					/>
 					<p>Day</p>
@@ -46,6 +45,10 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('night');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'night'],
+							});
 						}}
 					/>
 					<p>Night</p>
@@ -55,6 +58,10 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('pets');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'pets'],
+							});
 						}}
 					/>
 					<p>Pets</p>
@@ -64,6 +71,10 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('bbq');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'bbq'],
+							});
 						}}
 					/>
 					<p>BBQ</p>
@@ -73,6 +84,10 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('dinner');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'dinner'],
+							});
 						}}
 					/>
 					<p>Dinner</p>
@@ -82,6 +97,10 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('sport');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'sport'],
+							});
 						}}
 					/>
 					<p>Sport</p>
@@ -91,6 +110,10 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('family');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'family'],
+							});
 						}}
 					/>
 					<p>Family</p>
@@ -100,6 +123,10 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('woman');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'women'],
+							});
 						}}
 					/>
 					<p>Woman</p>
@@ -109,13 +136,17 @@ function Reel() {
 						fontSize={'large'}
 						onClick={() => {
 							setActive('man');
+							setNewEvent({
+								...newEvent,
+								categories: [...newEvent.categories, 'man'],
+							});
 						}}
 					/>
 					<p>Man</p>
 				</article>
-			</ReelBody>
-		</>
+			</section>
+		</Container>
 	);
-}
+};
 
-export default Reel;
+export default FormAddCategorie;
