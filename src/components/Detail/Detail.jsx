@@ -16,8 +16,6 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 		setAction('update');
 		setTitle('Update Event');
 		setNewEvent(event);
-
-		console.log(event);
 	}, [setNewEvent, setAction, setTitle]);
 
 	return (

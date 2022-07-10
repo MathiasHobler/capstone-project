@@ -13,7 +13,7 @@ describe('testing navbar', () => {
 			</Router>
 		);
 		const links = screen.getAllByRole('link');
-		expect(links).toHaveLength(2);
+		expect(links).toHaveLength(3);
 	});
 	it('NavLinks paths 1', () => {
 		render(
