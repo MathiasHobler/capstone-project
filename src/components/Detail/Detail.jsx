@@ -10,12 +10,13 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
-	setAction('update');
-	setTitle('Update Event');
 
 	useEffect(() => {
+		setAction('update');
+		setTitle('Update Event');
 		setNewEvent(event);
-	}, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [setAction, setTitle]);
 
 	return (
 		<DetailPOP className="background">
