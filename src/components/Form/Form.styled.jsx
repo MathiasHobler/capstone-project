@@ -42,13 +42,6 @@ export const FormContainer = styled.form`
 		bottom: -13em;
 		justify-content: space-around;
 		background: transparent;
-
-		/* button {
-			margin: 0 3em;
-			border: none;
-			outline: none;
-			background: #00dfc4;
-		} */
 	}
 `;
 
