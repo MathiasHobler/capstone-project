@@ -58,8 +58,10 @@ const DetailPOP = styled.div`
 			}
 
 			h2 {
+				max-width: 10em;
 				margin-bottom: 0.5em;
-				text-align: center;
+				text-align: left;
+				overflow-wrap: break-word;
 			}
 
 			h3 {
@@ -67,7 +69,9 @@ const DetailPOP = styled.div`
 			}
 
 			p {
+				max-width: 18em;
 				margin-bottom: 0.25em;
+				overflow-wrap: break-word;
 			}
 
 			iframe {
