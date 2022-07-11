@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+const handleColorType = color => {
+	if (color.includes('day')) {
+		return 'inset 0 0 15px 3px #FF5F1F';
+	} else {
+		return 'inset 0 0 15px 3px #00dfc4';
+	}
+};
+
 export const FormContainer = styled.form`
 	display: flex;
 	position: relative;
@@ -91,10 +99,11 @@ export const Container = styled.section`
 
 		article:nth-child(1) {
 			transition: 1s;
-			box-shadow: ${props =>
-				props.active === 'day'
+			box-shadow: ${({active}) => handleColorType(active)};
+			/* box-shadow: ${props =>
+				props.active['day']
 					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+					: 'inset 0 0 15px 3px #00dfc4'}; */
 			color: ${props => (props.active === 'day' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(2) {

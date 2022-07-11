@@ -20,12 +20,14 @@ const FormAddCategorie = () => {
 	const newEvent = useCreate(state => state.event);
 	const setNewEvent = useCreate(state => state.setNewEvent);
 
+	const categorieArray = [newEvent.categories];
+
 	useEffect(() => {
-		console.log(newEvent);
+		console.log(categorieArray);
 	}, [newEvent]);
 
 	return (
-		<Container active={active}>
+		<Container active={categorieArray}>
 			<section>
 				<article>
 					<LightMode
