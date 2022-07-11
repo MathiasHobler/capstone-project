@@ -45,6 +45,7 @@ const ImageUpload = () => {
 				<label htmlFor="image">Choose File</label>
 				<input type="file" ref={imageRef} id="image" onChange={getImageURL} hidden />
 				<span>Upload Eventpicture</span>
+				<p>{imageURL.data}</p>
 			</section>
 		</InputContainer>
 	);
