@@ -30,7 +30,7 @@ const ImageUpload = () => {
 			method: 'post',
 			url: 'https://api.imgur.com/3/image',
 			headers: {
-				Authorization: `Client-ID ${IMGUR_ClientID}`,
+				Authorization: `Client-ID fc88c8f5835b3ec`,
 			},
 			data: imageRef.current.files[0],
 		})
