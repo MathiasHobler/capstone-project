@@ -11,13 +11,16 @@ const ImageUpload = () => {
 	const [imageURL, setImageURL] = useState({
 		data: null,
 		success: null,
+		error: null,
 		loading: null,
 	});
 	const imageRef = React.useRef();
+	const [isActive, setIsActive] = useState(false);
 
 	const getImageURL = async () => {
 		setImageURL({
 			data: imageURL.data,
+			success: false,
 			error: false,
 			loading: true,
 		});
@@ -25,13 +28,14 @@ const ImageUpload = () => {
 			method: 'post',
 			url: 'https://api.imgur.com/3/image',
 			headers: {
-				Authorization: `Client-ID fc88c8f5835b3ec`,
+				Authorization: `Client-ID ${process.env.IMGUR_ClientID}`,
 			},
 			data: imageRef.current.files[0],
 		})
 			.then(({data}) => {
 				setImageURL({
 					data: data.data.link,
+					success: true,
 					error: false,
 					loading: false,
 				});
@@ -39,14 +43,35 @@ const ImageUpload = () => {
 				alert('Image uploaded successfully');
 			})
 			.catch(err => {
+				setImageURL({
+					data: imageURL.data,
+					success: false,
+					error: true,
+					loading: false,
+				});
 				alert('Image not uploaded, please try again');
 			});
 	};
+
 	return (
-		<ImageContainer>
+		<ImageContainer isActive={isActive}>
 			<section>
-				<label htmlFor="image">Choose File</label>
-				<input type="file" ref={imageRef} id="image" onChange={getImageURL} hidden />
+				<label htmlFor="image">
+					{!imageURL.success && !imageURL.error && 'Choose File'}
+					{imageURL.success && 'File Uploaded '}
+					{imageURL.error && 'Upload failed'}
+					{imageURL.loading && 'Image is Uploading'}
+				</label>
+				<input
+					type="file"
+					ref={imageRef}
+					id="image"
+					onClick={() => {
+						setIsActive(true);
+					}}
+					onChange={getImageURL}
+					hidden
+				/>
 				<span>Upload Eventpicture</span>
 			</section>
 		</ImageContainer>
