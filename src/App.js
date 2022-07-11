@@ -4,7 +4,6 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './pages';
 import Bookmark from './pages/bookmark';
 import Create from './pages/create';
-import Test from './pages/test';
 import {GlobalStyle} from './styles';
 
 export default function App() {
