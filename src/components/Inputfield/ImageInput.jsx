@@ -2,7 +2,11 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
+import {useCreate} from '../../hooks/useForm';
+
 const ImageUpload = ({setValue}) => {
+	const setNewEvent = useCreate(state => state.setNewEvent);
+	const newEvent = useCreate(state => state.event);
 	const [imageURL, setImageURL] = useState({
 		data: null,
 		success: null,
@@ -34,7 +38,7 @@ const ImageUpload = ({setValue}) => {
 					error: false,
 					loading: false,
 				});
-				setValue(imageURL);
+				setNewEvent({...newEvent, eventPicture: data.data.link});
 				alert('Save Your Changes');
 			})
 			.catch(err => {
