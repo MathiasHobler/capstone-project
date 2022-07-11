@@ -17,7 +17,6 @@ export default function App() {
 						<Route index element={<Home />} />
 						<Route path="/create" element={<Create />} />
 						<Route path="/bookmark" element={<Bookmark />} />
-						<Route path="/test" element={<Test />} />
 					</Route>
 				</Routes>
 				<NavBar />
