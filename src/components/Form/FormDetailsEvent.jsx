@@ -15,7 +15,7 @@ const FormDetailsEvent = () => {
 				value={newEvent.title}
 				setValue={input => setNewEvent({...newEvent, title: input})}
 			/>
-			<ImageUpload setValue={input => console.log(input, newEvent)} />
+			<ImageUpload />
 			<Inputfield
 				label={'private'}
 				type={'checkbox'}
