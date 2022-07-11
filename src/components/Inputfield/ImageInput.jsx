@@ -1,14 +1,16 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
-const ImageUpload = () => {
+const ImageUpload = ({setValue}) => {
 	const [imageURL, setImageURL] = useState({
 		data: null,
 		success: null,
 		loading: null,
 	});
 	const imageRef = React.useRef();
+
+	useEffect(() => setValue(imageURL));
 
 	const getImageURL = async () => {
 		console.log(imageRef.current.files[0]);
@@ -32,6 +34,7 @@ const ImageUpload = () => {
 					error: false,
 					loading: false,
 				});
+				setValue(imageURL);
 				alert('Save Your Changes');
 			})
 			.catch(err => {
