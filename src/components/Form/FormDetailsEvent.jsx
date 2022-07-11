@@ -27,5 +27,3 @@ const FormDetailsEvent = () => {
 };
 
 export default FormDetailsEvent;
-
-// setNewEvent({...newEvent, title: input})
