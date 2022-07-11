@@ -5,8 +5,6 @@ import {useCreate} from '../../hooks/useForm';
 
 import {ImageContainer} from './ImageInput.styled';
 
-const IMGUR_ClientID = process.env.IMGUR_ClientID;
-
 const ImageUpload = () => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const newEvent = useCreate(state => state.event);
@@ -30,7 +28,7 @@ const ImageUpload = () => {
 			method: 'post',
 			url: 'https://api.imgur.com/3/image',
 			headers: {
-				Authorization: `Client-ID fc88c8f5835b3ec`,
+				Authorization: `Client-ID ` + process.env.IMGUR_ClientID,
 			},
 			data: imageRef.current.files[0],
 		})
