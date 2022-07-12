@@ -15,11 +15,10 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	useEffect(() => {
 		setAction('update');
 		setTitle('Update Event');
-		setNewEvent(event);
-	}, [setNewEvent, setAction, setTitle]);
+	}, [setAction, setTitle]);
 
 	return (
-		<DetailPOP className="background">
+		<DetailPOP>
 			<article>
 				<button onClick={back}>
 					<Close />
@@ -36,7 +35,7 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 					<Delete />
 				</button>
 
-				<NavLink to="/create" className="bookmarkEdit">
+				<NavLink to="/create" onClick={() => setNewEvent(event)}>
 					<Edit />
 				</NavLink>
 
