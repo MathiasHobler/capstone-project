@@ -18,8 +18,8 @@ const ImageUpload = () => {
 	const imageRef = React.useRef();
 	const [isActive, setIsActive] = useState(false);
 
-	function getImgurId() {
-		axios
+	async function getImgurId() {
+		await axios
 			.get('/api/imgur')
 			.then(({data}) => {
 				setImgurID(data.data);
@@ -29,7 +29,7 @@ const ImageUpload = () => {
 			});
 	}
 	const getImageURL = async () => {
-		getImgurId();
+		await getImgurId();
 		setImageURL({
 			data: imageURL.data,
 			success: false,
