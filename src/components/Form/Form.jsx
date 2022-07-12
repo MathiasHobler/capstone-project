@@ -10,6 +10,21 @@ import FormDescriptionEvent from './FormDescriptionEvent';
 import FormDetailsEvent from './FormDetailsEvent';
 import Success from './Success';
 
+function Step({step, error}) {
+	switch (step) {
+		case 1:
+			return <FormDetailsEvent />;
+		case 2:
+			return <FormAddressEvent />;
+		case 3:
+			return <FormAddCategorie />;
+		case 4:
+			return <FormDescriptionEvent />;
+		default:
+			return <Success error={error} />;
+	}
+}
+
 const Form = () => {
 	const [{error}, setData] = useState({data: [], error: null, success: null});
 	const [state, setValid] = useState({valid: false, message: ''});
@@ -74,11 +89,6 @@ const Form = () => {
 	}
 
 	useEffect(() => {
-		requiredData();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [newEvent]);
-
-	function requiredData() {
 		if (newEvent.title === '') {
 			setValid({message: 'Title should be filled', valid: false});
 		} else if (newEvent.description === '') {
@@ -96,29 +106,10 @@ const Form = () => {
 		} else {
 			setValid({message: '', valid: true});
 		}
-	}
-
-	function render() {
-		switch (step) {
-			case 1:
-				return <FormDetailsEvent />;
-			case 2:
-				return <FormAddressEvent />;
-			case 3:
-				return <FormAddCategorie />;
-			case 4:
-				return <FormDescriptionEvent />;
-			default:
-				return <Success error={error} />;
-		}
-	}
+	}, [newEvent]);
 
 	return (
 		<>
-			<Bubble>
-				<div></div>
-				<div></div>
-			</Bubble>
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
@@ -132,7 +123,7 @@ const Form = () => {
 			>
 				<h3>{title}</h3>
 				{step === 3 && !state.valid && <p>Please Fill out all required * fields</p>}
-				{render()}
+				<Step step={step} error={error} />
 				<article>
 					{step > 1 && (
 						<button

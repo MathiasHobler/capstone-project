@@ -99,7 +99,7 @@ function Reel() {
 					<Campaign
 						fontSize={'large'}
 						onClick={() => {
-							setActive('woman');
+							setActive('demo');
 						}}
 					/>
 					<p>Protest</p>
@@ -108,7 +108,7 @@ function Reel() {
 					<MusicNote
 						fontSize={'large'}
 						onClick={() => {
-							setActive('man');
+							setActive('concert');
 						}}
 					/>
 					<p>Concert</p>

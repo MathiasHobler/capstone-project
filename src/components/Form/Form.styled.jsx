@@ -1,12 +1,34 @@
 import styled from 'styled-components';
 
-const handleColorType = color => {
-	if (color.includes('day')) {
-		return 'inset 0 0 15px 3px #FF5F1F';
-	} else {
-		return 'inset 0 0 15px 3px #00dfc4';
-	}
-};
+export const Iconframe = styled.button`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 4em;
+	height: 4em;
+	margin-left: 0.7em;
+	padding: 1em;
+	border-radius: 1em;
+	background: transparent;
+	box-shadow: inset 0 0 50px 5px;
+	color: ${props => (props.isActive ? 'orange' : '#00dfc4')};
+`;
+
+export const IconLabel = styled.p`
+	margin-top: 0.75em;
+	color: #00dfc4;
+`;
+
+export const DialField = styled.section`
+	display: flex;
+	position: relative;
+	top: -12em;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5em;
+`;
 
 export const FormContainer = styled.form`
 	display: flex;
@@ -61,114 +83,80 @@ export const FormContainer = styled.form`
 `;
 
 export const Container = styled.section`
-	display: flex;
+	/* display: flex;
 	position: absolute;
 	top: 4em;
 	flex-direction: column;
 	align-content: flex-end;
 	gap: 1em;
-	margin-top: 1em;
+	margin-top: 1em; */
 
 	section {
-		display: flex;
+		/* display: flex;
 		position: relative;
 		top: -12em;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: 1.5em;
-		article {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			width: 4em;
-			height: 4em;
-			margin-left: 0.7em;
-			padding: 1em;
-			border-radius: 1em;
-			background: transparent;
-			box-shadow: inset 0 0 50px 5px #00dfc4;
-			size: large;
-			color: #00dfc4;
+		gap: 1.5em; */
 
-			p {
-				margin-top: 0.75em;
-			}
-		}
-
-		article:nth-child(1) {
-			transition: 1s;
-			box-shadow: ${({active}) => handleColorType(active)};
-			/* box-shadow: ${props =>
-				props.active['day']
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'}; */
-			color: ${props => (props.active === 'day' ? '#FF5F1F' : '')};
-		}
-		article:nth-child(2) {
+		/* section:nth-child(1) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'night'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'day' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
+			color: ${props => (props.active === 'day' ? '#FF5F1F' : '')};
+		}
+		${Iconframe}:nth-child(2) {
+			transition: 1s;
+			box-shadow: ${props =>
+			props.active === 'night' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'night' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(3) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'pets'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'pets' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'pets' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(4) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'bbq'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'bbq' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'bbq' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(5) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'dinner'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'dinner'
+				? 'inset 0 0 15px 3px #FF5F1F'
+				: 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'dinner' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(6) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'sport'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'sport' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'sport' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(7) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'family'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'family'
+				? 'inset 0 0 15px 3px #FF5F1F'
+				: 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'family' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(8) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'woman'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'woman' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'woman' ? '#FF5F1F' : '')};
 		}
 		article:nth-child(9) {
 			transition: 1s;
 			box-shadow: ${props =>
-				props.active === 'man'
-					? 'inset 0 0 15px 3px #FF5F1F'
-					: 'inset 0 0 15px 3px #00dfc4'};
+			props.active === 'man' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
 			color: ${props => (props.active === 'man' ? '#FF5F1F' : '')};
-		}
+		} */
 	}
 `;

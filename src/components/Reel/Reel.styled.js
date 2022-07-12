@@ -86,14 +86,16 @@ const ReelBody = styled.section`
 	article:nth-child(9) {
 		transition: 1s;
 		box-shadow: ${props =>
-			props.active === 'woman' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
-		color: ${props => (props.active === 'woman' ? '#FF5F1F' : '')};
+			props.active === 'demo' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
+		color: ${props => (props.active === 'demo' ? '#FF5F1F' : '')};
 	}
 	article:nth-child(10) {
 		transition: 1s;
 		box-shadow: ${props =>
-			props.active === 'man' ? 'inset 0 0 15px 3px #FF5F1F' : 'inset 0 0 15px 3px #00dfc4'};
-		color: ${props => (props.active === 'man' ? '#FF5F1F' : '')};
+			props.active === 'concert'
+				? 'inset 0 0 15px 3px #FF5F1F'
+				: 'inset 0 0 15px 3px #00dfc4'};
+		color: ${props => (props.active === 'concert' ? '#FF5F1F' : '')};
 	}
 `;
 

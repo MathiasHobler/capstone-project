@@ -1,7 +1,7 @@
 import {
+	LightMode,
 	Nightlife,
 	Pets,
-	LightMode,
 	OutdoorGrill,
 	Restaurant,
 	SportsScore,
@@ -13,7 +13,19 @@ import {useEffect, useState} from 'react';
 
 import {useCreate} from '../../hooks/useForm';
 
-import {Container} from './Form.styled';
+import {Container, DialField, Iconframe, IconLabel} from './Form.styled';
+
+const Icons = [
+	{id: 1, name: 'Day', icon: LightMode, categorie: 'day'},
+	{id: 2, name: 'Pets', icon: Pets, categorie: 'pets'},
+	{id: 3, name: 'Night', icon: Nightlife, categorie: 'night'},
+	{id: 4, name: 'BBQ', icon: OutdoorGrill, categorie: 'bbq'},
+	{id: 5, name: 'Dinner', icon: Restaurant, categorie: 'dinner'},
+	{id: 6, name: 'Sport', icon: SportsScore, categorie: 'sport'},
+	{id: 7, name: 'Family', icon: FamilyRestroom, categorie: 'family'},
+	{id: 8, name: 'Protest', icon: Campaign, categorie: 'demo'},
+	{id: 9, name: 'Concert', icon: MusicNote, categorie: 'concert'},
+];
 
 const FormAddCategorie = () => {
 	const [active, setActive] = useState('');
@@ -27,207 +39,36 @@ const FormAddCategorie = () => {
 	}, [newEvent]);
 
 	return (
-		<Container active={categorieArray}>
-			<section>
-				<article>
-					<LightMode
-						fontSize={'large'}
-						onClick={() => {
-							setActive('day');
-							if (!newEvent.categories.includes('day')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'day'],
-								});
-							} else if (newEvent.categories.includes('day')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'day';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Day</p>
-				</article>
-				<article>
-					<Nightlife
-						fontSize={'large'}
-						onClick={() => {
-							setActive('night');
-							if (!newEvent.categories.includes('night')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'night'],
-								});
-							} else if (newEvent.categories.includes('night')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'night';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Night</p>
-				</article>
-				<article>
-					<Pets
-						fontSize={'large'}
-						onClick={() => {
-							setActive('pets');
-							if (!newEvent.categories.includes('pets')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'pets'],
-								});
-							} else if (newEvent.categories.includes('pets')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'pets';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Pets</p>
-				</article>
-				<article>
-					<OutdoorGrill
-						fontSize={'large'}
-						onClick={() => {
-							setActive('bbq');
-							if (!newEvent.categories.includes('bbq')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'bbq'],
-								});
-							} else if (newEvent.categories.includes('bbq')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'bbq';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>BBQ</p>
-				</article>
-				<article>
-					<Restaurant
-						fontSize={'large'}
-						onClick={() => {
-							setActive('dinner');
-							if (!newEvent.categories.includes('dinner')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'dinner'],
-								});
-							} else if (newEvent.categories.includes('dinner')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'dinner';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Dinner</p>
-				</article>
-				<article>
-					<SportsScore
-						fontSize={'large'}
-						onClick={() => {
-							setActive('sport');
-							if (!newEvent.categories.includes('sport')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'sport'],
-								});
-							} else if (newEvent.categories.includes('sport')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'sport';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Sport</p>
-				</article>
-				<article>
-					<FamilyRestroom
-						fontSize={'large'}
-						onClick={() => {
-							setActive('family');
-							if (!newEvent.categories.includes('family')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'family'],
-								});
-							} else if (newEvent.categories.includes('family')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'family';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Family</p>
-				</article>
-				<article>
-					<Campaign
-						fontSize={'large'}
-						onClick={() => {
-							setActive('demo');
-							if (!newEvent.categories.includes('demo')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'demo'],
-								});
-							} else if (newEvent.categories.includes('demo')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'demo';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Protest</p>
-				</article>
-				<article>
-					<MusicNote
-						fontSize={'large'}
-						onClick={() => {
-							setActive('concert');
-							if (!newEvent.categories.includes('concert')) {
-								setNewEvent({
-									...newEvent,
-									categories: [...newEvent.categories, 'concert'],
-								});
-							} else if (newEvent.categories.includes('concert')) {
-								setNewEvent({
-									...newEvent,
-									categories: newEvent.categories.filter(categorie => {
-										return categorie !== 'concert';
-									}),
-								});
-							}
-						}}
-					/>
-					<p>Concert</p>
-				</article>
-			</section>
+		<Container>
+			<DialField active={Icons[5].categorie}>
+				{Icons.map(icon => {
+					const isActive = newEvent.categories.includes(icon.categorie);
+					return (
+						<Iconframe
+							key={icon.id}
+							isActive={isActive}
+							onClick={() => {
+								if (isActive) {
+									setNewEvent({
+										...newEvent,
+										categories: newEvent.categories.filter(categorie => {
+											return categorie !== icon.categorie;
+										}),
+									});
+								} else {
+									setNewEvent({
+										...newEvent,
+										categories: [...newEvent.categories, icon.categorie],
+									});
+								}
+							}}
+						>
+							<icon.icon fontSize={'large'} />
+							<IconLabel>{icon.name}</IconLabel>
+						</Iconframe>
+					);
+				})}
+			</DialField>
 		</Container>
 	);
 };
