@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 
+import Background from '../components/Background/Background';
 import EventCard from '../components/EventCard/EventCard';
 import EventListContainer from '../components/EventCardList/EventCardList.styled';
 
@@ -59,6 +60,7 @@ export default function Bookmark({bookmark}) {
 
 	return (
 		<EventListContainer data-testid="list">
+			<Background />
 			{error && <div>An error occured: {error}</div>}
 			{data
 				.filter(event => {
