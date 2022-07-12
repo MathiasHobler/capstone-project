@@ -1,7 +1,6 @@
 import {Helmet} from 'react-helmet';
 
 import Form from '../components/Form/Form';
-import Layout from '../components/Layout';
 import NavBar from '../components/NavBar/NavBar';
 
 export default function Create() {

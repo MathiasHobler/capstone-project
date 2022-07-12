@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
-import styled from 'styled-components';
 
 import {useStep, useCreate} from '../../hooks/useForm';
+import Button from '../Button/index';
 
-import {FormContainer} from './Form.styled';
+import {BTNContainer, FormContainer, FormHeader, FormHint} from './Form.styled';
 import FormAddCategorie from './FormAddCategorie';
 import FormAddressEvent from './FormAddressEvent';
 import FormDescriptionEvent from './FormDescriptionEvent';
@@ -121,12 +121,14 @@ const Form = () => {
 					nextStep();
 				}}
 			>
-				<h3>{title}</h3>
-				{step === 3 && !state.valid && <p>Please Fill out all required * fields</p>}
+				<FormHeader>{title}</FormHeader>
+				{step === 3 && !state.valid && (
+					<FormHint>Please Fill out all required * fields</FormHint>
+				)}
 				<Step step={step} error={error} />
-				<article>
+				<BTNContainer>
 					{step > 1 && (
-						<button
+						<Button
 							type="button"
 							onClick={() => {
 								if (step > 1) {
@@ -135,11 +137,11 @@ const Form = () => {
 							}}
 						>
 							Step backward
-						</button>
+						</Button>
 					)}
 
 					{step < 4 && (
-						<button
+						<Button
 							type="button"
 							onClick={() => {
 								if (step < 4) {
@@ -148,43 +150,19 @@ const Form = () => {
 							}}
 						>
 							Step forward
-						</button>
+						</Button>
 					)}
-					{step === 4 && state.valid && <button type="submit">submit</button>}
+
+					{step === 4 && state.valid && <Button type="submit">submit</Button>}
 					{step === 5 && (
-						<button onClick={() => resetStep()} type="button">
+						<Button onClick={() => resetStep()} type="button">
 							Back
-						</button>
+						</Button>
 					)}
-				</article>
+				</BTNContainer>
 			</FormContainer>
 		</>
 	);
 };
 
 export default Form;
-
-const Bubble = styled.div`
-	position: absolute;
-	z-index: -10;
-	width: 100%;
-	height: 80%;
-	overflow: hidden;
-
-	div {
-		position: absolute;
-		width: 150px;
-		height: 150px;
-		border-radius: 50%;
-		&:first-child {
-			top: -80px;
-			left: -80px;
-			background: linear-gradient(#1845ad, #23a2f6);
-		}
-		&:last-child {
-			right: -30px;
-			bottom: -50px;
-			background: linear-gradient(to right, #ff512f, #f09819);
-		}
-	}
-`;

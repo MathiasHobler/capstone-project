@@ -9,7 +9,6 @@ import {
 	Campaign,
 	MusicNote,
 } from '@mui/icons-material';
-import {useEffect, useState} from 'react';
 
 import {useCreate} from '../../hooks/useForm';
 
@@ -28,15 +27,8 @@ const Icons = [
 ];
 
 const FormAddCategorie = () => {
-	const [active, setActive] = useState('');
 	const newEvent = useCreate(state => state.event);
 	const setNewEvent = useCreate(state => state.setNewEvent);
-
-	const categorieArray = [newEvent.categories];
-
-	useEffect(() => {
-		console.log(categorieArray);
-	}, [newEvent]);
 
 	return (
 		<Container>
@@ -45,6 +37,7 @@ const FormAddCategorie = () => {
 					const isActive = newEvent.categories.includes(icon.categorie);
 					return (
 						<Iconframe
+							type="button"
 							key={icon.id}
 							isActive={isActive}
 							onClick={() => {
