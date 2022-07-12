@@ -27,56 +27,7 @@ const ImageUpload = () => {
 			.catch(error => {
 				setImgurID('');
 			});
-
-		// fetch('/api/imgur', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// 	body: {test: 'test'},
-		// }).then(response => {
-		// 	if (!response.ok) {
-		// 		throw Error(response.statusText);
-		// 	} else {
-		// 		return response.json();
-		// 	}
-		// });
 	}
-
-	// const getImageURL = async () => {
-	// 	setImageURL({
-	// 		data: imageURL.data,
-	// 		success: false,
-	// 		error: false,
-	// 		loading: true,
-	// 	});
-	// 	await axios({
-	// 		method: 'post',
-	// 		url: '/api/imgur',
-	// 		data: imageRef.current.files[0],
-	// 	})
-	// 		.then(({data}) => {
-	// 			setImageURL({
-	// 				data: data.data.link,
-	// 				success: true,
-	// 				error: false,
-	// 				loading: false,
-	// 			});
-	// 			console.log(data.data);
-	// 			setNewEvent({...newEvent, eventPicture: data.data.link});
-	// 			alert('Image uploaded successfully');
-	// 		})
-	// 		.catch(err => {
-	// 			setImageURL({
-	// 				data: imageURL.data,
-	// 				success: false,
-	// 				error: true,
-	// 				loading: false,
-	// 			});
-	// 			alert('Image not uploaded, please try again');
-	// 		});
-	// };
-
 	const getImageURL = async () => {
 		getImgurId();
 		console.log(imgurID);
