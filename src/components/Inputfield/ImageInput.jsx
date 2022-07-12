@@ -8,6 +8,7 @@ import {ImageContainer} from './ImageInput.styled';
 const ImageUpload = () => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const newEvent = useCreate(state => state.event);
+	const [imgurID, setImgurID] = useState('');
 	const [imageURL, setImageURL] = useState({
 		data: null,
 		success: null,
@@ -17,7 +18,68 @@ const ImageUpload = () => {
 	const imageRef = React.useRef();
 	const [isActive, setIsActive] = useState(false);
 
+	function getImgurId() {
+		axios
+			.get('/api/imgur')
+			.then(({data}) => {
+				setImgurID(data.data);
+			})
+			.catch(error => {
+				setImgurID('');
+			});
+
+		// fetch('/api/imgur', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: {test: 'test'},
+		// }).then(response => {
+		// 	if (!response.ok) {
+		// 		throw Error(response.statusText);
+		// 	} else {
+		// 		return response.json();
+		// 	}
+		// });
+	}
+
+	// const getImageURL = async () => {
+	// 	setImageURL({
+	// 		data: imageURL.data,
+	// 		success: false,
+	// 		error: false,
+	// 		loading: true,
+	// 	});
+	// 	await axios({
+	// 		method: 'post',
+	// 		url: '/api/imgur',
+	// 		data: imageRef.current.files[0],
+	// 	})
+	// 		.then(({data}) => {
+	// 			setImageURL({
+	// 				data: data.data.link,
+	// 				success: true,
+	// 				error: false,
+	// 				loading: false,
+	// 			});
+	// 			console.log(data.data);
+	// 			setNewEvent({...newEvent, eventPicture: data.data.link});
+	// 			alert('Image uploaded successfully');
+	// 		})
+	// 		.catch(err => {
+	// 			setImageURL({
+	// 				data: imageURL.data,
+	// 				success: false,
+	// 				error: true,
+	// 				loading: false,
+	// 			});
+	// 			alert('Image not uploaded, please try again');
+	// 		});
+	// };
+
 	const getImageURL = async () => {
+		getImgurId();
+		console.log(imgurID);
 		setImageURL({
 			data: imageURL.data,
 			success: false,
@@ -28,7 +90,7 @@ const ImageUpload = () => {
 			method: 'post',
 			url: 'https://api.imgur.com/3/image',
 			headers: {
-				Authorization: `Client-ID ` + process.env.IMGUR_ClientID,
+				Authorization: `Client-ID ` + imgurID,
 			},
 			data: imageRef.current.files[0],
 		})
