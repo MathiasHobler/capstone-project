@@ -1,32 +1,34 @@
-import './styles.css';
 import {useState} from 'react';
 import styled, {css} from 'styled-components';
 
-export default function CheckboxSlide() {
-	const [isChecked, setIsChecked] = useState(false);
-	const handleCheck = () => setIsChecked(!isChecked);
+function CheckBoxSlide({value, setValue}) {
+	const [isChecked, setIsChecked] = useState(value);
+	const handleCheck = e => {
+		console.log(e.target.checked);
+		setIsChecked(!isChecked);
+		setValue(e.target.checked);
+	};
 	return (
-		<div className="App">
-			<h1>CSS Toggle Switch With Text</h1>
+		<>
 			<Toggle>
 				<Box type="checkbox" isChecked={isChecked} onChange={handleCheck} />
 				<Slider isChecked={isChecked}></Slider>
 				<Text isChecked={isChecked}>{isChecked ? 'Public' : 'Private'}</Text>
 			</Toggle>
-		</div>
+		</>
 	);
 }
 
 const Toggle = styled.label`
-	--width: 80px;
+	--width: 90px;
 	--height: calc(var(--width) / 3);
 
-	position: relative;
 	display: inline-block;
+	position: relative;
 	width: var(--width);
 	height: var(--height);
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 	border-radius: var(--height);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 	cursor: pointer;
 `;
 
@@ -40,11 +42,11 @@ const Slider = styled.span`
 	left: 0;
 	width: 100%;
 	height: 100%;
+	transition: all 0.8s ease-in-out;
+	border: 1px solid rgba(255, 255, 255, 0.25);
 	border-radius: var(--height);
-	background-color: #ccc;
-	transition: all 0.4s ease-in-out;
 	${props => css`
-		background: ${props.isChecked ? 'transparent' : 'rgba(	57, 255, 20,0.5)'};
+		background: ${props.isChecked ? 'rgba(	255, 255, 255,0.1)' : 'rgba(	255, 255, 255,0.1)'};
 	`};
 
 	&::before {
@@ -59,25 +61,24 @@ const Slider = styled.span`
 		`};
 		width: calc(var(--height));
 		height: calc(var(--height));
-		border-radius: calc(var(--height) / 2);
-		background-color: #fff;
-		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 		transition: all 0.4s ease-in-out;
+		border-radius: calc(var(--height) / 2);
+		background-color: rgba(255, 255, 255, 0.25);
 	}
 `;
 const Text = styled.span`
-    
-    position: absolute;
-    top:2.5px;
-    ${props => css`
+	position: absolute;
+	top: 5px;
+	transition: all 0.4s ease-in-out;
+	opacity: 1;
+	color: #00dfc4;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	${props => css`
 		left: ${props.isChecked ? '' : '5px'};
 	`};
-    ${props => css`
+	${props => css`
 		right: ${props.isChecked ? '5px' : ''};
 	`};
-    color: #4d4d4d;
-    opacity: 1;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    transition: all 0.4s ease-in-out;
-  }
 `;
+
+export default CheckBoxSlide;

@@ -1,4 +1,5 @@
 import {useCreate} from '../../hooks/useForm';
+import CheckBoxSlide from '../Checkbox_Slider/CheckBoxSlide';
 import {Inputfield} from '../Inputfield/Inputfield';
 
 import {Container} from './Form.styled';
@@ -14,9 +15,7 @@ const FormDetailsEvent = () => {
 				value={newEvent.title}
 				setValue={input => setNewEvent({...newEvent, title: input})}
 			/>
-			<Inputfield
-				label={'private'}
-				type={'checkbox'}
+			<CheckBoxSlide
 				value={newEvent.private}
 				setValue={input => setNewEvent({...newEvent, private: input})}
 			/>

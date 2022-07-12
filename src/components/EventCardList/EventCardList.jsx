@@ -85,14 +85,8 @@ const EventCardList = ({eventList}) => {
 	return (
 		<EventListContainer data-testid="list">
 			{error && <div>An error occured: {error}</div>}
-
 			{data
-				.filter(event => {
-					if (event.categories.includes(active)) {
-						return event;
-					}
-					return alert('Error');
-				})
+				.filter(event => event.categories.includes(active))
 				.map(singleEvent => {
 					return (
 						<EventCard
