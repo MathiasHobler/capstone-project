@@ -5,10 +5,9 @@ import {useCreate} from '../../hooks/useForm';
 
 import {ImageContainer} from './ImageInput.styled';
 
-const ImageUpload = () => {
+const ImageUpload = ({imgurID}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const newEvent = useCreate(state => state.event);
-	const [imgurID, setImgurID] = useState('');
 	const [imageURL, setImageURL] = useState({
 		data: null,
 		success: null,
@@ -18,18 +17,7 @@ const ImageUpload = () => {
 	const imageRef = React.useRef();
 	const [isActive, setIsActive] = useState(false);
 
-	async function getImgurId() {
-		await axios
-			.get('/api/imgur')
-			.then(({data}) => {
-				setImgurID(data.data);
-			})
-			.catch(error => {
-				setImgurID('');
-			});
-	}
 	const getImageURL = async () => {
-		await getImgurId();
 		setImageURL({
 			data: imageURL.data,
 			success: false,
