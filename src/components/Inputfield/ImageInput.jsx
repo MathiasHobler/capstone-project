@@ -30,7 +30,6 @@ const ImageUpload = () => {
 	}
 	const getImageURL = async () => {
 		getImgurId();
-		console.log(imgurID);
 		setImageURL({
 			data: imageURL.data,
 			success: false,
