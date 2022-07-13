@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import {useStep, useCreate} from '../../hooks/useForm';
+import Button from '../Button/index';
 
 import {FormContainer} from './Form.styled';
 import FormAddressEvent from './FormAddressEvent';
@@ -132,7 +133,7 @@ const Form = () => {
 				{render()}
 				<article>
 					{step > 1 && (
-						<button
+						<Button
 							type="button"
 							onClick={() => {
 								if (step > 1) {
@@ -141,11 +142,11 @@ const Form = () => {
 							}}
 						>
 							Step backward
-						</button>
+						</Button>
 					)}
 
 					{step < 3 && (
-						<button
+						<Button
 							type="button"
 							onClick={() => {
 								if (step < 3) {
@@ -154,13 +155,13 @@ const Form = () => {
 							}}
 						>
 							Step forward
-						</button>
+						</Button>
 					)}
-					{step === 3 && state.valid && <button type="submit">submit</button>}
+					{step === 3 && state.valid && <Button type="submit">submit</Button>}
 					{step === 4 && (
-						<button onClick={() => resetStep()} type="button">
+						<Button onClick={() => resetStep()} type="button">
 							Back
-						</button>
+						</Button>
 					)}
 				</article>
 			</FormContainer>

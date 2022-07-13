@@ -1,5 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
+import Background from './components/Background/Background';
 import NavBar from './components/NavBar/NavBar';
 import Home from './pages';
 import Bookmark from './pages/bookmark';
@@ -10,6 +11,7 @@ export default function App() {
 	return (
 		<>
 			<GlobalStyle />
+			<Background />
 			<BrowserRouter>
 				<Routes>
 					<Route path="/">
