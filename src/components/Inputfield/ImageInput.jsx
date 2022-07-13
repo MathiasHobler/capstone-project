@@ -5,7 +5,7 @@ import {useCreate} from '../../hooks/useForm';
 
 import {ImageContainer} from './ImageInput.styled';
 
-const ImageUpload = ({imgurID}) => {
+const ImageUpload = () => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const newEvent = useCreate(state => state.event);
 	const [imageURL, setImageURL] = useState({
@@ -24,33 +24,32 @@ const ImageUpload = ({imgurID}) => {
 			error: false,
 			loading: true,
 		});
-		await axios({
-			method: 'post',
-			url: 'https://api.imgur.com/3/image',
-			headers: {
-				Authorization: `Client-ID ` + imgurID,
-			},
-			data: imageRef.current.files[0],
-		})
-			.then(({data}) => {
-				setImageURL({
-					data: data.data.link,
-					success: true,
-					error: false,
-					loading: false,
-				});
-				setNewEvent({...newEvent, eventPicture: data.data.link});
-				alert('Image uploaded successfully');
-			})
-			.catch(err => {
-				setImageURL({
-					data: imageURL.data,
-					success: false,
-					error: true,
-					loading: false,
-				});
-				alert('Image not uploaded, please try again');
+
+		const formData = new FormData();
+		formData.append('file', imageRef.current.files[0]);
+		try {
+			const {data} = await axios.post('/api/imgur/upload', formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
 			});
+			setImageURL({
+				data: data.url,
+				success: true,
+				error: false,
+				loading: false,
+			});
+			setNewEvent({...newEvent, eventPicture: data.url});
+			console.log(data.url);
+		} catch (error) {
+			setImageURL({
+				data: imageURL.url,
+				success: false,
+				error: true,
+				loading: false,
+			});
+			console.error(error);
+		}
 	};
 
 	return (
@@ -65,6 +64,7 @@ const ImageUpload = ({imgurID}) => {
 				<input
 					type="file"
 					ref={imageRef}
+					name="file"
 					id="image"
 					onClick={() => {
 						setIsActive(true);
