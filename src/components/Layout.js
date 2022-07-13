@@ -1,4 +1,3 @@
-import Background from './Background/Background';
 import Footer from './Footer';
 import Header from './Header';
 

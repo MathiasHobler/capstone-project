@@ -1,6 +1,5 @@
 import {Helmet} from 'react-helmet';
 
-import Background from '../components/Background/Background';
 import Form from '../components/Form/Form';
 import Layout from '../components/Layout';
 
