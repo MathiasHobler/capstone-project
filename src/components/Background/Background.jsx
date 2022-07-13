@@ -185,9 +185,7 @@ export default function Background() {
 
 const Wallpaper = styled.section`
 	width: 100vw;
-	height: 100vh;
-	background-color: #4158d0;
-	background-image: linear-gradient(90deg, hotpink 0%, aqua 50%, hotpink 100%);
+	height: 0;
 `;
 
 const flyingBubble = keyframes`
@@ -210,7 +208,7 @@ const flyingBubble = keyframes`
 
 const Element = styled.li`
 	display: block;
-	position: absolute;
+	position: fixed;
 	bottom: -150px;
 	left: ${props => props.element.left};
 	width: ${props => props.element.width};
