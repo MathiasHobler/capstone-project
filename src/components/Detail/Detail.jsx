@@ -1,4 +1,4 @@
-import {Bookmark, Close, Delete} from '@mui/icons-material';
+import {BookmarkAdd, BookmarkRemove, Edit, Close, Delete} from '@mui/icons-material';
 import {useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 
@@ -10,40 +10,45 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
+	const date = new Date(event.date);
 
 	useEffect(() => {
 		setAction('update');
 		setTitle('Update Event');
-		setNewEvent(event);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [setAction, setTitle]);
 
 	return (
-		<DetailPOP className="background">
+		<DetailPOP>
 			<article>
 				<button onClick={back}>
 					<Close />
 				</button>
-				<button className="deleteBTN" onClick={() => deleteEvent(event._id)}>
-					<Delete />
-				</button>
 				<button
-					className="bookmarkBTN"
 					onClick={() => {
 						bookmark({...event, bookmark: !event.bookmark}, event._id);
 					}}
 				>
-					<Bookmark />
+					{!event.bookmark && <BookmarkAdd />}
+					{event.bookmark && <BookmarkRemove />}
+				</button>
+				<button onClick={() => deleteEvent(event._id)}>
+					<Delete />
 				</button>
 
-				<NavLink to="/create" className="bookmarkEdit">
-					Edit Event
+				<NavLink to="/create" onClick={() => setNewEvent(event)}>
+					<Edit />
 				</NavLink>
 
 				<section>
+					<img src={event.eventPicture} alt="EventPicture"></img>
 					<h2>{event.title}</h2>
-					<p>{event.date}</p>
+					<p>{date.toDateString()}</p>
+					<p>{event.time}</p>
+					<h3>About</h3>
 					<p>{event.description}</p>
+					<h3>Location</h3>
+					<p>{event.address}</p>
+					<p>{`${event.zip} ${event.city}`}</p>
 					<iframe
 						title="event.id"
 						src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
