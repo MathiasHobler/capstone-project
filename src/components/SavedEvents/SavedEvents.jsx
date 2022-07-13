@@ -58,7 +58,7 @@ const SavedEvents = () => {
 	}
 	return (
 		<EventListContainer data-testid="list">
-			<h1>Participate</h1>
+			<h1>Saved</h1>
 			{error && <div>An error occured: {error}</div>}
 			{data
 				.filter(event => {

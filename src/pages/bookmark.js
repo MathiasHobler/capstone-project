@@ -8,7 +8,7 @@ export default function Bookmark({bookmark}) {
 	const [tab, setTab] = useState(false);
 	return (
 		<>
-			<Tabbar tab={tab => setTab(!tab)} />
+			<Tabbar tab={() => setTab(!tab)} />
 			{tab && <SavedEvents />}
 			{!tab && <ParticipateEvent />}
 		</>
