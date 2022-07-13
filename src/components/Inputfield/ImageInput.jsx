@@ -40,7 +40,6 @@ const ImageUpload = () => {
 				loading: false,
 			});
 			setNewEvent({...newEvent, eventPicture: data.url});
-			console.log(data.url);
 		} catch (error) {
 			setImageURL({
 				data: imageURL.url,
