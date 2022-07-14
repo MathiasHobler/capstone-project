@@ -76,7 +76,6 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 										...user,
 										participates: [...user.participates, event._id],
 									});
-									console.log('nehme teil');
 								} else {
 									bookmark(
 										{
@@ -93,7 +92,6 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 											join => join !== event._id
 										),
 									});
-									console.log('nehme nicht teil');
 								}
 							} else {
 								setUser({
