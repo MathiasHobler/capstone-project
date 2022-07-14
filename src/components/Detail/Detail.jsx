@@ -7,7 +7,7 @@ import {useStep, useCreate} from '../../hooks/useForm';
 import {useUser} from '../../hooks/useUser';
 import Button from '../Button/index';
 
-import DetailPOP from './Detail.styled';
+import {DetailPOP, DetailContainer, ToolBTN, InfoContainer} from './Detail.styled';
 
 const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
@@ -24,27 +24,27 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 
 	return (
 		<DetailPOP>
-			<article>
-				<button onClick={back}>
+			<DetailContainer>
+				<ToolBTN onClick={back}>
 					<Close />
-				</button>
-				<button
+				</ToolBTN>
+				<ToolBTN
 					onClick={() => {
 						bookmark({...event, bookmark: !event.bookmark}, event._id);
 					}}
 				>
 					{!event.bookmark && <BookmarkAdd />}
 					{event.bookmark && <BookmarkRemove />}
-				</button>
-				<button onClick={() => deleteEvent(event._id)}>
+				</ToolBTN>
+				<ToolBTN onClick={() => deleteEvent(event._id)}>
 					<Delete />
-				</button>
+				</ToolBTN>
 
 				<NavLink to="/create" onClick={() => setNewEvent(event)}>
 					<Edit />
 				</NavLink>
 
-				<section>
+				<InfoContainer>
 					<img src={event.eventPicture} alt="EventPicture"></img>
 					<h2>{event.title}</h2>
 					<p>{date.toDateString()}</p>
@@ -61,9 +61,17 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 						height="200"
 					/>
 					<Button
+						type="button"
 						onClick={() => {
 							if (user.id) {
 								if (!user.participates.includes(event._id)) {
+									bookmark(
+										{
+											...event,
+											participants: [event.participants, user.id],
+										},
+										event._id
+									);
 									setUser({
 										...user,
 										participates: [...user.participates, event._id],
@@ -77,11 +85,12 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 								});
 							}
 						}}
-					/>
-				</section>
-			</article>
+					>
+						Participate
+					</Button>
+				</InfoContainer>
+			</DetailContainer>
 		</DetailPOP>
 	);
 };
-
 export default Detail;
