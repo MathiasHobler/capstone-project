@@ -1,3 +1,5 @@
+import {useEffect} from 'react';
+
 import {useEvents} from '../../hooks/useEvents';
 import {useUser} from '../../hooks/useUser';
 import EventCard from '../EventCard/EventCard';
@@ -6,6 +8,12 @@ import EventListContainer from '../EventCardList/EventCardList.styled';
 const ParticipateEvent = () => {
 	const {events} = useEvents(state => state.events);
 	const user = useUser(state => state.user);
+	const getData = useEvents(state => state.getData);
+
+	useEffect(() => {
+		getData();
+	}, [getData]);
+
 	return (
 		<EventListContainer data-testid="list">
 			{events

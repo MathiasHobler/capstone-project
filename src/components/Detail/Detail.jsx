@@ -1,6 +1,5 @@
 import {BookmarkAdd, BookmarkRemove, Edit, Close, Delete} from '@mui/icons-material';
 import {nanoid} from 'nanoid';
-import {useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 
 import {useEvents} from '../../hooks/useEvents';
@@ -15,14 +14,48 @@ const Detail = ({event, back, bookmark}) => {
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
 	const user = useUser(state => state.user);
+	const {loading} = useEvents(state => state.events);
 	const setUser = useUser(state => state.setUser);
 	const deleteEvent = useEvents(state => state.deleteEvent);
 	const date = new Date(event.date);
 
-	useEffect(() => {
-		setAction('update');
-		setTitle('Update Event');
-	}, [setAction, setTitle]);
+	function participates() {
+		if (user.id) {
+			if (!user.participates.includes(event._id)) {
+				bookmark(
+					{
+						...event,
+						participants: [event.participants, user.id],
+					},
+					event._id
+				);
+				setUser({
+					...user,
+					participates: [...user.participates, event._id],
+				});
+			} else {
+				bookmark(
+					{
+						...event,
+						participants: event.participants.filter(
+							participant => participant !== user.id
+						),
+					},
+					event._id
+				);
+				setUser({
+					...user,
+					participates: user.participates.filter(join => join !== event._id),
+				});
+			}
+		} else {
+			setUser({
+				...user,
+				participates: [...user.participates, event._id],
+				id: nanoid(),
+			});
+		}
+	}
 
 	return (
 		<DetailPOP>
@@ -38,11 +71,18 @@ const Detail = ({event, back, bookmark}) => {
 					{!event.bookmark && <BookmarkAdd />}
 					{event.bookmark && <BookmarkRemove />}
 				</ToolBTN>
-				<ToolBTN onClick={() => deleteEvent(event._id)}>
+				<ToolBTN onClick={() => deleteEvent(event._id)} disabled={loading}>
 					<Delete />
 				</ToolBTN>
 
-				<NavLink to="/create" onClick={() => setNewEvent(event)}>
+				<NavLink
+					to="/create"
+					onClick={() => {
+						setAction('update');
+						setTitle('Update Event');
+						setNewEvent(event);
+					}}
+				>
 					<Edit />
 				</NavLink>
 
@@ -65,43 +105,7 @@ const Detail = ({event, back, bookmark}) => {
 					<Button
 						type="button"
 						onClick={() => {
-							if (user.id) {
-								if (!user.participates.includes(event._id)) {
-									bookmark(
-										{
-											...event,
-											participants: [event.participants, user.id],
-										},
-										event._id
-									);
-									setUser({
-										...user,
-										participates: [...user.participates, event._id],
-									});
-								} else {
-									bookmark(
-										{
-											...event,
-											participants: event.participants.filter(
-												participant => participant !== user.id
-											),
-										},
-										event._id
-									);
-									setUser({
-										...user,
-										participates: user.participates.filter(
-											join => join !== event._id
-										),
-									});
-								}
-							} else {
-								setUser({
-									...user,
-									participates: [...user.participates, event._id],
-									id: nanoid(),
-								});
-							}
+							participates();
 						}}
 					>
 						{user.participates.includes(event._id) ? 'not Going' : 'Participate'}

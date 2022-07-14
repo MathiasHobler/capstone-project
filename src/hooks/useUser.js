@@ -6,12 +6,13 @@ export const useUser = create(
 		set => ({
 			user: {
 				id: '',
-				username: '',
+				username: 'localUser',
 				email: '',
 				password: '',
 				profilePicture: '',
 				friends: [],
 				participates: [],
+				bookmarked: [],
 				about: '',
 				city: '',
 				from: '',

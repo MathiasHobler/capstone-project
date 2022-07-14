@@ -9,11 +9,11 @@ const SavedEvents = () => {
 	const {events} = useEvents(state => state.events);
 	const [{data, error}, setData] = useState({data: [], error: null});
 
-	const [render, newRender] = useState('');
+	// const [render, newRender] = useState('');
 
 	useEffect(() => {
 		getData();
-	}, [render]);
+	}, [getData]);
 
 	function bookmarkEvent(data, id) {
 		fetch(`/api/events/${id}`, {
@@ -31,7 +31,7 @@ const SavedEvents = () => {
 				}
 			})
 			.then(data => {
-				newRender(data);
+				// newRender(data);
 			})
 			.catch(error => {
 				setData({
@@ -40,9 +40,9 @@ const SavedEvents = () => {
 				});
 			});
 	}
+
 	return (
 		<EventListContainer data-testid="list">
-			<h1>Saved</h1>
 			{error && <div>An error occured: {error}</div>}
 			{events
 				.filter(event => {
