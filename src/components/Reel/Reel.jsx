@@ -10,110 +10,50 @@ import {
 	Campaign,
 	MusicNote,
 } from '@mui/icons-material';
+import {useState} from 'react';
 
 import useStore from '../../hooks/useStore';
 
-import ReelBody from './Reel.styled';
+import {ReelBody, IconFrame, IconLabel} from './Reel.styled';
+
+const iconray = [
+	{id: 0, name: 'All', icon: AllInclusive, categorie: 'all'},
+	{id: 1, name: 'Day', icon: LightMode, categorie: 'day'},
+	{id: 2, name: 'Pets', icon: Pets, categorie: 'pets'},
+	{id: 3, name: 'Night', icon: Nightlife, categorie: 'night'},
+	{id: 4, name: 'BBQ', icon: OutdoorGrill, categorie: 'bbq'},
+	{id: 5, name: 'Dinner', icon: Restaurant, categorie: 'dinner'},
+	{id: 6, name: 'Sport', icon: SportsScore, categorie: 'sport'},
+	{id: 7, name: 'Family', icon: FamilyRestroom, categorie: 'family'},
+	{id: 8, name: 'Protest', icon: Campaign, categorie: 'demo'},
+	{id: 9, name: 'Concert', icon: MusicNote, categorie: 'concert'},
+];
 
 function Reel() {
 	const active = useStore(state => state.active);
 	const setActive = useStore(state => state.setActive);
 
 	return (
-		<>
-			<ReelBody active={active}>
-				<article>
-					<AllInclusive
+		<ReelBody>
+			{iconray.map(icon => {
+				const zustand = icon.categorie;
+				return (
+					<IconFrame
+						type="button"
+						isActive={active}
+						zustand={zustand}
+						key={icon.id}
 						fontSize={'large'}
 						onClick={() => {
-							setActive('all');
+							setActive(icon.categorie);
 						}}
-					/>
-					<p>All</p>
-				</article>
-				<article>
-					<LightMode
-						fontSize={'large'}
-						onClick={() => {
-							setActive('day');
-						}}
-					/>
-					<p>Day</p>
-				</article>
-				<article>
-					<Nightlife
-						fontSize={'large'}
-						onClick={() => {
-							setActive('night');
-						}}
-					/>
-					<p>Night</p>
-				</article>
-				<article>
-					<Pets
-						fontSize={'large'}
-						onClick={() => {
-							setActive('pets');
-						}}
-					/>
-					<p>Pets</p>
-				</article>
-				<article>
-					<OutdoorGrill
-						fontSize={'large'}
-						onClick={() => {
-							setActive('bbq');
-						}}
-					/>
-					<p>BBQ</p>
-				</article>
-				<article>
-					<Restaurant
-						fontSize={'large'}
-						onClick={() => {
-							setActive('dinner');
-						}}
-					/>
-					<p>Dinner</p>
-				</article>
-				<article>
-					<SportsScore
-						fontSize={'large'}
-						onClick={() => {
-							setActive('sport');
-						}}
-					/>
-					<p>Sport</p>
-				</article>
-				<article>
-					<FamilyRestroom
-						fontSize={'large'}
-						onClick={() => {
-							setActive('family');
-						}}
-					/>
-					<p>Family</p>
-				</article>
-				<article>
-					<Campaign
-						fontSize={'large'}
-						onClick={() => {
-							setActive('demo');
-						}}
-					/>
-					<p>Protest</p>
-				</article>
-				<article>
-					<MusicNote
-						fontSize={'large'}
-						onClick={() => {
-							setActive('concert');
-						}}
-					/>
-					<p>Concert</p>
-				</article>
-			</ReelBody>
-		</>
+					>
+						<icon.icon />
+						<IconLabel>{icon.name}</IconLabel>
+					</IconFrame>
+				);
+			})}
+		</ReelBody>
 	);
 }
 
