@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 
 import {useEvents} from '../../hooks/useEvents';
 import EventCard from '../EventCard/EventCard';
@@ -6,64 +6,12 @@ import EventCard from '../EventCard/EventCard';
 import EventListContainer from './EventCardList.styled';
 
 const EventCardList = ({eventList}) => {
-	const [{data}, setData] = useState({data: [], error: null});
-	// const setEvents = useEvents(state => state.setEvents);
 	const getData = useEvents(state => state.getData);
 	const {events, error} = useEvents(state => state.events);
-
-	const [render, newRender] = useState('');
 
 	useEffect(() => {
 		getData();
 	}, [getData]);
-
-	// function deleteEvent(id) {
-	// 	fetch(`/api/events/${id}`, {
-	// 		method: 'DELETE',
-	// 	})
-	// 		.then(response => {
-	// 			if (!response.ok) {
-	// 				throw Error(response.statusText);
-	// 			} else {
-	// 				return response.json();
-	// 			}
-	// 		})
-	// 		.then(data => {
-	// 			newRender(data);
-	// 		})
-	// 		.catch(error => {
-	// 			setData({
-	// 				data: '',
-	// 				error: error.message,
-	// 			});
-	// 		});
-	// }
-
-	function bookmarkEvent(data, id) {
-		fetch(`/api/events/${id}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
-			.then(response => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				} else {
-					return response.json();
-				}
-			})
-			.then(data => {
-				newRender(data);
-			})
-			.catch(error => {
-				setData({
-					data: '',
-					error: error.message,
-				});
-			});
-	}
 
 	return (
 		<EventListContainer data-testid="list">
@@ -74,8 +22,6 @@ const EventCardList = ({eventList}) => {
 						data-testid="listItem"
 						key={singleEvent._id}
 						event={singleEvent}
-						// deleteEvent={deleteEvent}
-						bookmark={bookmarkEvent}
 					></EventCard>
 				);
 			})}

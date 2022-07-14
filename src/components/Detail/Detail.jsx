@@ -16,13 +16,14 @@ const Detail = ({event, back, bookmark}) => {
 	const user = useUser(state => state.user);
 	const {loading} = useEvents(state => state.events);
 	const setUser = useUser(state => state.setUser);
+	const updateEvent = useEvents(state => state.updateEvent);
 	const deleteEvent = useEvents(state => state.deleteEvent);
 	const date = new Date(event.date);
 
 	function participates() {
 		if (user.id) {
 			if (!user.participates.includes(event._id)) {
-				bookmark(
+				updateEvent(
 					{
 						...event,
 						participants: [event.participants, user.id],
@@ -34,7 +35,7 @@ const Detail = ({event, back, bookmark}) => {
 					participates: [...user.participates, event._id],
 				});
 			} else {
-				bookmark(
+				updateEvent(
 					{
 						...event,
 						participants: event.participants.filter(
@@ -65,11 +66,31 @@ const Detail = ({event, back, bookmark}) => {
 				</ToolBTN>
 				<ToolBTN
 					onClick={() => {
-						bookmark({...event, bookmark: !event.bookmark}, event._id);
+						if (user.id) {
+							if (!user.bookmarked.includes(event._id)) {
+								setUser({
+									...user,
+									bookmarked: [...user.bookmarked, event._id],
+								});
+							} else {
+								setUser({
+									...user,
+									bookmarked: user.bookmarked.filter(
+										bookmark => bookmark !== event._id
+									),
+								});
+							}
+						} else {
+							setUser({
+								...user,
+								bookmarked: [...user.bookmarked, event._id],
+								id: nanoid(),
+							});
+						}
 					}}
 				>
-					{!event.bookmark && <BookmarkAdd />}
-					{event.bookmark && <BookmarkRemove />}
+					{!user.bookmarked.includes(event._id) && <BookmarkAdd />}
+					{user.bookmarked.includes(event._id) && <BookmarkRemove />}
 				</ToolBTN>
 				<ToolBTN onClick={() => deleteEvent(event._id)} disabled={loading}>
 					<Delete />

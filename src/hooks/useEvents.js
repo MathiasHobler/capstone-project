@@ -1,92 +1,117 @@
 import create from 'zustand';
-// import {persist} from 'zustand/middleware';
 
-export const useEvents = create(
-	//persist raus!!!!
-	// persist(
-	set => ({
-		events: {
-			events: [],
-			loading: null,
-			error: null,
-		},
-		getData() {
-			set(state => ({
-				events: {
-					events: state.events.events,
-					loading: true,
-					error: null,
-				},
-			}));
-			fetch('/api/events')
-				.then(response => {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					} else {
-						return response.json();
-					}
-				})
-				.then(data => {
-					set(() => ({
-						events: {
-							events: data.data,
-							loading: false,
-							error: null,
-						},
-					}));
-				})
-				.catch(error => {
-					set(state => ({
-						events: {
-							events: state.events.events,
-							loading: false,
-							error: error.message,
-						},
-					}));
-				});
-		},
-		deleteEvent(id) {
-			set(state => ({
-				events: {
-					events: state.events.events,
-					loading: true,
-					error: null,
-				},
-			}));
-			fetch(`/api/events/${id}`, {
-				method: 'DELETE',
+export const useEvents = create(set => ({
+	events: {
+		events: [],
+		loading: null,
+		error: null,
+	},
+	getData() {
+		set(state => ({
+			events: {
+				events: state.events.events,
+				loading: true,
+				error: null,
+			},
+		}));
+		fetch('/api/events')
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
 			})
-				.then(response => {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					} else {
-						return response.json();
-					}
-				})
-				.then(data => {
-					set(() => ({
-						events: {
-							events: data.data,
-							loading: false,
-							error: null,
-						},
-					}));
-				})
-				.catch(error => {
-					set(state => ({
-						events: {
-							events: state.events.events,
-							loading: false,
-							error: error.message,
-						},
-					}));
-				});
-		},
-		setEvents: input => set(() => ({events: input})),
-	})
-	// 	{
-	// 		name: 'events',
-	// 		getStorage: () => sessionStorage,
-	// 	}
-	// )
-);
+			.then(data => {
+				set(() => ({
+					events: {
+						events: data.data,
+						loading: false,
+						error: null,
+					},
+				}));
+			})
+			.catch(error => {
+				set(state => ({
+					events: {
+						events: state.events.events,
+						loading: false,
+						error: error.message,
+					},
+				}));
+			});
+	},
+	deleteEvent(id) {
+		set(state => ({
+			events: {
+				events: state.events.events,
+				loading: true,
+				error: null,
+			},
+		}));
+		fetch(`/api/events/${id}`, {
+			method: 'DELETE',
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				set(() => ({
+					events: {
+						events: data.data,
+						loading: false,
+						error: null,
+					},
+				}));
+			})
+			.catch(error => {
+				set(state => ({
+					events: {
+						events: state.events.events,
+						loading: false,
+						error: error.message,
+					},
+				}));
+			});
+	},
+	updateEvent(object, id) {
+		fetch(`/api/events/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(object),
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				set(() => ({
+					events: {
+						events: data.data,
+						loading: false,
+						error: null,
+					},
+				}));
+			})
+			.catch(error => {
+				set(state => ({
+					events: {
+						events: state.events.events,
+						loading: false,
+						error: error.message,
+					},
+				}));
+			});
+	},
+
+	setEvents: input => set(() => ({events: input})),
+}));
