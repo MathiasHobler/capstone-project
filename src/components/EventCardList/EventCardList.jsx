@@ -1,11 +1,13 @@
 import {useState, useEffect} from 'react';
 
+import {useEvents} from '../../hooks/useEvents';
 import EventCard from '../EventCard/EventCard';
 
 import EventListContainer from './EventCardList.styled';
 
 const EventCardList = ({eventList}) => {
 	const [{data, error}, setData] = useState({data: [], error: null});
+	const setEvents = useEvents(state => state.setEvents);
 
 	const [render, newRender] = useState('');
 
@@ -23,6 +25,7 @@ const EventCardList = ({eventList}) => {
 					data: data.data,
 					error: null,
 				});
+				setEvents(data.data);
 			})
 			.catch(error => {
 				setData({

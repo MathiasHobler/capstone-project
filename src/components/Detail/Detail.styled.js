@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DetailPOP = styled.div`
+const DetailPOP = styled.section`
 	display: flex;
 	position: fixed;
 	z-index: 10;

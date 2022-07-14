@@ -1,8 +1,11 @@
 import {BookmarkAdd, BookmarkRemove, Edit, Close, Delete} from '@mui/icons-material';
+import {nanoid} from 'nanoid';
 import {useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 
 import {useStep, useCreate} from '../../hooks/useForm';
+import {useUser} from '../../hooks/useUser';
+import Button from '../Button/index';
 
 import DetailPOP from './Detail.styled';
 
@@ -10,6 +13,8 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
+	const user = useUser(state => state.user);
+	const setUser = useUser(state => state.setUser);
 	const date = new Date(event.date);
 
 	useEffect(() => {
@@ -54,6 +59,24 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 						src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
 						width="100%"
 						height="200"
+					/>
+					<Button
+						onClick={() => {
+							if (user.id) {
+								if (!user.participates.includes(event._id)) {
+									setUser({
+										...user,
+										participates: [...user.participates, event._id],
+									});
+								}
+							} else {
+								setUser({
+									...user,
+									participates: [...user.participates, event._id],
+									id: nanoid(),
+								});
+							}
+						}}
 					/>
 				</section>
 			</article>
