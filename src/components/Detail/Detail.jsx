@@ -10,12 +10,14 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
+
 	const date = new Date(event.date);
 
 	useEffect(() => {
 		setAction('update');
 		setTitle('Update Event');
 	}, [setAction, setTitle]);
+
 
 	return (
 		<DetailPOP>
