@@ -9,7 +9,8 @@ export const useEvents = create(
 				loading: null,
 				error: null,
 			},
-			fetchData() {
+			//////fetch data
+			getData() {
 				set(state => ({
 					events: {
 						events: state.events.events,
@@ -44,6 +45,45 @@ export const useEvents = create(
 						}));
 					});
 			},
+			///deleteEvent
+			deleteEvent(id) {
+				set(state => ({
+					events: {
+						events: state.events.events,
+						loading: true,
+						error: null,
+					},
+				}));
+				fetch(`/api/events/${id}`, {
+					method: 'DELETE',
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						} else {
+							return response.json();
+						}
+					})
+					.then(data => {
+						set(() => ({
+							events: {
+								events: data.data,
+								loading: false,
+								error: null,
+							},
+						}));
+					})
+					.catch(error => {
+						set(state => ({
+							events: {
+								events: state.events.events,
+								loading: false,
+								error: error.message,
+							},
+						}));
+					});
+			},
+			////////deleteEvent
 			setEvents: input => set(() => ({events: input})),
 		}),
 		{

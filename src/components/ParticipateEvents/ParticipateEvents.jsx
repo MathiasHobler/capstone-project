@@ -4,7 +4,7 @@ import EventCard from '../EventCard/EventCard';
 import EventListContainer from '../EventCardList/EventCardList.styled';
 
 const ParticipateEvent = () => {
-	const events = useEvents(state => state.events);
+	const {events} = useEvents(state => state.events);
 	const user = useUser(state => state.user);
 	return (
 		<EventListContainer data-testid="list">

@@ -20,7 +20,8 @@ export default async function handler(request, response) {
 				if (!deletedEvent) {
 					return response.status(400).json({success: false});
 				}
-				response.status(200).json({success: true});
+				const events = await Event.find({});
+				response.status(200).json({success: true, data: events});
 			} catch (error) {
 				response.status(400).json({success: false});
 			}

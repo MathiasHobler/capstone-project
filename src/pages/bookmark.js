@@ -5,12 +5,12 @@ import SavedEvents from '../components/SavedEvents/SavedEvents';
 import Tabbar from '../components/Tabbar/Tabbar';
 
 export default function Bookmark() {
-	const [tab, setTab] = useState(false);
+	const [tab, setTab] = useState('');
 	return (
 		<>
-			<Tabbar tab={() => setTab(!tab)} />
-			{tab && <SavedEvents />}
-			{!tab && <ParticipateEvent />}
+			<Tabbar tab={input => setTab(input)} />
+			{tab === 'saved' && <SavedEvents />}
+			{tab === 'going' && <ParticipateEvent />}
 		</>
 	);
 }

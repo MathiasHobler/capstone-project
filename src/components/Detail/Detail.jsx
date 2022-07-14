@@ -3,18 +3,20 @@ import {nanoid} from 'nanoid';
 import {useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 
+import {useEvents} from '../../hooks/useEvents';
 import {useStep, useCreate} from '../../hooks/useForm';
 import {useUser} from '../../hooks/useUser';
 import Button from '../Button/index';
 
 import {DetailPOP, DetailContainer, ToolBTN, InfoContainer} from './Detail.styled';
 
-const Detail = ({event, back, deleteEvent, bookmark}) => {
+const Detail = ({event, back, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
 	const user = useUser(state => state.user);
 	const setUser = useUser(state => state.setUser);
+	const deleteEvent = useEvents(state => state.deleteEvent);
 	const date = new Date(event.date);
 
 	useEffect(() => {
