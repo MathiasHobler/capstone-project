@@ -76,6 +76,24 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 										...user,
 										participates: [...user.participates, event._id],
 									});
+									console.log('nehme teil');
+								} else {
+									bookmark(
+										{
+											...event,
+											participants: event.participants.filter(
+												participant => participant !== user.id
+											),
+										},
+										event._id
+									);
+									setUser({
+										...user,
+										participates: user.participates.filter(
+											join => join !== event._id
+										),
+									});
+									console.log('nehme nicht teil');
 								}
 							} else {
 								setUser({
@@ -86,7 +104,7 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 							}
 						}}
 					>
-						Participate
+						{user.participates.includes(event._id) ? 'not Going' : 'Participate'}
 					</Button>
 				</InfoContainer>
 			</DetailContainer>
