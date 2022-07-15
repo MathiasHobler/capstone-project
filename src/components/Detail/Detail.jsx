@@ -58,6 +58,7 @@ const Detail = ({event, back, bookmark}) => {
 		}
 	}
 
+
 	return (
 		<DetailPOP>
 			<DetailContainer>
