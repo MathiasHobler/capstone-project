@@ -1,10 +1,12 @@
 import {useState, useEffect} from 'react';
 
+import useStore from '../../hooks/useStore';
 import EventCard from '../EventCard/EventCard';
 
 import EventListContainer from './EventCardList.styled';
 
 const EventCardList = ({eventList}) => {
+	const active = useStore(state => state.active);
 	const [{data, error}, setData] = useState({data: [], error: null});
 
 	const [render, newRender] = useState('');
@@ -83,17 +85,19 @@ const EventCardList = ({eventList}) => {
 	return (
 		<EventListContainer data-testid="list">
 			{error && <div>An error occured: {error}</div>}
-			{data.map(singleEvent => {
-				return (
-					<EventCard
-						data-testid="listItem"
-						key={singleEvent._id}
-						event={singleEvent}
-						deleteEvent={deleteEvent}
-						bookmark={bookmarkEvent}
-					></EventCard>
-				);
-			})}
+			{data
+				.filter(event => event.categories.includes(active))
+				.map(singleEvent => {
+					return (
+						<EventCard
+							data-testid="listItem"
+							key={singleEvent._id}
+							event={singleEvent}
+							deleteEvent={deleteEvent}
+							bookmark={bookmarkEvent}
+						></EventCard>
+					);
+				})}
 		</EventListContainer>
 	);
 };

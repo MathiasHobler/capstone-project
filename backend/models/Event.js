@@ -30,7 +30,7 @@ const schema = new Schema(
 		},
 		categories: {
 			type: Array,
-			default: [],
+			default: ['all'],
 		},
 		description: {
 			type: String,

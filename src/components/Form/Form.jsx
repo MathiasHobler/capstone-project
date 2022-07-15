@@ -1,14 +1,29 @@
 import {useEffect, useState} from 'react';
-import styled from 'styled-components';
 
 import {useStep, useCreate} from '../../hooks/useForm';
 import Button from '../Button/index';
 
-import {FormContainer} from './Form.styled';
+import {BTNContainer, FormContainer, FormHeader, FormHint} from './Form.styled';
+import FormAddCategorie from './FormAddCategorie';
 import FormAddressEvent from './FormAddressEvent';
 import FormDescriptionEvent from './FormDescriptionEvent';
 import FormDetailsEvent from './FormDetailsEvent';
 import Success from './Success';
+
+function Step({step, error}) {
+	switch (step) {
+		case 1:
+			return <FormDetailsEvent />;
+		case 2:
+			return <FormAddressEvent />;
+		case 3:
+			return <FormAddCategorie />;
+		case 4:
+			return <FormDescriptionEvent />;
+		default:
+			return <Success error={error} />;
+	}
+}
 
 const Form = () => {
 	const [{error}, setData] = useState({data: [], error: null, success: null});
@@ -74,11 +89,6 @@ const Form = () => {
 	}
 
 	useEffect(() => {
-		requiredData();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [newEvent]);
-
-	function requiredData() {
 		if (newEvent.title === '') {
 			setValid({message: 'Title should be filled', valid: false});
 		} else if (newEvent.description === '') {
@@ -96,27 +106,10 @@ const Form = () => {
 		} else {
 			setValid({message: '', valid: true});
 		}
-	}
-
-	function render() {
-		switch (step) {
-			case 1:
-				return <FormDetailsEvent />;
-			case 2:
-				return <FormAddressEvent />;
-			case 3:
-				return <FormDescriptionEvent />;
-			default:
-				return <Success error={error} />;
-		}
-	}
+	}, [newEvent]);
 
 	return (
 		<>
-			<Bubble>
-				<div></div>
-				<div></div>
-			</Bubble>
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
@@ -128,10 +121,12 @@ const Form = () => {
 					nextStep();
 				}}
 			>
-				<h3>{title}</h3>
-				{step === 3 && !state.valid && <p>Please Fill out all required * fields</p>}
-				{render()}
-				<article>
+				<FormHeader>{title}</FormHeader>
+				{step === 3 && !state.valid && (
+					<FormHint>Please Fill out all required * fields</FormHint>
+				)}
+				<Step step={step} error={error} />
+				<BTNContainer>
 					{step > 1 && (
 						<Button
 							type="button"
@@ -145,11 +140,11 @@ const Form = () => {
 						</Button>
 					)}
 
-					{step < 3 && (
+					{step < 4 && (
 						<Button
 							type="button"
 							onClick={() => {
-								if (step < 3) {
+								if (step < 4) {
 									nextStep();
 								}
 							}}
@@ -157,41 +152,17 @@ const Form = () => {
 							Step forward
 						</Button>
 					)}
-					{step === 3 && state.valid && <Button type="submit">submit</Button>}
-					{step === 4 && (
+
+					{step === 4 && state.valid && <Button type="submit">submit</Button>}
+					{step === 5 && (
 						<Button onClick={() => resetStep()} type="button">
 							Back
 						</Button>
 					)}
-				</article>
+				</BTNContainer>
 			</FormContainer>
 		</>
 	);
 };
 
 export default Form;
-
-const Bubble = styled.div`
-	position: absolute;
-	z-index: -10;
-	width: 100%;
-	height: 80%;
-	overflow: hidden;
-
-	div {
-		position: absolute;
-		width: 150px;
-		height: 150px;
-		border-radius: 50%;
-		&:first-child {
-			top: -80px;
-			left: -80px;
-			background: linear-gradient(#1845ad, #23a2f6);
-		}
-		&:last-child {
-			right: -30px;
-			bottom: -50px;
-			background: linear-gradient(to right, #ff512f, #f09819);
-		}
-	}
-`;
