@@ -209,6 +209,7 @@ const flyingBubble = keyframes`
 const Element = styled.li`
 	display: block;
 	position: fixed;
+	z-index: -5;
 	bottom: -150px;
 	left: ${props => props.element.left};
 	width: ${props => props.element.width};
