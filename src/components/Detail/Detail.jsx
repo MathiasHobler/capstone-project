@@ -7,7 +7,7 @@ import {useStep, useCreate} from '../../hooks/useForm';
 import {useUser} from '../../hooks/useUser';
 import Button from '../Button/index';
 
-import {DetailPOP, DetailContainer, ToolBTN, InfoContainer} from './Detail.styled';
+import {DetailPOP, DetailContainer, ToolBTN, InfoContainer, Iframe, Img} from './Detail.styled';
 
 const Detail = ({event, back, bookmark}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
@@ -108,7 +108,7 @@ const Detail = ({event, back, bookmark}) => {
 				</NavLink>
 
 				<InfoContainer>
-					<img src={event.eventPicture} alt="EventPicture"></img>
+					<Img src={event.eventPicture} alt="EventPicture"></Img>
 					<h2>{event.title}</h2>
 					<p>{date.toDateString()}</p>
 					<p>{event.time}</p>
@@ -117,7 +117,7 @@ const Detail = ({event, back, bookmark}) => {
 					<h3>Location</h3>
 					<p>{event.address}</p>
 					<p>{`${event.zip} ${event.city}`}</p>
-					<iframe
+					<Iframe
 						title="event.id"
 						src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
 						width="100%"

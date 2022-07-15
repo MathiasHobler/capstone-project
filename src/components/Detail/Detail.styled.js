@@ -51,18 +51,24 @@ export const ToolBTN = styled.button`
 	}
 `;
 
+export const Img = styled.img`
+	width: 100%;
+	height: 10em;
+	margin-bottom: 0.5em;
+	border-top-left-radius: 1.5em;
+	border-top-right-radius: 1.5em;
+`;
+
+export const Iframe = styled.iframe`
+	margin-top: 0.25em;
+	margin-bottom: 1.5em;
+	border-radius: 1.5em;
+`;
+
 export const InfoContainer = styled.section`
 	align-items: center;
 	justify-content: center;
 	padding-bottom: 1.5em;
-
-	img {
-		width: 100%;
-		height: 10em;
-		margin-bottom: 0.5em;
-		border-top-left-radius: 1.5em;
-		border-top-right-radius: 1.5em;
-	}
 
 	h2 {
 		max-width: 10em;
@@ -80,12 +86,6 @@ export const InfoContainer = styled.section`
 		margin-bottom: 0.25em;
 		overflow-wrap: break-word;
 	}
-
-	iframe {
-		margin-top: 0.25em;
-		margin-bottom: 1.5em;
-		border-radius: 1.5em;
-	}
 `;
 
 export const DetailPOP = styled.section`
@@ -101,83 +101,15 @@ export const DetailPOP = styled.section`
 	height: 100%;
 	margin: 0;
 
-	article {
-		a {
-			position: absolute;
-			z-index: 20;
-			top: 12em;
-			right: -0.1em;
-			text-decoration: none;
-			svg {
-				color: rgba(255, 255, 255, 0.5);
-			}
+	a {
+		position: absolute;
+		z-index: 20;
+		top: 12em;
+		right: -0.1em;
+		text-decoration: none;
+
+		svg {
+			color: rgba(255, 255, 255, 0.5);
 		}
-
-		section {
-			/* align-items: center;
-			justify-content: center;
-			padding-bottom: 1.5em;
-
-			img {
-				width: 100%;
-				height: 10em;
-				margin-bottom: 0.5em;
-				border-top-left-radius: 1.5em;
-				border-top-right-radius: 1.5em;
-			}
-
-			h2 {
-				max-width: 10em;
-				margin-bottom: 0.5em;
-				text-align: left;
-				overflow-wrap: break-word;
-			}
-
-			h3 {
-				margin: 1em 0;
-			}
-
-			p {
-				max-width: 18em;
-				margin-bottom: 0.25em;
-				overflow-wrap: break-word;
-			}
-
-			iframe {
-				margin-top: 0.25em;
-				margin-bottom: 1.5em;
-				border-radius: 1.5em;
-			} */
-		}
-
-		/* button {
-			display: flex;
-			position: absolute;
-			top: 0;
-			right: 0.25em;
-			align-items: center;
-			justify-content: center;
-			width: 2em;
-			height: 2em;
-			padding: 0.5em;
-			border: none;
-			background-color: transparent;
-			font-size: 1em;
-
-			svg {
-				color: rgba(255, 255, 255, 0.5);
-			}
-			&:nth-child(2) {
-				top: 0.75em;
-				left: 1.5em;
-				svg {
-					color: rgba(255, 255, 255, 0.8);
-				}
-			}
-			&:nth-child(3) {
-				top: 5em;
-				right: -0.1em;
-			}
-		} */
 	}
 `;
