@@ -1,10 +1,10 @@
-import TabbarContainer from './Tabbar.styled';
+import {TabbarContainer, Button} from './Tabbar.styled';
 
 const Tabbar = ({tab}) => {
 	return (
 		<TabbarContainer>
-			<button onClick={() => tab('saved')}>SAVED</button>
-			<button onClick={() => tab('going')}>GOING</button>
+			<Button onClick={() => tab('saved')}>SAVED</Button>
+			<Button onClick={() => tab('going')}>GOING</Button>
 		</TabbarContainer>
 	);
 };
