@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
 	position: relative;
-	width: 16em;
+	width: ${props => (props.size === 'small' ? '6em' : props.size === 'medium' ? '9em' : '16em')};
 
 	span {
 		position: absolute;

@@ -12,12 +12,13 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 	const setTitle = useStep(state => state.setTitle);
 
 	const date = new Date(event.date);
+	const lat = 48.17993927001953;
+	const lng = 10.750860214233398;
 
 	useEffect(() => {
 		setAction('update');
 		setTitle('Update Event');
 	}, [setAction, setTitle]);
-
 
 	return (
 		<DetailPOP>
@@ -49,11 +50,11 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 					<h3>About</h3>
 					<p>{event.description}</p>
 					<h3>Location</h3>
-					<p>{event.address}</p>
+					<p>{`${event.address} ${event.houseNumber}`}</p>
 					<p>{`${event.zip} ${event.city}`}</p>
 					<iframe
 						title="event.id"
-						src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
+						src={`https://maps.google.com/maps?q=${lat},${lng} &t=&z=15&ie=UTF8&iwloc=&output=embed`}
 						width="100%"
 						height="200"
 					/>
