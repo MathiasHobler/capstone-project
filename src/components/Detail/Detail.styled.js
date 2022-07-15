@@ -106,10 +106,7 @@ export const DetailPOP = styled.section`
 		z-index: 20;
 		top: 12em;
 		right: -0.1em;
+		color: rgba(255, 255, 255, 0.5);
 		text-decoration: none;
-
-		svg {
-			color: rgba(255, 255, 255, 0.5);
-		}
 	}
 `;
