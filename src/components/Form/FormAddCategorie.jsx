@@ -11,6 +11,7 @@ import {
 } from '@mui/icons-material';
 
 import {useCreate} from '../../hooks/useForm';
+import {toggleFilter} from '../../utils/unit';
 
 import {Container, DialField, Iconframe, IconLabel} from './Form.styled';
 
@@ -41,19 +42,7 @@ const FormAddCategorie = () => {
 							key={icon.id}
 							isActive={isActive}
 							onClick={() => {
-								if (isActive) {
-									setNewEvent({
-										...newEvent,
-										categories: newEvent.categories.filter(categorie => {
-											return categorie !== icon.categorie;
-										}),
-									});
-								} else {
-									setNewEvent({
-										...newEvent,
-										categories: [...newEvent.categories, icon.categorie],
-									});
-								}
+								toggleFilter(isActive, setNewEvent, newEvent, icon);
 							}}
 						>
 							<icon.icon fontSize={'large'} />

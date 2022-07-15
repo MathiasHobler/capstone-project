@@ -21,3 +21,19 @@ export function rem(n) {
 export function pxToRem(pixel, rootFontSize = 16) {
 	return rem(pixel / rootFontSize);
 }
+//isActive,setNewEvent,newEvent, categories
+export function toggleFilter(isState, setTheState, event, icon) {
+	if (isState) {
+		setTheState({
+			...event,
+			categories: event.categories.filter(categorie => {
+				return categorie !== icon.categorie;
+			}),
+		});
+	} else {
+		setTheState({
+			...event,
+			categories: [...event.categories, icon.categorie],
+		});
+	}
+}
