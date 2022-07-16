@@ -18,7 +18,6 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 		setTitle('Update Event');
 	}, [setAction, setTitle]);
 
-
 	return (
 		<DetailPOP>
 			<article>
@@ -49,11 +48,11 @@ const Detail = ({event, back, deleteEvent, bookmark}) => {
 					<h3>About</h3>
 					<p>{event.description}</p>
 					<h3>Location</h3>
-					<p>{event.address}</p>
+					<p>{`${event.address} ${event.houseNumber}`}</p>
 					<p>{`${event.zip} ${event.city}`}</p>
 					<iframe
 						title="event.id"
-						src="https://maps.google.com/maps?q=neuefische&t=&z=13&ie=UTF8&iwloc=&output=embed"
+						src={`https://maps.google.com/maps?q=${event.location[0]},${event.location[1]} &t=&z=15&ie=UTF8&iwloc=&output=embed`}
 						width="100%"
 						height="200"
 					/>
