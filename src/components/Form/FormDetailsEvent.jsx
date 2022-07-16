@@ -1,4 +1,5 @@
 import {useCreate} from '../../hooks/useForm';
+import CheckBoxSlide from '../Checkbox_Slider/CheckBoxSlide';
 import ImageUpload from '../Inputfield/ImageInput';
 import {Inputfield} from '../Inputfield/Inputfield';
 
@@ -17,9 +18,7 @@ const FormDetailsEvent = () => {
 				setValue={input => setNewEvent({...newEvent, title: input})}
 			/>
 			<ImageUpload />
-			<Inputfield
-				label={'private'}
-				type={'checkbox'}
+			<CheckBoxSlide
 				value={newEvent.private}
 				setValue={input => setNewEvent({...newEvent, private: input})}
 			/>

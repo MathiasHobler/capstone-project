@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const EventCardContainer = styled.li`
+	/* position: fixed; */
+	z-index: 1;
 	width: min(100% - 2rem);
 	margin: auto;
 	padding: 1em;
