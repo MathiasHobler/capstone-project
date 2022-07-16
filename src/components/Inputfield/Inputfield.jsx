@@ -1,8 +1,8 @@
 import {InputContainer} from './Inutfield.styled';
 
-export const Inputfield = ({label, type, value, setValue, min, max}) => {
+export const Inputfield = ({label, type, value, setValue, min, max, size}) => {
 	return (
-		<InputContainer valid>
+		<InputContainer size={size} valid>
 			<label htmlFor={label}></label>
 			<input
 				type={type}

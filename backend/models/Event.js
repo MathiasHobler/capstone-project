@@ -48,6 +48,9 @@ const schema = new Schema(
 		zip: {
 			type: String,
 		},
+		houseNumber: {
+			type: String,
+		},
 		date: {
 			type: String,
 		},
