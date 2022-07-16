@@ -32,32 +32,9 @@ const Form = () => {
 	const nextStep = useStep(state => state.nextStep);
 	const prevStep = useStep(state => state.prevStep);
 	const newEvent = useCreate(state => state.event);
-	const setNewEvent = useCreate(state => state.setNewEvent);
 	const resetStep = useStep(state => state.resetStep);
 	const action = useStep(state => state.action);
 	const title = useStep(state => state.title);
-
-	function fetchData(url) {
-		console.log('fetchData');
-		fetch(url, {
-			method: 'GET',
-			headers: {
-				apiKey: process.env.API_KEY,
-				'Content-Type': 'application/json',
-			},
-		})
-			.then(response => response.json())
-			.then(result => {
-				setNewEvent({
-					...newEvent,
-					location: [
-						result.locations[0].referencePosition.latitude,
-						result.locations[0].referencePosition.longitude,
-					],
-				});
-				console.log(result.locations[0].address);
-			});
-	}
 
 	function createEvent(data) {
 		fetch('/api/events', {
@@ -136,7 +113,6 @@ const Form = () => {
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
-					fetchData();
 					if (action === 'create') {
 						createEvent(newEvent);
 					} else if (action === 'update') {
