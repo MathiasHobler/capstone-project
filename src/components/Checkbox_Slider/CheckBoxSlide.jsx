@@ -4,7 +4,6 @@ import styled, {css} from 'styled-components';
 function CheckBoxSlide({value, setValue}) {
 	const [isChecked, setIsChecked] = useState(value);
 	const handleCheck = e => {
-		console.log(e.target.checked);
 		setIsChecked(!isChecked);
 		setValue(e.target.checked);
 	};

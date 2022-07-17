@@ -40,15 +40,13 @@ function NavBar() {
 					{navRay.map(navigator => {
 						return (
 							<ListItem key={navigator.id}>
-								<IconBTN
-									active={active}
-									ident={navigator.linkTo}
-									type="button"
-									onClick={() => {
-										setActive(navigator.linkTo);
-									}}
-								>
-									<StyledNavlink to={navigator.linkTo}>
+								<IconBTN active={active} ident={navigator.linkTo}>
+									<StyledNavlink
+										to={navigator.linkTo}
+										onClick={() => {
+											setActive(navigator.linkTo);
+										}}
+									>
 										{navigator.icon}
 									</StyledNavlink>
 									<IconLabel>{navigator.label}</IconLabel>
