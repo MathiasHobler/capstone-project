@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
-const EventCardContainer = styled.li`
-	/* position: fixed; */
+export const Img = styled.img`
+	width: 100%;
+	height: 10em;
+	margin-bottom: 0.5em;
+	border-top-left-radius: 1.5em;
+	border-top-right-radius: 1.5em;
+`;
+
+export const EventCardContainer = styled.li`
 	z-index: 1;
 	width: min(100% - 2rem);
 	max-width: 500px;
@@ -46,11 +53,4 @@ const EventCardContainer = styled.li`
 			white-space: nowrap;
 		}
 	}
-
-	img {
-		width: 100%;
-		height: 10em;
-	}
 `;
-
-export default EventCardContainer;
