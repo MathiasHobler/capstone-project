@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const NavContainer = styled.section`
 	display: flex;
 	position: fixed;
+	z-index: 5;
 	bottom: 0;
 	flex-direction: row;
 	align-items: center;

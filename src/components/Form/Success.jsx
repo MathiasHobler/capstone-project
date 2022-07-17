@@ -17,7 +17,7 @@ const Success = ({error}) => {
 			date: '',
 			time: '',
 			description: '',
-			categories: 'all',
+			categories: ['all', ''],
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);

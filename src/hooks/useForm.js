@@ -35,7 +35,7 @@ export const useCreate = create(
 				date: '',
 				time: '',
 				description: '',
-				categories: ['all'],
+				categories: ['all', ''],
 				location: [],
 			},
 			setNewEvent: input => set(() => ({event: input})),

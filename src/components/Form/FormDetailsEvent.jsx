@@ -17,12 +17,8 @@ const FormDetailsEvent = () => {
 				value={newEvent.title}
 				setValue={input => setNewEvent({...newEvent, title: input})}
 			/>
-
-			
-
 			<ImageUpload />
-			
-        <CheckBoxSlide
+			<CheckBoxSlide
 				value={newEvent.private}
 				setValue={input => setNewEvent({...newEvent, private: input})}
 			/>
