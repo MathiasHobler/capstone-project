@@ -10,6 +10,7 @@ const DetailPOP = styled.div`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	max-width: 550px;
 	height: 100%;
 	margin: 0;
 

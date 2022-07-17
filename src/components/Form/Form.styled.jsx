@@ -61,6 +61,7 @@ export const FormContainer = styled.form`
 	justify-content: flex-end;
 	gap: 2em;
 	width: 80%;
+	max-width: 500px;
 	height: 32em;
 	margin: auto;
 	margin-top: 3em;

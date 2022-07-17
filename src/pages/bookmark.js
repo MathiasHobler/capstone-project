@@ -2,8 +2,9 @@ import {useState, useEffect} from 'react';
 
 import EventCard from '../components/EventCard/EventCard';
 import EventListContainer from '../components/EventCardList/EventCardList.styled';
+import NavBar from '../components/NavBar/NavBar';
 
-export default function Bookmark({bookmark}) {
+export default function Bookmark() {
 	const [{data, error}, setData] = useState({data: [], error: null});
 
 	const [render, newRender] = useState('');

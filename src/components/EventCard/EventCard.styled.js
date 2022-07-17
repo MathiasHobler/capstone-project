@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const EventCardContainer = styled.li`
 	width: min(100% - 2rem);
+	max-width: 500px;
 	margin: auto;
 	padding: 1em;
 	border: 2px solid rgba(255, 255, 255, 0.1);
