@@ -5,9 +5,9 @@ export const Button = styled.button`
 	border: none;
 	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 	outline: none;
-	background: rgba(255, 255, 255, 0.06);
+	background: rgba(0, 0, 0, 0.2);
 	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-	color: white;
+	color: ${props => (props.tab ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.25)')};
 `;
 
 export const TabbarContainer = styled.section`
@@ -16,5 +16,6 @@ export const TabbarContainer = styled.section`
 	z-index: 200;
 	width: 100vw;
 	height: 3.5em;
+	background: rgba(0, 0, 0, 0.2);
 	backdrop-filter: blur(20px);
 `;

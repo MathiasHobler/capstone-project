@@ -19,7 +19,7 @@ export default function Bookmark() {
 
 	return (
 		<>
-			<Tabbar tab={input => setTab(input)} />
+			<Tabbar setTab={input => setTab(input)} />
 			<EventListContainer data-testid="list">
 				{error && <div>An error occured: {error}</div>}
 				{events
