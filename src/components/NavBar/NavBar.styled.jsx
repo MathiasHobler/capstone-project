@@ -54,6 +54,7 @@ const StyledNavlink = styled(NavLink)`
 const NavContainer = styled.section`
 	display: flex;
 	position: fixed;
+	z-index: 5;
 	bottom: 0;
 	align-items: center;
 	justify-content: center;

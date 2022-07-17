@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const FlexContainer = styled.article`
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+`;
+
 export const IconLabel = styled.p`
 	margin-top: 0.2em;
 `;

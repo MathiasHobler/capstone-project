@@ -3,78 +3,43 @@ import {useState, useEffect} from 'react';
 import EventCard from '../components/EventCard/EventCard';
 import EventListContainer from '../components/EventCardList/EventCardList.styled';
 import NavBar from '../components/NavBar/NavBar';
+import Tabbar from '../components/Tabbar/Tabbar';
+import {useEvents} from '../hooks/useEvents';
+import {useUser} from '../hooks/useUser';
 
 export default function Bookmark() {
-	const [{data, error}, setData] = useState({data: [], error: null});
-
-	const [render, newRender] = useState('');
+	const [tab, setTab] = useState('saved');
+	const getData = useEvents(state => state.getData);
+	const {events, error} = useEvents(state => state.events);
+	const user = useUser(state => state.user);
 
 	useEffect(() => {
-		fetch('/api/events')
-			.then(response => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				} else {
-					return response.json();
-				}
-			})
-			.then(data => {
-				setData({
-					data: data.data,
-					error: null,
-				});
-			})
-			.catch(error => {
-				setData({
-					data: [],
-					error: error.message,
-				});
-			});
-	}, [render]);
-
-	function bookmarkEvent(data, id) {
-		fetch(`/api/events/${id}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
-			.then(response => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				} else {
-					return response.json();
-				}
-			})
-			.then(data => {
-				newRender(data);
-			})
-			.catch(error => {
-				setData({
-					data: '',
-					error: error.message,
-				});
-			});
-	}
+		getData();
+	}, [getData]);
 
 	return (
-		<EventListContainer data-testid="list">
-			{error && <div>An error occured: {error}</div>}
-			{data
-				.filter(event => {
-					return event.bookmark === true;
-				})
-				.map(singleEvent => {
-					return (
-						<EventCard
-							key={singleEvent._id}
-							bookmark={bookmarkEvent}
-							data-testid="listItem"
-							event={singleEvent}
-						></EventCard>
-					);
-				})}
-		</EventListContainer>
+		<>
+			<Tabbar tab={input => setTab(input)} />
+			<EventListContainer data-testid="list">
+				{error && <div>An error occured: {error}</div>}
+				{events
+					.filter(event => {
+						if (tab === 'saved') {
+							return user.bookmarked.includes(event._id);
+						} else {
+							return user.participates.includes(event._id);
+						}
+					})
+					.map(singleEvent => {
+						return (
+							<EventCard
+								key={singleEvent._id}
+								data-testid="listItem"
+								event={singleEvent}
+							></EventCard>
+						);
+					})}
+			</EventListContainer>
+		</>
 	);
 }
