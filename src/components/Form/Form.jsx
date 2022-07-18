@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 
+import {useEvents} from '../../hooks/useEvents';
 import {useStep, useCreate} from '../../hooks/useForm';
 import Button from '../Button/index';
 
@@ -26,7 +27,6 @@ function Step({step, error}) {
 }
 
 const Form = () => {
-	const [{error}, setData] = useState({data: [], error: null, success: null});
 	const [state, setValid] = useState({valid: false, message: ''});
 	const step = useStep(state => state.step);
 	const nextStep = useStep(state => state.nextStep);
@@ -35,58 +35,9 @@ const Form = () => {
 	const resetStep = useStep(state => state.resetStep);
 	const action = useStep(state => state.action);
 	const title = useStep(state => state.title);
-
-	function createEvent(data) {
-		fetch('/api/events', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
-			.then(response => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				} else {
-					return response.json();
-				}
-			})
-			.then(data => {
-				setData({
-					data: data.data,
-					error: null,
-				});
-			})
-			.catch(error => {
-				setData({
-					data: '',
-					error: error.message,
-				});
-			});
-	}
-
-	function updateEvent(data, id) {
-		fetch(`/api/events/${id}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
-			.then(response => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				} else {
-					return response.json();
-				}
-			})
-			.catch(error => {
-				setData({
-					data: '',
-					error: error.message,
-				});
-			});
-	}
+	const {error} = useEvents(state => state.events);
+	const updateEvent = useEvents(state => state.updateEvent);
+	const createEvent = useEvents(state => state.createEvent);
 
 	useEffect(() => {
 		if (newEvent.title === '') {
@@ -113,10 +64,15 @@ const Form = () => {
 			<FormContainer
 				onSubmit={e => {
 					e.preventDefault();
-					if (action === 'create') {
-						createEvent(newEvent);
-					} else if (action === 'update') {
-						updateEvent(newEvent, newEvent._id);
+					switch (action) {
+						case 'POST':
+							createEvent(newEvent);
+							break;
+						case 'PUT':
+							updateEvent(newEvent, newEvent._id);
+							break;
+						default:
+							return <p>{error.message}</p>;
 					}
 					nextStep();
 				}}

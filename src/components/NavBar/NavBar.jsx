@@ -9,8 +9,6 @@ function NavBar() {
 	const [active, setActive] = useState('');
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
-	setAction('create');
-	setTitle('Create Event');
 
 	const navRay = [
 		{
@@ -45,6 +43,10 @@ function NavBar() {
 										to={navigator.linkTo}
 										onClick={() => {
 											setActive(navigator.linkTo);
+											if (navigator.linkTo === '/create') {
+												setAction('POST');
+												setTitle('Create Event');
+											}
 										}}
 									>
 										{navigator.icon}

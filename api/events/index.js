@@ -39,8 +39,9 @@ export default async function handler(request, response) {
 				} catch (error) {
 					response.status(400).json({message: error.message});
 				}
-				const newEvent = await Event.create(event);
-				response.status(200).json({success: true, data: newEvent});
+				await Event.create(event);
+				const events = await Event.find({});
+				response.status(200).json({success: true, data: events});
 			} catch (error) {
 				response.status(400).json({success: false});
 			}
