@@ -13,7 +13,7 @@ export const DetailContainer = styled.article`
 	border-radius: 1.5em;
 	background: rgba(0, 128, 255, 0.2);
 	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-	color: white;
+	color: #f7f7f7;
 	list-style: none;
 	backdrop-filter: -webkit-blur(10px);
 	backdrop-filter: -moz-blur(10px);

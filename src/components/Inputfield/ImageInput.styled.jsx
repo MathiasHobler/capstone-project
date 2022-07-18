@@ -10,7 +10,7 @@ export const ImageContainer = styled.div`
 		transition: 0.5s;
 		border-radius: 0.3rem;
 		${props => css`
-			color: ${props.isActive ? 'white' : 'rgba(255, 255, 255, 0)'};
+			color: ${props.isActive ? '#F7F7F7' : 'rgba(255, 255, 255, 0)'};
 		`}
 		font-family: sans-serif;
 		font-size: 0.8em;
@@ -25,9 +25,9 @@ export const ImageContainer = styled.div`
 		border-radius: 5px;
 		outline: none;
 		background-color: transparent;
-		color: rgb(255, 255, 255);
+		color: #f7f7f7;
 		font-size: 1em;
-		scrollbar-color: #00dfc4 #6b0b0b;
+		scrollbar-color: #dba632 #6b0b0b;
 	}
 
 	span {
@@ -45,7 +45,7 @@ export const ImageContainer = styled.div`
 				border-right: ${props.isActive ? '1px solid #1d2b3a' : ''};
 				border-left: ${props.isActive ? '1px solid #1d2b3a' : ''};
 				border-radius: ${props.isActive ? '5px' : ''};
-				background: ${props.isActive ? '#00dfc4' : ''};
+				background: ${props.isActive ? '#DBA632' : ''};
 				color: ${props.isActive ? '#1d2b3a' : 'rgba(255, 255, 255, 0.25)'};
 				font-size: ${props.isActive ? '0.65em' : '1em'};
 			`}
@@ -58,12 +58,12 @@ export const ImageContainer = styled.div`
 		border-radius: 5px;
 		outline: none;
 		background: transparent;
-		color: rgb(255, 255, 255);
+		color: #f7f7f7;
 		font-size: 1em;
-		scrollbar-color: #00dfc4 #6b0b0b;
+		scrollbar-color: #dba632 #6b0b0b;
 		${props => css`
 			border: ${props.isActive
-				? '1px solid #00dfc4 '
+				? '1px solid #DBA632 '
 				: '1px solid rgba(255, 255, 255, 0.25)'};
 		`}
 	}
