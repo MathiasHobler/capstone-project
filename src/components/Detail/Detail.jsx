@@ -9,7 +9,7 @@ import Button from '../Button/index';
 
 import {DetailPOP, DetailContainer, ToolBTN, InfoContainer, Iframe, Img} from './Detail.styled';
 
-const Detail = ({event, back, bookmark}) => {
+const Detail = ({event, back}) => {
 	const setNewEvent = useCreate(state => state.setNewEvent);
 	const setAction = useStep(state => state.setAction);
 	const setTitle = useStep(state => state.setTitle);
@@ -99,7 +99,7 @@ const Detail = ({event, back, bookmark}) => {
 				<NavLink
 					to="/create"
 					onClick={() => {
-						setAction('update');
+						setAction('PUT');
 						setTitle('Update Event');
 						setNewEvent(event);
 					}}

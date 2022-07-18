@@ -41,6 +41,48 @@ export const useEvents = create(set => ({
 				}));
 			});
 	},
+
+	createEvent(data) {
+		set(state => ({
+			events: {
+				events: state.events.events,
+				loading: true,
+				error: null,
+			},
+		}));
+		fetch('/api/events', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				set(() => ({
+					events: {
+						events: data.data,
+						loading: false,
+						error: null,
+					},
+				}));
+			})
+			.catch(error => {
+				set(state => ({
+					events: {
+						events: state.events.events,
+						loading: false,
+						error: error.message,
+					},
+				}));
+			});
+	},
 	deleteEvent(id) {
 		set(state => ({
 			events: {
