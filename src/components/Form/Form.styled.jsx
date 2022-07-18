@@ -38,14 +38,14 @@ export const DialField = styled.section`
 `;
 
 export const FormHint = styled.p`
-	position: absolute;
-	top: 50px;
+	/* position: absolute;
+	top: 50px; */
 	color: red;
 `;
 
 export const FormHeader = styled.h3`
-	position: absolute;
-	top: 5px;
+	/* position: absolute;
+	top: 5px; */
 	color: white;
 	font-size: 32px;
 	font-weight: 500;
@@ -61,7 +61,7 @@ export const BTNContainer = styled.article`
 
 export const FormContainer = styled.form`
 	display: flex;
-	position: relative;
+	/* position: relative; */
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-end;
@@ -73,7 +73,7 @@ export const FormContainer = styled.form`
 	margin-top: 3em;
 	border: 2px solid rgba(255, 255, 255, 0.1);
 	border-radius: 1.5em;
-	background: rgba(255, 255, 255, 0.06);
+	background: rgba(0, 128, 255, 0.2);
 	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
 	backdrop-filter: -webkit-blur(10px);
 	backdrop-filter: -moz-blur(10px);

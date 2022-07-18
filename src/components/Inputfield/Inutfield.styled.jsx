@@ -16,6 +16,10 @@ export const InputContainer = styled.div`
 		pointer-events: none;
 	}
 
+	textarea {
+		height: 10em;
+	}
+
 	input,
 	textarea {
 		width: 100%;
