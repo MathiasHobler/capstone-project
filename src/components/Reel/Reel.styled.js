@@ -24,18 +24,21 @@ export const IconFrame = styled.button`
 `;
 export const ReelBody = styled.section`
 	display: flex;
+	position: fixed;
+	top: 0.25em;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	width: min(100% - 2rem);
+	width: min(100% - 2.5rem);
+	max-width: 550px;
 	height: 4em;
 	margin: 0 auto;
 	margin-bottom: 1em;
 	overflow: hidden;
 	overflow-x: scroll;
 	border-radius: 1em;
-	background: transparent;
-	scrollbar-width: 0;
+	background: rgba(0, 0, 0, 0.2);
+	scrollbar-color: blue;
 `;
 
 export default ReelBody;

@@ -1,10 +1,9 @@
 import {Add, BookmarkAdded, Home} from '@mui/icons-material';
 import {useState} from 'react';
-import {NavLink} from 'react-router-dom';
 
 import {useStep} from '../../hooks/useForm';
 
-import NavContainer from './NavBar.styled';
+import {NavContainer, ItemList, ListItem, IconBTN, IconLabel, StyledNavlink} from './NavBar.styled';
 
 function NavBar() {
 	const [active, setActive] = useState('');
@@ -12,41 +11,50 @@ function NavBar() {
 	const setTitle = useStep(state => state.setTitle);
 	setAction('create');
 	setTitle('Create Event');
+
+	const navRay = [
+		{
+			id: '1',
+			linkTo: '/',
+			icon: <Home />,
+			label: 'Home',
+		},
+		{
+			id: '2',
+			linkTo: '/create',
+			icon: <Add />,
+			label: 'Create',
+		},
+		{
+			id: '3',
+			linkTo: '/bookmark',
+			icon: <BookmarkAdded />,
+			label: 'Bookmark',
+		},
+	];
+
 	return (
 		<>
-			<NavContainer active={active}>
-				<ul>
-					<li
-						onClick={() => {
-							setActive('home');
-						}}
-					>
-						<NavLink to="/" data-testid="navHome">
-							<Home />
-						</NavLink>
-						<p>Home</p>
-					</li>
-					<li
-						onClick={() => {
-							setActive('create');
-						}}
-					>
-						<NavLink to="/create" data-testid="navCreate">
-							<Add />
-						</NavLink>
-						<p>Create</p>
-					</li>
-					<li
-						onClick={() => {
-							setActive('bookmark');
-						}}
-					>
-						<NavLink to="/bookmark" data-testid="navBookmark">
-							<BookmarkAdded />
-						</NavLink>
-						<p>Bookmarked</p>
-					</li>
-				</ul>
+			<NavContainer>
+				<ItemList active={active} ident={navigator.linkTo}>
+					{navRay.map(navigator => {
+						return (
+							<ListItem key={navigator.id}>
+								<IconBTN active={active} ident={navigator.linkTo}>
+									<StyledNavlink
+										to={navigator.linkTo}
+										onClick={() => {
+											setActive(navigator.linkTo);
+										}}
+									>
+										{navigator.icon}
+									</StyledNavlink>
+									<IconLabel>{navigator.label}</IconLabel>
+								</IconBTN>
+							</ListItem>
+						);
+					})}
+				</ItemList>
 			</NavContainer>
 		</>
 	);

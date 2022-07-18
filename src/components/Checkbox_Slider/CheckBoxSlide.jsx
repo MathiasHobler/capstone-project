@@ -4,7 +4,6 @@ import styled, {css} from 'styled-components';
 function CheckBoxSlide({value, setValue}) {
 	const [isChecked, setIsChecked] = useState(value);
 	const handleCheck = e => {
-		console.log(e.target.checked);
 		setIsChecked(!isChecked);
 		setValue(e.target.checked);
 	};
@@ -68,10 +67,10 @@ const Slider = styled.span`
 `;
 const Text = styled.span`
 	position: absolute;
-	top: 5px;
+	top: 8px;
 	transition: all 0.4s ease-in-out;
 	opacity: 1;
-	color: #00dfc4;
+	color: #dba632;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 	${props => css`
 		left: ${props.isChecked ? '' : '5px'};

@@ -1,10 +1,29 @@
+import {useState} from 'react';
+
 import {TabbarContainer, Button} from './Tabbar.styled';
 
-const Tabbar = ({tab}) => {
+const Tabbar = ({setTab}) => {
+	const [isActive, setIsActive] = useState(true);
 	return (
 		<TabbarContainer>
-			<Button onClick={() => tab('saved')}>SAVED</Button>
-			<Button onClick={() => tab('going')}>GOING</Button>
+			<Button
+				tab={isActive}
+				onClick={() => {
+					setTab('saved');
+					setIsActive(!isActive);
+				}}
+			>
+				SAVED
+			</Button>
+			<Button
+				tab={!isActive}
+				onClick={() => {
+					setTab('going');
+					setIsActive(!isActive);
+				}}
+			>
+				GOING
+			</Button>
 		</TabbarContainer>
 	);
 };

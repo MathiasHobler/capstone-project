@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 
 import EventCard from '../components/EventCard/EventCard';
 import EventListContainer from '../components/EventCardList/EventCardList.styled';
+import NavBar from '../components/NavBar/NavBar';
 import Tabbar from '../components/Tabbar/Tabbar';
 import {useEvents} from '../hooks/useEvents';
 import {useUser} from '../hooks/useUser';
@@ -18,7 +19,7 @@ export default function Bookmark() {
 
 	return (
 		<>
-			<Tabbar tab={input => setTab(input)} />
+			<Tabbar setTab={input => setTab(input)} />
 			<EventListContainer data-testid="list">
 				{error && <div>An error occured: {error}</div>}
 				{events

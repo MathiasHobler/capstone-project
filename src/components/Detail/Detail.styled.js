@@ -11,9 +11,9 @@ export const DetailContainer = styled.article`
 	overflow: scroll;
 	border: 2px solid rgba(255, 255, 255, 0.1);
 	border-radius: 1.5em;
-	background: rgba(255, 255, 255, 0.06);
+	background: rgba(0, 128, 255, 0.2);
 	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-	color: white;
+	color: #f7f7f7;
 	list-style: none;
 	backdrop-filter: -webkit-blur(10px);
 	backdrop-filter: -moz-blur(10px);
@@ -98,6 +98,7 @@ export const DetailPOP = styled.section`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	max-width: 550px;
 	height: 100%;
 	margin: 0;
 

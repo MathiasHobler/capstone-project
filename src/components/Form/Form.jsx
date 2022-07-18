@@ -122,7 +122,7 @@ const Form = () => {
 				}}
 			>
 				<FormHeader>{title}</FormHeader>
-				{step === 3 && !state.valid && (
+				{step === 4 && !state.valid && (
 					<FormHint>Please Fill out all required * fields</FormHint>
 				)}
 				<Step step={step} error={error} />

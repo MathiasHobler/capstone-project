@@ -1,16 +1,24 @@
 import styled from 'styled-components';
 
-const EventCardContainer = styled.li`
-	/* position: fixed; */
+export const Img = styled.img`
+	width: 100%;
+	height: 10em;
+	margin-bottom: 0.5em;
+	border-top-left-radius: 1.5em;
+	border-top-right-radius: 1.5em;
+`;
+
+export const EventCardContainer = styled.li`
 	z-index: 1;
 	width: min(100% - 2rem);
+	max-width: 500px;
 	margin: auto;
 	padding: 1em;
 	border: 2px solid rgba(255, 255, 255, 0.1);
 	border-radius: 1.5em;
-	background: rgba(255, 255, 255, 0.06);
+	background: rgba(0, 128, 255, 0.2);
 	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-	color: white;
+	color: #f7f7f7;
 	list-style: none;
 	backdrop-filter: -webkit-blur(10px);
 	backdrop-filter: -moz-blur(10px);
@@ -18,7 +26,7 @@ const EventCardContainer = styled.li`
 	backdrop-filter: blur(10px);
 
 	a {
-		color: white;
+		color: #f7f7f7;
 		text-decoration: none;
 	}
 	article {
@@ -45,11 +53,4 @@ const EventCardContainer = styled.li`
 			white-space: nowrap;
 		}
 	}
-
-	img {
-		width: 100%;
-		height: 10em;
-	}
 `;
-
-export default EventCardContainer;

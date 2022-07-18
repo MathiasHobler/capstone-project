@@ -16,6 +16,10 @@ export const InputContainer = styled.div`
 		pointer-events: none;
 	}
 
+	textarea {
+		height: 10em;
+	}
+
 	input,
 	textarea {
 		width: 100%;
@@ -25,9 +29,9 @@ export const InputContainer = styled.div`
 		border-radius: 5px;
 		outline: none;
 		background-color: transparent;
-		color: rgb(255, 255, 255);
+		color: #f7f7f7;
 		font-size: 1em;
-		scrollbar-color: #00dfc4 #1d2b3a;
+		scrollbar-color: #dba632 #1d2b3a;
 
 		&:valid ~ span,
 		&:focus ~ span {
@@ -36,14 +40,14 @@ export const InputContainer = styled.div`
 			border-right: 1px solid #1d2b3a;
 			border-left: 1px solid #1d2b3a;
 			border-radius: 5px;
-			background: #00dfc4;
+			background: #dba632;
 			color: #1d2b3a;
 			font-size: 0.65em;
 		}
 
 		&:valid,
 		&:focus {
-			border: 1px solid #00dfc4;
+			border: 1px solid #dba632;
 		}
 	}
 
@@ -52,7 +56,7 @@ export const InputContainer = styled.div`
 
 		&:focus,
 		&:valid {
-			color: white;
+			color: #f7f7f7;
 		}
 	}
 	input[type='time'] {
@@ -60,7 +64,7 @@ export const InputContainer = styled.div`
 
 		&:focus,
 		&:valid {
-			color: white;
+			color: #f7f7f7;
 		}
 	}
 `;
