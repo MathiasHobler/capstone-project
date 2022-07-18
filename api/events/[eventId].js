@@ -9,7 +9,8 @@ export default async function handler(request, response) {
 	switch (request.method) {
 		case 'GET':
 			try {
-				response.status(200).json({success: true});
+				const events = await Event.find({});
+				response.status(200).json({data: events, success: true});
 			} catch (error) {
 				response.status(400).json({success: false});
 			}
