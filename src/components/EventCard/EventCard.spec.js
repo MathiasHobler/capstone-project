@@ -9,16 +9,15 @@ describe('Event Card Component', () => {
 	it('should render correctly props', () => {
 		const singleEvent = dummyEvent[0];
 		render(<EventCard event={singleEvent} />);
-		expect(screen.getByText(singleEvent.eventName)).toBeInTheDocument();
-		expect(screen.getByText(singleEvent.desc)).toBeInTheDocument();
-		expect(screen.getByText(singleEvent.date)).toBeInTheDocument();
+		expect(screen.getByText(singleEvent.title)).toBeInTheDocument();
+		expect(screen.getByText(singleEvent.description)).toBeInTheDocument();
 	});
 
 	it('ImageTag must have src = https://www.meetandeat-berlin.de/img/logo.svg and alt = "EventPicture"', () => {
 		const singleEvent = dummyEvent[0];
 		render(<EventCard event={singleEvent} />);
 		const img = screen.getByRole('img');
-		expect(img).toHaveAttribute('src', singleEvent.pictures.eventPicture);
+		expect(img).toHaveAttribute('src', singleEvent.eventPicture);
 		expect(img).toHaveAttribute('alt', 'EventPicture');
 	});
 

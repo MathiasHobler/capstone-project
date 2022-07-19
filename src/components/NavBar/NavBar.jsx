@@ -40,6 +40,7 @@ function NavBar() {
 							<ListItem key={navigator.id}>
 								<IconBTN active={active} ident={navigator.linkTo}>
 									<StyledNavlink
+										data-testid={navigator.label}
 										to={navigator.linkTo}
 										onClick={() => {
 											setActive(navigator.linkTo);

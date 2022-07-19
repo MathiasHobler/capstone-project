@@ -19,6 +19,7 @@ const EventCard = ({event, deleteEvent, bookmark}) => {
 				onClick={() => {
 					toggleDetail();
 				}}
+				data-testid="event-card"
 			>
 				<Img src={event.eventPicture} alt="EventPicture"></Img>
 				<article>
