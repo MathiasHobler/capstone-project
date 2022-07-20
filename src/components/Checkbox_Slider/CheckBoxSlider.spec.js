@@ -25,7 +25,7 @@ describe('CheckBoxSlide component', () => {
 describe('CheckBoxSlide component', () => {
 	it('should allow clicks', async () => {
 		const mockOnClick = jest.fn();
-		const {getByTestId} = render(<CheckBoxSlide setValue={mockOnClick}></CheckBoxSlide>);
+		const {getByTestId} = render(<CheckBoxSlide setValue={mockOnClick} />);
 		const checkbox = getByTestId(CHECKBOX_ID);
 		expect(checkbox.checked).toEqual(false);
 		fireEvent.click(checkbox);
