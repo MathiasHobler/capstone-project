@@ -16,7 +16,7 @@ describe('CheckBoxSlide component', () => {
 	});
 
 	it('should render span', () => {
-		const {getByTestId} = render(<CheckBoxSlide></CheckBoxSlide>);
+		const {getByTestId} = render(<CheckBoxSlide />);
 		const span = getByTestId(SPAN_ID);
 		expect(span).toBeInTheDocument();
 	});
