@@ -10,7 +10,7 @@ const SPAN_ID = 'slider-text';
 
 describe('CheckBoxSlide component', () => {
 	it('should render input', () => {
-		const {getByTestId} = render(<CheckBoxSlide></CheckBoxSlide>);
+		const {getByTestId} = render(<CheckBoxSlide />);
 		const box = getByTestId(CHECKBOX_ID);
 		expect(box).toBeInTheDocument();
 	});
