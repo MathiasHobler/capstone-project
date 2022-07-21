@@ -1,9 +1,7 @@
 const dummyEvent = [
 	{
-		pictures: {
-			eventPicture: 'https://www.meetandeat-berlin.de/img/logo.svg',
-			coverPicture: '',
-		},
+		eventPicture: 'https://www.meetandeat-berlin.de/img/logo.svg',
+		coverPicture: '',
 		adress: {
 			street: '',
 			city: '',
@@ -11,11 +9,9 @@ const dummyEvent = [
 		private: false,
 		categories: [],
 		_id: '62b185e11a4caaa125207cab1',
-		eventName: 'Event1',
-		eventPicture: '',
-		coverPicture: '',
+		title: 'Event1',
 		participates: [],
-		desc: 'Lorem ipsum dolor',
+		description: 'Lorem ipsum dolor',
 		date: 'THU 30. Jun',
 		location: [],
 	},

@@ -13,6 +13,7 @@ export const Inputfield = ({label, type, value, setValue, min, max, size}) => {
 				onChange={e => {
 					type === 'checkbox' ? setValue(e.target.checked) : setValue(e.target.value);
 				}}
+				data-testid="input"
 				required="required"
 			></input>
 			<span htmlFor={label}>{label}</span>
